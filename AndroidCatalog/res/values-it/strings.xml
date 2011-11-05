@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="options_label">Configurazione</string>
+    <string name="options_bg_light">Chiaro</string>
+    <string name="options_bg_dark">Scuro</string>
+    <string name="options_bg">Sfondo</string>
+    <string name="options_font_small">Piccolo</string>
+    <string name="options_font_medium">Medio</string>
+    <string name="options_font_large">Grando</string>
+    <string name="options_font">Lèttere</string>
+    <string name="options_save">Salva</string>
+    <string name="app_copyrights"></string>
+    <string name="eula_title">Notes and license</string>
+    <string name="eula_refuse">Refuse</string>
+    <string name="visit_creocode">Aperto creocode.com</string>
+</resources>

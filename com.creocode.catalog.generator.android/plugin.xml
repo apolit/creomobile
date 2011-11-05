@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+  Copyright (c) 2010 Artur Polit, Szymon Ptaszkiewicz
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+ 
+  Contributors:
+      Artur Polit - initial code generation and customization
+-->
+
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.creocode.catalog.generator.android.core.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.creocode.catalog.generator.android.application"
+            name="Creomobile Builder Runner">
+         <property
+               name="appName"
+               value="Creomobile Builder Runner">
+         </property>
+      </product>
+   </extension>
+
+</plugin>

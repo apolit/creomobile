@@ -1,0 +1,18 @@
+<workflow>
+  <component class="org.eclipse.xtend.typesystem.xsd.XMLReader">
+    <modelSlot value="model" />
+    <uri value="MobileCatalog/catalog.xml" />
+    <metaModel id="mm"
+      class="org.eclipse.xtend.typesystem.xsd.XSDMetaModel">
+      <schemaFile value="MobileCatalog/catalog.xsd" />
+    </metaModel>
+  </component>
+  <component class="org.eclipse.xpand2.Generator">
+    <metaModel idRef="mm" />
+    <expand value="catalogTemplate::Root FOR model" />
+    <outlet path="src/com/creocode/catalog/en" />
+    <!-- wymaga org.eclipse.core.runtime -->
+    <beautifier class="org.eclipse.xpand2.output.JavaBeautifier"/>
+  </component>
+
+</workflow>

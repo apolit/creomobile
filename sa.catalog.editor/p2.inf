@@ -1,0 +1,4 @@
+# Add the following to the generated config.ini
+instructions.install = \
+setProgramProperty(propName:osgi.instance.area,propValue:files);
+#setProgramProperty(propName:org.eclipse.ui/defaultPerspectiveId,propValue:sa.catalog.editor.customization.CatedPerspective);

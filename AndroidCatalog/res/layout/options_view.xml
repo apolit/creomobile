@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout android:id="@+id/OptionsLayout"
+			 android:layout_height="fill_parent" 
+			 android:orientation="vertical"
+			 xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent">
+	<RadioGroup android:id="@+id/OptionsRadioGroupBackground"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+		<TextView android:text="@string/options_bg"
+					 android:textSize="20sp"
+					 android:id="@+id/OptionsBGLabel"
+					 android:layout_height="wrap_content"
+					 android:background="@color/titleBackgroud" android:layout_width="fill_parent">
+		</TextView>
+		<RadioButton android:text="@string/options_bg_light"		
+					 android:id="@+id/OptionsRadioButtonBGLight"
+					 android:layout_width="wrap_content"
+					 android:layout_height="wrap_content"
+					 android:textSize="18sp">
+		</RadioButton>
+		<RadioButton android:text="@string/options_bg_dark"
+					 android:id="@+id/OptionsRadioButtonBGDark"
+					 android:layout_width="wrap_content"
+					 android:layout_height="wrap_content" 
+					 android:textSize="18sp">
+		</RadioButton>
+	</RadioGroup>
+	<RadioGroup android:id="@+id/OptionsRadioGroupFont"
+				android:layout_height="wrap_content" android:layout_width="fill_parent">
+		<TextView android:text="@string/options_font"
+					 android:id="@+id/OptionsFontLabel"
+					 android:layout_width="fill_parent"
+					 android:layout_height="wrap_content" 
+					 android:textSize="20sp"
+					 android:background="@color/titleBackgroud">
+		</TextView>
+		<RadioButton android:text="@string/options_font_small"
+					 android:id="@+id/OptionsRadioButtonFontSmall"
+					 android:layout_width="wrap_content"
+					 android:layout_height="wrap_content" android:textSize="18sp">
+		</RadioButton>
+		<RadioButton android:text="@string/options_font_medium"
+					 android:id="@+id/OptionsRadioButtonFontMedium"
+					 android:layout_height="wrap_content" android:textSize="18sp" android:layout_width="fill_parent">
+		</RadioButton>
+		<RadioButton android:text="@string/options_font_large"
+					 android:id="@+id/OptionsRadioButtonFontLarge"
+					 android:layout_width="wrap_content"
+					 android:layout_height="wrap_content" android:textSize="18sp">
+		</RadioButton>
+	</RadioGroup>
+</LinearLayout>

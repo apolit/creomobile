@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: sa.catalog.rmi.client
+Bundle-SymbolicName: sa.catalog.rmi.client
+Bundle-Version: 1.0.0
+Bundle-Activator: sa.catalog.rmi.client.Activator
+Require-Bundle: org.eclipse.core.runtime
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.creocode.catalog.rmi

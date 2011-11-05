@@ -1,0 +1,9 @@
+«REM»imports catalog.xsd«ENDREM»
+«IMPORT catalog»
+«EXTENSION org::eclipse::xtend::util::stdlib::counter»
+
+«DEFINE Root FOR catalog::CatalogType»
+   «FILE "workflow.properties"»outputDirectory=«id»
+   
+   «ENDFILE»
+«ENDDEFINE»

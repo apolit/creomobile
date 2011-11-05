@@ -1,0 +1,66 @@
+«REM»imports catalog.xsd«ENDREM»
+«IMPORT catalog»
+«EXTENSION org::eclipse::xtend::util::stdlib::counter»
+
+«DEFINE Root FOR catalog::CatalogType»
+   «FILE "Content.java"»
+      package com.creocode.catalog.generator.content;
+      import java.util.Vector;
+	  /**
+	  * Generated
+	  *@author «author»
+	  *
+	  **/
+      public class Content {
+      
+      public Vector categories = new Vector();
+      public Vector items = new Vector();
+      
+      //temp variables
+      Category category;
+   	  Category subCategory;
+   	  Item item;
+		
+    	public void initCategories(){
+    				//temp category & item
+    				
+    			items.addElement(new Item());
+   	  			Category topCategory = new Category();
+   	  			categories.addElement(topCategory);
+       			«EXPAND categoryTemplate("topCategory",0) FOREACH category»
+    	}
+      }
+   «ENDFILE»
+«ENDDEFINE»
+
+«DEFINE categoryTemplate (String parentCategory, Integer parentId) FOR catalog::CategoryType»
+					category = new Category();
+    				category.title = "«title»";
+    				category.parentId = «parentId»;
+    				
+    				categories.addElement(category);
+					«parentCategory».addSubCategory(new Integer(«counterInc("category")»));
+						
+					«LET counterGet("category") AS categoryId»
+					
+					«FOREACH subCategory AS subcat»
+					subCategory = new Category();
+					subCategory.title = "«subcat.title»";
+					subCategory.parentId = «categoryId»;
+					«EXPAND itemTemplate("subCategory") FOREACH subcat.item»
+					category.addSubCategory(new Integer(«counterInc("category")»));
+					categories.addElement(subCategory);
+					«ENDFOREACH»
+					«ENDLET»
+					«EXPAND itemTemplate("category") FOREACH item»
+«ENDDEFINE»
+
+«DEFINE itemTemplate (String collection) FOR catalog::ItemType»
+   					item = new Item();
+					item.title = "«title»";
+					item.intro = "«intro.replaceAll('"', '\\\\"').replaceAll('\r', '').replaceAll('\n', '\\\\n')»";
+					item.content = "«content.replaceAll('"', '\\\\"').replaceAll('\r', '').replaceAll('\n', '\\\\n')»";
+					item.details = "«details.detail»";
+					items.addElement(item);
+					«collection».addItem(new Integer(«counterInc("item")»));
+«ENDDEFINE»

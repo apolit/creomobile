@@ -1,0 +1,6 @@
+MicroEdition-Configuration: CLDC-1.0
+MIDlet-Jar-URL: CreocodeComponents.jar
+MicroEdition-Profile: MIDP-1.0
+MIDlet-Vendor: Vendor
+MIDlet-Name: CreocodeComponents
+MIDlet-Version: 1.0

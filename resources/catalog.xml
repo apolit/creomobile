@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalog:catalog xmlns:catalog="http://www.creocode.com/catalog" id="subcategories" title="Subcategories">
+  <catalog:category>
+    <catalog:title>top category</catalog:title>
+    <catalog:item>
+      <catalog:title>top item</catalog:title>
+      <catalog:content>top item content</catalog:content>
+    </catalog:item>
+    <catalog:subCategory>
+      <catalog:title>sub category 1</catalog:title>
+      <catalog:item>
+        <catalog:title>sub item</catalog:title>
+        <catalog:content>sub item content</catalog:content>
+      </catalog:item>
+    </catalog:subCategory>
+  </catalog:category>
+</catalog:catalog>

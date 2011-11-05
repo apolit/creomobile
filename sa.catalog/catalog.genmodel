@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/sa.catalog/src"
+    modelPluginID="sa.catalog" modelName="Catalog" importerID="org.eclipse.xsd.ecore.importer"
+    complianceLevel="6.0" copyrightFields="false">
+  <foreignModel>../resources/catalog.xsd</foreignModel>
+  <genPackages prefix="Catalog" basePackage="com.creocode" resource="XML" disposableProviderFactory="true"
+      ecorePackage="catalog.ecore#/">
+    <genClasses ecoreClass="catalog.ecore#//CatalogType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//CatalogType/category"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CatalogType/author"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CatalogType/copyrights"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CatalogType/icon"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CatalogType/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CatalogType/language"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CatalogType/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CatalogType/vendor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CatalogType/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CatalogType/versionCode"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//CategoryType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CategoryType/title"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//CategoryType/item"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//CategoryType/subCategory"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//DetailsType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//DetailsType/detail"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference catalog.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference catalog.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//DocumentRoot/catalog"/>
+    </genClasses>
+    <genClasses ecoreClass="catalog.ecore#//ItemType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//ItemType/itemIdentifier"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference catalog.ecore#//ItemType/referenceToItem"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//ItemType/title"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//ItemType/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//ItemType/intro"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//ItemType/details"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

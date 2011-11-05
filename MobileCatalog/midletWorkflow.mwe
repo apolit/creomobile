@@ -1,0 +1,25 @@
+<workflow>
+  <component class="org.eclipse.xtend.typesystem.xsd.XMLReader">
+    <modelSlot value="model" />
+    <uri value="resources/catalog.xml" />
+    <metaModel id="mm"
+      class="org.eclipse.xtend.typesystem.xsd.XSDMetaModel">
+      <schemaFile value="resources/catalog.xsd" />
+    </metaModel>
+  </component>
+  <component class="org.eclipse.xpand2.Generator">
+    <metaModel idRef="mm" />
+    <expand value="MobileCatalog::descriptorTemplate::Root FOR model" />
+    <outlet path="MobileCatalog" />
+  </component>
+    <component class="org.eclipse.xpand2.Generator">
+    <metaModel idRef="mm" />
+    <expand value="MobileCatalog::buildTemplate::Root FOR model" />
+    <outlet path="MobileCatalog/mtj-build/" />
+  </component>
+  <component class="org.eclipse.xpand2.Generator">
+    <metaModel idRef="mm" />
+    <expand value="MobileCatalog::symbolsTemplate::Root FOR model" />
+    <outlet path="MobileCatalog/mtj-build/" />
+  </component>
+</workflow>

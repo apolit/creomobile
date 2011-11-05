@@ -1,0 +1,13 @@
+«IMPORT catalog»
+
+«DEFINE Root FOR catalog::CatalogType»
+«FILE id+"/"+id.toFirstUpper()+"Activity.java"»
+package com.creocode.catalog.android.«id»;
+
+import com.creocode.catalog.android.CategoriesActivity;
+
+public class «id.toFirstUpper()»Activity extends CategoriesActivity {
+
+}
+«ENDFILE»
+«ENDDEFINE»

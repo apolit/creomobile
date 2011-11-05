@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+  Copyright (c) 2010 Artur Polit, Szymon Ptaszkiewicz
+  All rights reserved. This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License v1.0
+  which accompanies this distribution, and is available at
+  http://www.eclipse.org/legal/epl-v10.html
+ 
+  Contributors:
+      Szymon Ptaszkiewicz - initial code generation and customization
+-->
+
+<plugin>
+   <extension-point id="splashExtension" name="Splash Extensions" schema="schema/splashExtension.exsd"/>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="com.creocode.catalog.presentation.CatalogModelWizardID"
+            name="%_UI_CatalogModelWizard_label"
+            class="com.creocode.catalog.presentation.CatalogModelWizard"
+            icon="icons/full/obj16/CatalogModelFile.gif">
+         <description>%_UI_CatalogModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="com.creocode.catalog.presentation.CatalogEditorID"
+            name="%_UI_CatalogEditor_label"
+            icon="icons/full/obj16/CatalogModelFile.gif"
+            extensions="catalog"
+            class="com.creocode.catalog.presentation.CatalogEditor"
+            contributorClass="com.creocode.catalog.presentation.CatalogActionBarContributor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            adaptable="false"
+            id="com.creocode.catalog.actions"
+            nameFilter="*.catalog"
+            objectClass="org.eclipse.core.resources.IFile">
+         <action
+               class="com.creocode.catalog.actions.GenerateCatalog"
+               enablesFor="1"
+               id="com.creocode.catalog.actions.GenerateCatalog"
+               label="Generate catalog">
+         </action>
+      </objectContribution>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.ui.ide.workbench"
+            name="Catalog Editor">
+         <property
+               name="appName"
+               value="Catalog Editor">
+         </property>
+         <property
+               name="aboutText"
+               value="Catalog Editor - create mobile app content easily">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.splashHandlers">
+      <splashHandler
+            class="sa.catalog.editor.splashHandlers.ExtensibleSplashHandler"
+            id="sa.catalog.editor.splashHandlers.extensible">
+      </splashHandler>
+      <splashHandlerProductBinding
+            productId="sa.catalog.editor.product"
+            splashId="sa.catalog.editor.splashHandlers.extensible">
+      </splashHandlerProductBinding>
+   </extension>
+   <extension
+         point="sa.catalog.editor.splashExtension">
+      <splashExtension
+            icon="icons/af.png"
+            id="af"
+            tooltip="Application Framework">
+      </splashExtension>
+      <splashExtension
+            icon="icons/embedded.png"
+            id="embedded"
+            tooltip="Embedded">
+      </splashExtension>
+      <splashExtension
+            icon="icons/enterprise.png"
+            id="enterprise"
+            tooltip="Enterprise">
+      </splashExtension>
+      <splashExtension
+            icon="icons/languages.png"
+            id="languages"
+            tooltip="Languages">
+      </splashExtension>
+      <splashExtension
+            icon="icons/rcp.png"
+            id="rcp"
+            tooltip="RCP">
+      </splashExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="sa.catalog.editor.customization.CatedPerspective"
+            icon="icons/releng_gears.gif"
+            id="sa.catalog.editor.customization.CatedPerspective"
+            name="Cated">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="sa.catalog.editor.itemview"
+            name="Catalog Editor">
+      </category>
+      <view
+            category="sa.catalog.editor.itemview"
+            class="sa.catalog.editor.views.ItemView"
+            icon="icons/sample.gif"
+            id="sa.catalog.editor.views.ItemView"
+            name="Item View">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+
+
+</plugin>

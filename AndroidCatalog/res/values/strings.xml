@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+    <string name="app_name">Mobile Prayerbook</string>
+    <string name="options_label">Options</string>
+    <string name="options_bg_light">Bright</string>
+    <string name="options_bg_dark">Dark</string>
+    <string name="options_bg">Background</string>
+    <string name="options_font_small">Small</string>
+    <string name="options_font_medium">Medium</string>
+    <string name="options_font_large">Big</string>
+    <string name="options_font">Font</string>
+    <string name="options_save">Save</string>
+    <string name="app_copyrights">2009-2011</string>
+    <string name="eula_title">Notes and license</string>
+    <string name="eula_accept">Accept</string>
+    <string name="eula_refuse">Refuse</string>
+    <string name="visit_creocode">Visit creocode.com</string>
+    <string name="pop_up">Please donate! creocode.com/donation</string>
+    <string name="next">Next</string>
+</resources>

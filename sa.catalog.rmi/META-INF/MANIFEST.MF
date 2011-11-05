@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: sa.catalog.rmi
+Bundle-SymbolicName: sa.catalog.rmi
+Bundle-Version: 1.0.0
+Bundle-Activator: sa.catalog.rmi.Activator
+Require-Bundle: org.eclipse.core.runtime,
+ sa.catalog.generator,
+ org.eclipse.xtend;bundle-version="1.0.1",
+ org.eclipse.xtend.util.stdlib;bundle-version="1.0.1"
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: com.creocode.catalog.rmi

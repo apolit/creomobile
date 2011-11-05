@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resources>
+	<string name="options_label">Opcje</string>
+	<string name="options_bg_light">Jasne</string>
+	<string name="options_bg_dark">Ciemne</string>
+	<string name="options_bg">Tło</string>
+	<string name="options_font_small">Mała</string>
+	<string name="options_font_medium">Średnia</string>
+	<string name="options_font_large">Duża</string>
+	<string name="options_font">Czcionka</string>
+	<string name="options_save">Zapisz</string>
+    <string name="app_copyrights">(c) 2011</string>
+    <string name="eula_title">Licencja</string>
+    <string name="eula_accept">Akceptuj</string>
+    <string name="eula_refuse">Odrzuć</string>
+    <string name="visit_creocode">Idź do creocode.com</string>
+</resources>
