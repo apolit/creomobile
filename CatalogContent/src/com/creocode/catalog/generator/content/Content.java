@@ -15,7 +15,11 @@
       Category category;
    	  Category subCategory;
    	  Item item;
-		
+   	  public String title = "Title";
+   	  public String vendor = "Vendor";
+      public String copyrights = "Copyrights";
+      public String version = "Version";
+   	  
     	public void initCategories(){
     				//temp category & item
     				
