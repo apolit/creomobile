@@ -27,6 +27,12 @@
 
 package com.creocode.catalog.android;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
+
 import com.creocode.catalog.R;
 
 public class OptionsActivity extends Activity {

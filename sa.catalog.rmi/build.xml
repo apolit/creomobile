@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sa.catalog.rmi" default="build.jars" basedir=".">
+
+	<property name="p2.build.repo" value="file:${buildDirectory}/buildRepo"/>
+	<property name="basews" value="${ws}"/>
+	<property name="baseos" value="${os}"/>
+	<property name="basearch" value="${arch}"/>
+	<property name="basenl" value="${nl}"/>
+	<property name="bundleId" value="sa.catalog.rmi"/>
+	<property name="bundleVersion" value="1.0.0"/>
+	<property name="p2.publishonerror" value="false"/>
+
+	<!-- Compiler settings. -->
+	<property name="javacFailOnError" value="false"/>
+	<property name="javacDebugInfo" value="on"/>
+	<property name="javacVerbose" value="false"/>
+	<property name="logExtension" value=".log"/>
+	<property name="compilerArg" value=""/>
+	<property name="compilation.prereq.log" value="${buildDirectory}/prereqErrors.log"/>
+	<property name="javacSource" value="1.3"/>
+	<property name="javacTarget" value="1.2"/>
+	<condition property="dir_bootclasspath" value="${java.home}/../Classes">
+		<os family="mac"/>
+	</condition>
+	<property name="dir_bootclasspath" value="${java.home}/lib"/>
+	<path id="path_bootclasspath">
+		<fileset dir="${dir_bootclasspath}">
+			<include name="*.jar"/>
+		</fileset>
+	</path>
+	<property name="bootclasspath" refid="path_bootclasspath"/>
+	<condition property="bundleBootClasspath" value="${JavaSE-1.6}"	>
+		<isset property="JavaSE-1.6"/>
+	</condition>
+	<condition property="bundleJavacSource" value="1.6"	>
+		<isset property="JavaSE-1.6"/>
+	</condition>
+	<condition property="bundleJavacTarget" value="1.6"	>
+		<isset property="JavaSE-1.6"/>
+	</condition>
+	<property name="bundleJavacSource" value="${javacSource}"/>
+	<property name="bundleJavacTarget" value="${javacTarget}"/>
+	<property name="bundleBootClasspath" value="${bootclasspath}"/>
+
+	<target name="init" depends="properties">
+		<condition property="pluginTemp" value="${buildTempFolder}/plugins"		>
+			<isset property="buildTempFolder"/>
+		</condition>
+		<property name="pluginTemp" value="${basedir}"/>
+		<condition property="build.result.folder" value="${pluginTemp}/sa.catalog.rmi_1.0.0"		>
+			<isset property="buildTempFolder"/>
+		</condition>
+		<property name="build.result.folder" value="${basedir}"/>
+		<property name="temp.folder" value="${basedir}/temp.folder"/>
+		<property name="plugin.destination" value="${basedir}"/>
+		<condition property="p2.publish.parts" value="true"		>
+			<istrue value="${p2.gathering}"/>
+		</condition>
+		<property name="compilation.problem.marker" value="${build.result.folder}/compilation.problem"/>
+		<condition property="compilation.problem.marker.exists" value="true"		>
+			<and>
+			<available file="${compilation.problem.marker}"/>
+			<isfalse value="${p2.publishonerror}"/>
+			</and>
+		</condition>
+	</target>
+
+	<target name="properties" if="eclipse.running">
+		<property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+
+	</target>
+
+	<target name="build.update.jar" depends="init" description="Build the plug-in: sa.catalog.rmi for an update site.">
+		<delete dir="${temp.folder}"/>
+		<mkdir dir="${temp.folder}"/>
+		<antcall target="build.jars"/>
+		<antcall target="gather.bin.parts">
+			<param name="destination.temp.folder" value="${temp.folder}/"/>
+		</antcall>
+		<jar destfile="${plugin.destination}/sa.catalog.rmi_1.0.0.jar" basedir="${temp.folder}/sa.catalog.rmi_1.0.0" filesetmanifest="merge"/>
+		<delete dir="${temp.folder}"/>
+	</target>
+
+	<target name="@dot.nestedJars">
+		<mkdir dir="${buildDirectory}/nestedJars/org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611.jar" dest="${buildDirectory}/nestedJars/org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611" overwrite="false">
+			<patternset includes="runtime_registry_compatibility.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/com.ibm.icu_4.4.2.v20110208"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/com.ibm.icu_4.4.2.v20110208.jar" dest="${buildDirectory}/nestedJars/com.ibm.icu_4.4.2.v20110208" overwrite="false">
+			<patternset includes="icu-data.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-antlr.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-apache-bcel.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-apache-bsf.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-apache-log4j.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-apache-oro.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-apache-regexp.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-apache-resolver.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-apache-xalan2.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-commons-logging.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-commons-net.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-jai.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-javamail.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-jdepend.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-jmf.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-jsch.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-junit.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-junit4.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-launcher.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-netrexx.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-swing.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant-testutil.jar"/>
+		</unzip>
+		<mkdir dir="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD"/>
+		<unzip src="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar" dest="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD" overwrite="false">
+			<patternset includes="lib/ant.jar"/>
+		</unzip>
+	</target>
+	<target name="@dot" depends="init,@dot.nestedJars" unless="@dot" description="Create jar: sa.catalog.rmi @dot.">
+		<delete dir="${build.result.folder}/@dot"/>
+		<mkdir dir="${build.result.folder}/@dot"/>
+		<path id="@dot.classpath">
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.runtime_3.7.0.v20110110.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.osgi_3.7.1.R37x_v20110808-1106.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.equinox.common_3.6.0.v20110523.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.jobs_3.5.100.v20110404.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.runtime.compatibility.registry_3.5.0.v20110505/runtime_registry_compatibility.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.runtime.compatibility.registry_3.5.0.v20110505"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611/runtime_registry_compatibility.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.equinox.registry_3.5.101.R37x_v20110810-1611.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.equinox.preferences_3.4.1.R37x_v20110725.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.contenttype_3.4.100.v20110423-0524.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.runtime.compatibility.auth_3.2.200.v20110110.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.equinox.app_1.3.100.v20110321.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.osgi.services_3.3.0.v20110513.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/javax.servlet_2.5.0.v201103041518.jar"/>
+			<pathelement path="../sa.catalog.generator/bin/"/>
+			<pathelement path="${build.result.folder}/../sa.catalog.generator_1.0.0/bin/"/>
+			<pathelement path="${build.result.folder}/../sa.catalog.generator/@dot"/>
+			<pathelement path="${build.result.folder}/../sa.catalog.generator_1.0.0/@dot"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.xpand_1.1.0.v201108020519.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.xtend_1.1.0.v201108020519.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/com.ibm.icu_4.4.2.v20110208/icu-data.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/com.ibm.icu_4.4.2.v20110208.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.emf.mwe.core_1.1.1.v201108020506.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.emf.ecore_2.7.0.v20110912-0920.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.emf.common_2.7.0.v20110912-0920.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.resources_3.7.100.v20110510-0712.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.ant.core_3.2.300.v20110511.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.variables_3.2.500.v20110511.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.expressions_3.4.300.v20110228.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.filesystem_1.3.100.v20110423-0524.jar"/>
+			<pathelement path="../../../../../media/storage1/software/delta-pack-3.7/eclipse/plugins/org.eclipse.core.filesystem.linux.x86_1.4.0.v20110423-0524.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-antlr.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-bcel.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-bsf.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-log4j.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-oro.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-regexp.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-resolver.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-apache-xalan2.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-commons-logging.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-commons-net.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-jai.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-javamail.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-jdepend.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-jmf.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-jsch.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-junit.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-junit4.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-launcher.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-netrexx.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-swing.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant-testutil.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.ant_1.8.2.v20110505-1300/lib/ant.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-antlr.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-apache-bcel.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-apache-bsf.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-apache-log4j.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-apache-oro.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-apache-regexp.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-apache-resolver.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-apache-xalan2.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-commons-logging.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-commons-net.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-jai.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-javamail.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-jdepend.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-jmf.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-jsch.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-junit.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-junit4.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-launcher.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-netrexx.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-swing.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant-testutil.jar"/>
+			<pathelement path="${buildDirectory}/nestedJars/org.pluginbuilder.ant.optional.junit_0.7.0.20090721PRD/lib/ant.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.junit_4.8.2.v4_8_2_v20110321-1705/junit.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.hamcrest.core_1.1.0.v20090501071000.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.runtime.compatibility_3.2.100.v20100505.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.update.configurator_3.3.100.v20100512.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.commons.cli_1.2.0.v201105210650.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.commons.lang_2.4.0.v201005080502.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.emf.mwe2.runtime_2.0.1.v201108020506.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.log4j_1.2.15.v201012070815.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.xtext.logging_1.2.15.v201108020636.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/com.google.inject_2.0.0.v201105231817.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.aopalliance_1.0.0.v201105210816.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.antlr.runtime_3.2.0.v201101311130.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.jdt.core_3.7.1.v_B76_R37x.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.jdt.compiler.apt_1.0.400.v0110816-0800.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.jdt.compiler.tool_1.0.100.v_B76_R37x.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.text_3.5.101.r371_v20110810-0800.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.core.commands_3.6.0.I20110111-0800.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.team.core_3.6.0.I20110525-0800.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.xtend.typesystem.xsd_1.0.1.v201108020519.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.xsd_2.7.0.v20110606-0949.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.xtend.util.stdlib_1.0.1.v201108020519.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.emf.mwe.utils_1.1.1.v201108020506.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.emf.ecore.xmi_2.7.0.v20110520-1406.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.emf.codegen.ecore_2.7.0.v20110913-1156.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.jdt.launching_3.6.1.v20110803_r371.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.debug.core_3.7.0.v20110518.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.jdt.debug_3.7.1.v20110802_r371/jdi.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.jdt.debug_3.7.1.v20110802_r371/jdimodel.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.jdt.debug_3.7.1.v20110802_r371/tools.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.emf.codegen_2.6.0.v20110913-1156.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.xtend.typesystem.emf_1.0.1.v201108020519.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.jface.text_3.7.1.r371_v20110825-0800.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.swt_3.7.1.v3738a.jar"/>
+			<pathelement path="../../../../../media/storage1/software/delta-pack-3.7/eclipse/plugins/org.eclipse.swt.gtk.linux.x86_3.7.0.v3735b.jar"/>
+			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.jface_3.7.0.I20110522-1430.jar"/>
+		</path>
+		<!-- compile the source code -->
+		<javac destdir="${build.result.folder}/@dot" failonerror="${javacFailOnError}" verbose="${javacVerbose}" debug="${javacDebugInfo}" includeAntRuntime="no" bootclasspath="${bundleBootClasspath}" source="${bundleJavacSource}" target="${bundleJavacTarget}"		>
+			<compilerarg line="${compilerArg}" compiler="${build.compiler}"/>
+			<classpath refid="@dot.classpath" />
+			<src path="src/"			/>
+			<compilerarg value="@${basedir}/javaCompiler...args" compiler="org.eclipse.jdt.core.JDTCompilerAdapter"			/>
+			<compilerarg line="-log &apos;${build.result.folder}/@dot${logExtension}&apos;" compiler="org.eclipse.jdt.core.JDTCompilerAdapter"			/>
+		</javac>
+		<antcall target="checkCompilationResults"/>
+		<!-- Copy necessary resources -->
+		<copy todir="${build.result.folder}/@dot" failonerror="true" overwrite="false">
+			<fileset dir="src/">
+				<exclude name="**/*.java"/>
+				<exclude name="**/package.htm*"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="src.zip" depends="init" unless="src.zip">
+		<mkdir dir="${build.result.folder}"/>
+		<antcall target="zip.src.zip"/>
+	</target>
+	<target name="zip.src.zip">
+		<zip destfile="${build.result.folder}/src.zip" filesonly="false" whenempty="skip" update="false">
+			<fileset dir="src/">
+				<include name="**/*.java"/>
+			</fileset>
+		</zip>
+	</target>
+	<target name="copy.src.zip">
+		<copy todir="${source.destination.folder}/" failonerror="true" overwrite="true">
+			<fileset dir="src/">
+				<include name="**/*.java"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="build.jars" depends="init" description="Compile classes and build nested jars for the plug-in: sa.catalog.rmi.">
+		<delete file="${compilation.problem.marker}" quiet="true"/>
+		<available property="@dot" file="${build.result.folder}/@dot"/>
+		<antcall target="@dot"/>
+	</target>
+
+	<target name="checkCompilationResults" if="compilation.error.occured">
+		<echo file="${compilation.problem.marker}" message="sa.catalog.rmi_1.0.0${line.separator}compilation.error.occured=${compilation.error.occured}"/>
+		<eclipse.logCompileError bundle="sa.catalog.rmi_1.0.0" log="${compilation.prereq.log}">
+			<include name="/home/artur/git/creomobile/sa.catalog.generator/compilation.problem"/>
+			<include name="${pluginTemp}/sa.catalog.generator_1.0.0/compilation.problem"/>
+		</eclipse.logCompileError>
+	</target>
+
+	<target name="build.sources" depends="init">
+		<available property="src.zip" file="${build.result.folder}/src.zip"/>
+		<antcall target="src.zip"/>
+	</target>
+
+	<target name="publish.bin.parts" depends="init" if="p2.publish.parts" unless="compilation.problem.marker.exists">
+		<mkdir dir="${build.result.folder}/sa.catalog.rmi_1.0.0"/>
+		<copy todir="${build.result.folder}" failonerror="true" overwrite="true">
+			<fileset dir="${basedir}">
+				<include name="META-INF/MANIFEST.MF"/>
+				<include name="plugin.xml"/>
+				<include name="fragment.xml"/>
+			</fileset>
+		</copy>
+		<antcall target="apitools.generation">
+			<param name="target.folder" value="${build.result.folder}"/>
+			<param name="projectLocation" value="${basedir}"/>
+			<param name="binary.folders" value="${build.result.folder}/@dot"/>
+			<param name="projectName" value="${bundleId}_${bundleVersion}"/>
+		</antcall>
+		<eclipse.gatherBundle 
+		   metadataRepository="${p2.build.repo}"
+		   artifactRepository="${p2.build.repo}"
+		   buildResultFolder="${build.result.folder}"
+		   unpack="false"
+		   baseDirectory="${basedir}"
+		/>
+	</target>
+
+	<target name="gather.bin.parts" depends="init" if="destination.temp.folder">
+		<mkdir dir="${destination.temp.folder}/sa.catalog.rmi_1.0.0"/>
+		<copy todir="${destination.temp.folder}/sa.catalog.rmi_1.0.0" failonerror="true" overwrite="false">
+			<fileset dir="${build.result.folder}/@dot">
+				<include name="**"/>
+			</fileset>
+		</copy>
+		<copy todir="${destination.temp.folder}/sa.catalog.rmi_1.0.0" failonerror="true" overwrite="true">
+			<fileset dir="${basedir}">
+				<include name="META-INF/"/>
+				<include name="bin/com/"/>
+			</fileset>
+		</copy>
+		<antcall target="apitools.generation">
+			<param name="target.folder" value="${destination.temp.folder}/sa.catalog.rmi_1.0.0"/>
+			<param name="projectLocation" value="${basedir}"/>
+			<param name="binary.folders" value="${build.result.folder}/@dot"/>
+			<param name="projectName" value="${bundleId}_${bundleVersion}"/>
+		</antcall>
+	</target>
+
+	<target name="build.zips" depends="init">
+	</target>
+
+	<target name="gather.sources" depends="init" if="destination.temp.folder">
+		<mkdir dir="${destination.temp.folder}/sa.catalog.rmi_1.0.0"/>
+		<copy file="${build.result.folder}/src.zip" todir="${destination.temp.folder}/sa.catalog.rmi_1.0.0" failonerror="false" overwrite="false"/>
+		<antcall target="copy.src.includes">
+			<param name="source.destination.folder" value="${destination.temp.folder}/sa.catalog.rmi_1.0.0"/>
+		</antcall>
+	</target>
+
+	<target name="gather.individual.sources" depends="init">
+		<antcall target="copy.src.zip">
+			<param name="source.destination.folder" value="${destination.temp.folder}"/>
+		</antcall>
+		<antcall target="copy.src.includes">
+			<param name="source.destination.folder" value="${destination.temp.folder}"/>
+		</antcall>
+	</target>
+
+	<target name="copy.src.includes" depends="init">
+	</target>
+
+	<target name="gather.logs" depends="init" if="destination.temp.folder">
+		<mkdir dir="${destination.temp.folder}/sa.catalog.rmi_1.0.0"/>
+		<copy todir="${destination.temp.folder}/sa.catalog.rmi_1.0.0" failonerror="false" overwrite="false">
+			<fileset dir="${build.result.folder}">
+				<include name="@dot${logExtension}"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="clean" depends="init" description="Clean the plug-in: sa.catalog.rmi of all the zips, jars and logs created.">
+		<delete dir="${build.result.folder}/@dot"/>
+		<delete file="${build.result.folder}/src.zip"/>
+		<delete file="${plugin.destination}/sa.catalog.rmi_1.0.0.jar"/>
+		<delete file="${plugin.destination}/sa.catalog.rmi_1.0.0.zip"/>
+		<delete dir="${temp.folder}"/>
+		<delete file="${compilation.problem.marker}" quiet="true"/>
+	</target>
+
+	<target name="refresh" depends="init" if="eclipse.running" description="Refresh this folder.">
+		<eclipse.convertPath fileSystemPath="/home/artur/git/creomobile/sa.catalog.rmi" property="resourcePath"/>
+		<eclipse.refreshLocal resource="${resourcePath}" depth="infinite"/>
+	</target>
+
+	<target name="zip.plugin" depends="init" description="Create a zip containing all the elements for the plug-in: sa.catalog.rmi.">
+		<delete dir="${temp.folder}"/>
+		<mkdir dir="${temp.folder}"/>
+		<antcall target="build.jars"/>
+		<antcall target="build.sources"/>
+		<antcall target="gather.bin.parts">
+			<param name="destination.temp.folder" value="${temp.folder}/"/>
+		</antcall>
+		<antcall target="gather.sources">
+			<param name="destination.temp.folder" value="${temp.folder}/"/>
+		</antcall>
+		<delete>
+			<fileset dir="${temp.folder}">
+				<include name="**/*.bin${logExtension}"/>
+			</fileset>
+		</delete>
+		<zip destfile="${plugin.destination}/sa.catalog.rmi_1.0.0.zip" basedir="${temp.folder}" filesonly="true" whenempty="skip" update="false"/>
+		<delete dir="${temp.folder}"/>
+	</target>
+
+	<target name="apitools.generation" if="generateAPIDescription">
+		<apitooling.apigeneration  projectName="${projectName}" project="${projectLocation}" binary="${binary.folders}" target="${target.folder}" extramanifests="${extraManifests}" allownonapiproject="${allowNonApiProject}"		/>
+	</target>
+
+</project>

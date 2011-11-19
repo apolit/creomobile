@@ -27,6 +27,7 @@
 
 package com.creocode.catalog.generator.content;
 
+import java.util.Vector;
 
 public class Category {
 	public String title;

@@ -16,6 +16,17 @@ package com.creocode.catalog.android;
  * limitations under the License.
  */
 
+import java.io.BufferedReader;
+import java.io.Closeable;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+
 import com.creocode.catalog.R;
 
 /**
@@ -38,30 +49,33 @@ class Eula {
 	 * Displays the EULA if necessary.
 	 */
 	static boolean show(final Activity activity) {
-		final SharedPreferences preferences = activity.getSharedPreferences(PREFERENCES_EULA,
-				Activity.MODE_PRIVATE);
+		final SharedPreferences preferences = activity.getSharedPreferences(
+				PREFERENCES_EULA, Activity.MODE_PRIVATE);
 		// to test:
 		// preferences.edit().putBoolean(PREFERENCE_EULA_ACCEPTED,
 		// false).commit();
 		if (!preferences.getBoolean(PREFERENCE_EULA_ACCEPTED, false)) {
-			final AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+			final AlertDialog.Builder builder = new AlertDialog.Builder(
+					activity);
 			builder.setTitle(R.string.eula_title);
 			builder.setCancelable(true);
-			builder.setPositiveButton(R.string.eula_accept, new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					accept(preferences);
-					if (activity instanceof OnEulaAgreedTo) {
-						((OnEulaAgreedTo) activity).onEulaAgreedTo();
-					}
-				}
-			});
-			builder.setNegativeButton(R.string.eula_refuse, new DialogInterface.OnClickListener() {
-				@Override
-				public void onClick(DialogInterface dialog, int which) {
-					refuse(activity);
-				}
-			});
+			builder.setPositiveButton(R.string.eula_accept,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							accept(preferences);
+							if (activity instanceof OnEulaAgreedTo) {
+								((OnEulaAgreedTo) activity).onEulaAgreedTo();
+							}
+						}
+					});
+			builder.setNegativeButton(R.string.eula_refuse,
+					new DialogInterface.OnClickListener() {
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+							refuse(activity);
+						}
+					});
 			builder.setOnCancelListener(new DialogInterface.OnCancelListener() {
 				@Override
 				public void onCancel(DialogInterface dialog) {
@@ -85,8 +99,10 @@ class Eula {
 
 	private static CharSequence readEula(Activity activity) {
 		BufferedReader in = null;
+		InputStream is = null;
 		try {
-			in = new BufferedReader(new InputStreamReader(activity.getAssets().open(ASSET_EULA)));
+			is = activity.getAssets().open(ASSET_EULA);
+			in = new BufferedReader(new InputStreamReader(is));
 
 			String line;
 			StringBuilder buffer = new StringBuilder();
@@ -96,7 +112,7 @@ class Eula {
 		} catch (IOException e) {
 			return "";
 		} finally {
-			closeStream(in);
+			closeStream(is);
 		}
 	}
 

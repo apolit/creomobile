@@ -23,7 +23,7 @@ import com.creocode.catalog.generator.core.Generator;
 
 public class ApkGenerator implements Generator {
 
-	private static final String WORKFLOW = "AndroidCatalog/androidWorkflow.mwe";
+	private static final String WORKFLOW = "CatalogAndroid/androidWorkflow.mwe";
 
 	/*
 	 * (non-Javadoc)
@@ -50,7 +50,7 @@ public class ApkGenerator implements Generator {
 			return false;
 
 		AntRunner runner = new AntRunner();
-		runner.setBuildFileLocation("AndroidCatalog/build.xml");
+		runner.setBuildFileLocation("CatalogAndroid/build.xml");
 		runner.setArguments("-d");
 		try {
 			runner.run();

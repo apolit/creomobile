@@ -22,7 +22,7 @@ import org.eclipse.xtend.util.stdlib.CounterExtensions;
 import com.creocode.catalog.generator.core.Generator;
 
 public class MidletGenerator implements Generator {
-	private static final String WORKFLOW = "MobileCatalog/midletWorkflow.mwe";
+	private static final String WORKFLOW = "CatalogME/midletWorkflow.mwe";
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -32,9 +32,9 @@ public class MidletGenerator implements Generator {
 	public boolean generate() {
 
 
-		// configure outlets
+// configure outlets
 		
-//		Outlet outlet = new Outlet("./MobileCatalog");
+//		Outlet outlet = new Outlet("./CatalogME");
 //		outlet.setOverwrite(true);
 //				
 //		OutputImpl output = new OutputImpl();
@@ -56,7 +56,7 @@ public class MidletGenerator implements Generator {
 //		XMLReader xmlReader = new XMLReader();
 //		xmlReader.setModelSlot("model");
 //		xmlReader.addMetaModel(metamodel);
-//		xmlReader.setUri("resources/catalog.xml");
+//		xmlReader.setUri("received/catalog_tmp.xml");
 //		xmlReader.invoke(ctx);
 //		
 //		EObject target = (EObject) ctx.get("model");
@@ -65,21 +65,21 @@ public class MidletGenerator implements Generator {
 //		XpandFacade facade = XpandFacade.create(execCtx);
 //		
 //		try {
-//			facade.evaluate("MobileCatalog::descriptorTemplate::Root", target);
-//			facade.evaluate("MobileCatalog::buildTemplate::Root", target);
-//			facade.evaluate("MobileCatalog::symbolsTemplate::Root", target);
+//			facade.evaluate("CatalogME::descriptorTemplate::Root", target);
+//			facade.evaluate("CatalogME::buildTemplate::Root", target);
+//			facade.evaluate("CatalogME::symbolsTemplate::Root", target);
 //		} catch (Exception e) {
 //			System.out.println(e.getMessage());
 //		}
 //		
 		Map<String, String> properties = new HashMap<String, String>();
 		Map<String, ?> slotContents = new HashMap<String, Object>();
-//
-//		/**
-//		 * there is error without this line: it does not see
-//		 * org::eclipse::xtend::util::stdlib::counter in the template, so we
-//		 * force to use any class from this package
-//		 */
+
+		/**
+		 * there is error without this line: it does not see
+		 * org::eclipse::xtend::util::stdlib::counter in the template, so we
+		 * force to use any class from this package
+		 */
 		CounterExtensions counterExtensions = new CounterExtensions();
 
 		WorkflowRunner workflowRunner = new WorkflowRunner();
@@ -89,11 +89,11 @@ public class MidletGenerator implements Generator {
 			return false;
 		
 		AntRunner runner = new AntRunner();
-		//runner.setPropertyFiles(new String[] { "MobileCatalog/mtj-build/mtj-build.properties" });
-		runner.setBuildFileLocation("MobileCatalog/mtj-build/mtj-build.xml");
+		//runner.setPropertyFiles(new String[] { "CatalogME/mtj-build/mtj-build.properties" });
+		runner.setBuildFileLocation("CatalogME/mtj-build/mtj-build-generated.xml");
 		
 		// runner.setArguments("-Dmessage=Building -verbose");
-		//runner.setArguments("-Dbasedir=/home/artur/ws/workspace-netbuilder/MobileCatalog");
+		//runner.setArguments("-Dbasedir=/home/artur/ws/workspace-netbuilder/CatalogME");
 		try {
 			runner.run();
 		} catch (CoreException e) {

@@ -41,7 +41,7 @@ public class Application implements IApplication {
 
 		List<Generator> generatorsList = new ArrayList<Generator>();
 		ContentGenerator contentGenerator = new ContentGenerator();
-		contentGenerator.setPath("AndroidCatalog/src/com/creocode/catalog/generator/content");
+		contentGenerator.setPath("CatalogAndroid/src/com/creocode/catalog/generator/content");
 		generatorsList.add(contentGenerator);
 		
 //		Generator midletGenerator = new MidletGenerator();

@@ -1,6 +1,6 @@
 <!-- 
 /*******************************************************************************
- * Copyright 2010  Arkadiusz Macudzinski, Artur Polit
+ * Copyright 2010 Artur Polit
  * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -30,7 +30,7 @@
   <!--<property file="workflow.properties"/>-->
   <component class="org.eclipse.xtend.typesystem.xsd.XMLReader">
     <modelSlot value="model" />
-    <uri value="resources/catalog.xml" />
+    <uri value="received/catalog_tmp.xml" />
     <metaModel id="mm"
       class="org.eclipse.xtend.typesystem.xsd.XSDMetaModel">
       <schemaFile value="resources/catalog.xsd" />
@@ -38,49 +38,32 @@
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="AndroidCatalog::tpl::strings_xml::Root FOR model" />
-    <outlet path="AndroidCatalog/res/values" />
+    <expand value="CatalogAndroid::tpl::strings_xml::Root FOR model" />
+    <outlet path="CatalogAndroid/res/values" />
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="AndroidCatalog::tpl::TemplateActivity_java::Root FOR model" />
-    <outlet path="AndroidCatalog/src/com/creocode/catalog/android" />
+    <expand value="CatalogAndroid::tpl::TemplateActivity_java::Root FOR model" />
+    <outlet path="CatalogAndroid/src/com/creocode/catalog/android" />
   </component>
     <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="AndroidCatalog::tpl::AndroidManifest_xml::Root FOR model" />
-    <outlet path="AndroidCatalog" />
+    <expand value="CatalogAndroid::tpl::AndroidManifest_xml::Root FOR model" />
+    <outlet path="CatalogAndroid" />
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="AndroidCatalog::tpl::build_properties::Root FOR model" />
-    <outlet path="AndroidCatalog" />
+    <expand value="CatalogAndroid::tpl::ant_properties::Root FOR model" />
+    <outlet path="CatalogAndroid" />
   </component>
 
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="AndroidCatalog::tpl::Catalog_java::Root FOR model" />
-    <outlet path="AndroidCatalog/src/com/creocode/catalog/generator/content" />
+    <expand value="CatalogAndroid::tpl::Catalog_java::Root FOR model" />
+    <outlet path="CatalogAndroid/src/com/creocode/catalog/generator/content" />
   
     <beautifier class="org.eclipse.xpand2.output.JavaBeautifier"/>
     <fileEncoding value="UTF-8"/>
   </component>
-  
-  <!--
-  <component class="org.eclipse.xpand2.Generator">
-    <metaModel idRef="mm" />
-    <expand value="descriptorTemplate::Root FOR model" />
-    <outlet path="./" />
-  </component>
-    <component class="org.eclipse.xpand2.Generator">
-    <metaModel idRef="mm" />
-    <expand value="buildTemplate::Root FOR model" />
-    <outlet path="mtj-build/" />
-  </component>
-  <component class="org.eclipse.xpand2.Generator">
-    <metaModel idRef="mm" />
-    <expand value="symbolsTemplate::Root FOR model" />
-    <outlet path="mtj-build/" />
-  </component>
-  -->
+
 </workflow>

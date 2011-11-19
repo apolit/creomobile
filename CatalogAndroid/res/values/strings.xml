@@ -16,5 +16,6 @@
     <string name="eula_refuse">Refuse</string>
     <string name="visit_creocode">Visit creocode.com</string>
     <string name="pop_up">Please donate! creocode.com/donation</string>
-    <string name="next">Next</string>
+    <string name="next">Next</string>   
+    <string name="contact">Contact</string>            
 </resources>

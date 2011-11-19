@@ -43,7 +43,7 @@ public class ContentGenerator implements Generator {
 		XMLReader xmlReader = new XMLReader();
 		xmlReader.setModelSlot("model");
 		xmlReader.addMetaModel(metamodel);
-		xmlReader.setUri("resources/catalog.xml");
+		xmlReader.setUri("received/catalog_tmp.xml");
 		xmlReader.invoke(ctx);
 		
 		EObject target = (EObject) ctx.get("model");

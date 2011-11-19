@@ -3,6 +3,7 @@
 	<name>CatalogME</name>
 	<comment></comment>
 	<projects>
+		<project>CatalogContent</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

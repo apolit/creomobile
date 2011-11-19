@@ -27,6 +27,11 @@
 
 package com.creocode.catalog.android;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Color;
+
 import com.creocode.catalog.generator.content.Content;
 
 /**
@@ -111,21 +116,24 @@ public class AppContext {
 	// }
 
 	public void loadPrefs(Context context) {
-		SharedPreferences settings = context.getSharedPreferences(AppContext.PREFS_NAME, 0);
+		SharedPreferences settings = context.getSharedPreferences(
+				AppContext.PREFS_NAME, 0);
 		backgroundLight = settings.getBoolean(BACKGROUND_LIGHT_PREF, false);
 		fontSize = settings.getInt(FONT_SIZE_PREF, FONT_SIZE_DEFAULT);
 	}
 
 	public void savePrefs(Context context, boolean backgroundLight) {
 		this.backgroundLight = backgroundLight;
-		Editor editor = context.getSharedPreferences(AppContext.PREFS_NAME, 0).edit();
+		Editor editor = context.getSharedPreferences(AppContext.PREFS_NAME, 0)
+				.edit();
 		editor.putBoolean(BACKGROUND_LIGHT_PREF, backgroundLight);
 		editor.commit();
 	}
 
 	public void savePrefs(Context context, int fontSize) {
 		this.fontSize = fontSize;
-		Editor editor = context.getSharedPreferences(AppContext.PREFS_NAME, 0).edit();
+		Editor editor = context.getSharedPreferences(AppContext.PREFS_NAME, 0)
+				.edit();
 		editor.putInt(FONT_SIZE_PREF, fontSize);
 		editor.commit();
 	}

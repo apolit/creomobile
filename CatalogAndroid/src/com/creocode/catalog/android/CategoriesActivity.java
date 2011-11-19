@@ -26,6 +26,24 @@
  *******************************************************************************/
 package com.creocode.catalog.android;
 
+import java.util.Vector;
+
+import android.app.Dialog;
+import android.app.ListActivity;
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
+import android.view.Gravity;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import com.creocode.catalog.R;
 import com.creocode.catalog.generator.content.Category;
 import com.creocode.catalog.generator.content.Content;
@@ -79,7 +97,8 @@ public class CategoriesActivity extends ListActivity {
 		AppContext.getInstance().loadPrefs(this);
 
 		Eula.show(this);
-		Toast toast = Toast.makeText(getApplicationContext(), R.string.pop_up, Toast.LENGTH_SHORT);
+		Toast toast = Toast.makeText(getApplicationContext(), R.string.pop_up,
+				Toast.LENGTH_SHORT);
 		toast.setDuration(7000);
 		toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
 		toast.show();
@@ -98,10 +117,12 @@ public class CategoriesActivity extends ListActivity {
 
 		for (int i = 0; i < subCategories.size(); i++) {
 
-			sArray[i] = Html.fromHtml(categoriesIndex.get((Integer) subCategories.get(i)).title);
+			sArray[i] = Html.fromHtml(categoriesIndex
+					.get((Integer) subCategories.get(i)).title);
 		}
 		for (int i = 0, k = subCategories.size(); i < items.size(); i++) {
-			sArray[k + i] = Html.fromHtml(itemsIndex.get((Integer) items.get(i)).title);
+			sArray[k + i] = Html
+					.fromHtml(itemsIndex.get((Integer) items.get(i)).title);
 		}
 
 		ArrayAdapter<Spanned> adapter = new ArrayAdapter<Spanned>(this,
@@ -120,8 +141,8 @@ public class CategoriesActivity extends ListActivity {
 			showCategory((Integer) subCategories.get(position));
 		} else {
 			intent = new Intent(this, ItemActivity.class);
-			intent.putExtra("selectedItemIndex", (Integer) items.get(position
-					- subCategories.size()));
+			intent.putExtra("selectedItemIndex",
+					(Integer) items.get(position - subCategories.size()));
 			startActivityForResult(intent, position);
 		}
 
@@ -158,7 +179,8 @@ public class CategoriesActivity extends ListActivity {
 			break;
 
 		case MENU_ITEM_WEBPAGE:
-			Intent webpage = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.creocode.com"));
+			Intent webpage = new Intent(Intent.ACTION_VIEW,
+					Uri.parse("http://www.creocode.com"));
 			startActivityForResult(webpage, 0);
 			break;
 
@@ -167,9 +189,11 @@ public class CategoriesActivity extends ListActivity {
 
 			String[] recipients = new String[] { "artur@creocode.com" };
 
-			emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, recipients);
+			emailIntent
+					.putExtra(android.content.Intent.EXTRA_EMAIL, recipients);
 
-			emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Feedback");
+			emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+					"Feedback");
 
 			emailIntent.setType("text/plain");
 

@@ -42,22 +42,22 @@ public class RmiCatalogGeneratorServer extends UnicastRemoteObject implements
 	private List<Generator> generatorsList = null;
 	private PrintWriter out;
 
-	public RmiCatalogGeneratorServer(OutputStream stream, String serverPort, String serverName,List<Generator> generatorsList)
+	public RmiCatalogGeneratorServer(OutputStream stream, String serverPort,
+			String serverName, List<Generator> generatorsList)
 			throws RemoteException {
 		String serverAddress;
 		Registry registry;
 
-		/** 
-		 * there is error without this line:
-		 * it does not see org::eclipse::xtend::util::stdlib::counter
-		 * in the template, so we force to use any class from this package
+		/**
+		 * there is error without this line: it does not see
+		 * org::eclipse::xtend::util::stdlib::counter in the template, so we
+		 * force to use any class from this package
 		 */
 		CounterExtensions counterExtensions = new CounterExtensions();
-		
+
 		this.generatorsList = generatorsList;
 		out = new PrintWriter(stream);
 		out.println("Server starting...");
-		
 
 		try {
 			serverAddress = (InetAddress.getLocalHost()).toString();
@@ -65,7 +65,8 @@ public class RmiCatalogGeneratorServer extends UnicastRemoteObject implements
 			out.println("Server address: " + serverAddress);
 			out.println("Server port: " + serverPort);
 
-			registry = LocateRegistry.createRegistry(Integer.valueOf(serverPort));
+			registry = LocateRegistry.createRegistry(Integer
+					.valueOf(serverPort));
 			registry.rebind(serverName, this);
 
 			out.println("Server startup: OK");
@@ -82,13 +83,14 @@ public class RmiCatalogGeneratorServer extends UnicastRemoteObject implements
 
 	@Override
 	public String generateCatalog(String xml) throws RemoteException {
-
-		File xmlFile = new File("resources/catalog.xml");
+		
+		File xmlFile = new File("received/catalog_tmp.xml");
 		try {
-			BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(xmlFile));
+			BufferedOutputStream bos = new BufferedOutputStream(
+					new FileOutputStream(xmlFile));
 			bos.write(xml.getBytes("UTF-8"), 0, xml.getBytes("UTF-8").length);
 			bos.close();
-			System.out.println("File saved:"+xmlFile.getAbsolutePath());
+			System.out.println("File saved:" + xmlFile.getAbsolutePath());
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (UnsupportedEncodingException e) {
@@ -97,14 +99,13 @@ public class RmiCatalogGeneratorServer extends UnicastRemoteObject implements
 			e.printStackTrace();
 		}
 
-		
 		String resultCommunicate = "";
 
 		for (Generator generator : generatorsList) {
 			StringBuffer sb = new StringBuffer();
-			
+
 			boolean result = generator.generate();
-			
+
 			String className = generator.getClass().getName();
 			sb.append("Generation:");
 			sb.append(className.substring(className.lastIndexOf('.')));
@@ -125,6 +126,5 @@ public class RmiCatalogGeneratorServer extends UnicastRemoteObject implements
 		// kompilacji
 		return resultCommunicate;
 	}
-
 
 }

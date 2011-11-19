@@ -1,6 +1,6 @@
 «IMPORT catalog»
 
 «DEFINE Root FOR catalog::CatalogType»
-«FILE "build.properties"»apk=«id»
+«FILE "ant.properties"»apk=«id»
 «ENDFILE»
 «ENDDEFINE»

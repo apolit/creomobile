@@ -27,6 +27,17 @@
 
 package com.creocode.catalog.android;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.FloatMath;
+import android.util.TypedValue;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
+
 import com.creocode.catalog.R;
 import com.creocode.catalog.generator.content.Category;
 import com.creocode.catalog.generator.content.Content;
@@ -78,7 +89,8 @@ public class ItemActivity extends Activity implements OnTouchListener {
 		int selectedCategory = bundle.getInt("selectedCategory");
 		int selectedItemIndex = bundle.getInt("selectedItemIndex");
 
-		Category category = (Category) content.categories.elementAt(selectedCategory);
+		Category category = (Category) content.categories
+				.elementAt(selectedCategory);
 
 		// Integer index = (Integer) category.elementAt(selectedItemIndex);
 		Item item = (Item) content.items.get(selectedItemIndex);
