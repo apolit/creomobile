@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project basedir="." name="Catalog" default="release">
+<project basedir="." name="Catalog" default="debug"><!-- "release" for unsigned -->
 
     <!-- The local.properties file is created and updated by the 'android' tool.
          It contains the path to the SDK. It should *NOT* be checked into
@@ -60,23 +60,43 @@
     <target name="-post-compile">
     </target>
 -->
-	<target name="-pre-compile">
-		<echo>Generating R.java / Manifest.java from the resources...</echo>
-		<exec executable="${aapt}" failonerror="true">
-			<arg value="package" />			
-			<arg value="-m" />
-			<arg value="-J" />
-			<arg path="src" />
-			<arg value="-M" />
-			<arg path="tpl/AndroidManifest.xml" />
-			<arg value="-S" />
-			<arg path="${resource.absolute.dir}" />
-			<arg value="-I" />
-			<arg path="${android.jar}" />
+    <!-- Code Generation: compile resources (aapt -> R.java), aidl, renderscript -->
+    <target name="-code-gen">
+        <do-only-if-manifest-hasCode
+                elseText="hasCode = false. Skipping aidl/renderscript/R.java">
+            <echo>----------</echo>
+            <echo>Handling aidl files...</echo>
+            <aidl executable="${aidl}" framework="${android.aidl}"
+                    genFolder="${gen.absolute.dir}">
+                <source path="${source.absolute.dir}"/>
+            </aidl>
 
-		</exec>
-	</target>
+            <!-- renderscript generates resources so it must be called before aapt -->
+            <echo>----------</echo>
+            <echo>Handling RenderScript files...</echo>
+            <renderscript executable="${renderscript}"
+                    framework="${android.rs}"
+                    genFolder="${gen.absolute.dir}"
+                    resFolder="${resource.absolute.dir}/raw"
+                    targetApi="${target.api}">
+                <source path="${source.absolute.dir}"/>
+            </renderscript>
 
+            <echo>----------</echo>
+            <echo>Handling Resources...</echo>
+            <aapt executable="${aapt}"
+                    command="package"
+                    verbose="${verbose}"
+                    manifest="tpl/AndroidManifest.xml"
+                    androidjar="${android.jar}"
+                    rfolder="${gen.absolute.dir}"
+                    nonConstantId="${android.library}"
+                    projectLibrariesResName="project.libraries.res"
+                    projectLibrariesPackageName="project.libraries.package">
+                <res path="${resource.absolute.dir}" />
+            </aapt>
+        </do-only-if-manifest-hasCode>
+    </target>
     <!-- Import the actual build file.
 
          To customize existing targets, there are two options:
