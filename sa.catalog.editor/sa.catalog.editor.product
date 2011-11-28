@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="Catalog Editor" uid="sa.catalog.editor.product" id="sa.catalog.editor.product" application="org.eclipse.ui.ide.workbench" version="1.0.3" useFeatures="false" includeLaunchers="true">
+<product name="Catalog Editor" uid="sa.catalog.editor.product" id="sa.catalog.editor.product" application="org.eclipse.ui.ide.workbench" version="1.0.4" useFeatures="false" includeLaunchers="true">
 
    <aboutInfo>
       <text>
@@ -13,6 +13,7 @@
    </configIni>
 
    <launcherArgs>
+      <programArgs>-data files</programArgs>
       <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
    </launcherArgs>
 
@@ -221,5 +222,8 @@ This Agreement is governed by the laws of the State of New York and the intellec
       <plugin id="sa.catalog.rmi.client"/>
    </plugins>
 
+   <configurations>
+      <property name="osgi.instance.area.default" value="files" />
+   </configurations>
 
 </product>
