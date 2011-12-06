@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<oneinstall compatibility="1" guid="9849-FzG-5541" internal-version="1.0.0.v201111200023" public-version="1.0">
+    <platforms>
+        <mac arch="ppc" ws="carbon"/>
+        <mac arch="x86" ws="cocoa"/>
+        <mac arch="x86_64" ws="cocoa"/>
+        <windows arch="x86"/>
+        <windows arch="x86_64"/>
+        <linux arch="x86"/>
+        <linux arch="x86_64"/>
+    </platforms>
+    <branding description="This modeling package contains a collection of Eclipse Modeling Project components, including EMF, GMF, MDT XSD/OCL/UML2, M2M, M2T, and EMFT elements. It includes a complete SDK, developer tools and source code. Note that the Modeling package includes some incubating components." installDirectoryName="Eclipse 3.7 Modeling" product="org.eclipse.platform.ide" shortcutName="Creocode Eclipse 3.7" title="Creocode Eclipse 3.7" workspaceName="Eclipse 3.7 Modeling">
+        <image><![CDATA[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
+ypi5o1ffdm8AAAAASUVORK5CYII=]]></image>
+    </branding>
+    <properties/>
+    <requirement greedy="false" multiple="false" name="com.android.ide.eclipse.adt.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="com.android.ide.eclipse.ddms.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="com.android.ide.eclipse.hierarchyviewer.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="com.android.ide.eclipse.traceview.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="com.bdaum.SpellChecker3.NLsupport.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="com.bdaum.SpellChecker3.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="com.bdaum.SpellChecker3src.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="com.genuitec.pulse2.client.auxiliary.feature.patches.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="com.genuitec.pulse2.client.targetcfg.dropins.e37.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="2.5.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.amalgam.discovery.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.cvs.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="1.1.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.egit.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.cdo.epp.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.compare.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.ecoretools.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.eef.codegen.ecore.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.mwe2.language.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0" updateSite="http://eclipse.poweredbypulse.com/downloads/aux/eclipse-mirror/releases/indigo"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.mwe2.runtime.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0" updateSite="http://eclipse.poweredbypulse.com/downloads/aux/eclipse-mirror/releases/indigo"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.query.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.transaction.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.emf.validation.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.epp.mpc.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.equinox.p2.user.ui.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="1.1.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.gef.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.gmf.runtime.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.help.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="1.1.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.jdt.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="3.7.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.mtj.examples.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0" updateSite="http://download.eclipse.org/mtj/updates/nightly"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.mtj.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0" updateSite="http://download.eclipse.org/mtj/updates/nightly"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.mylyn.bugzilla_feature.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.mylyn.context_feature.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.mylyn.ide_feature.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.mylyn.java_feature.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.mylyn.pde_feature.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.mylyn.wikitext_feature.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.mylyn_feature.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.ocl.all.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.pde.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="3.7.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.rcp.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="3.7.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="3.7.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.team.svn.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.team.svn.resource.ignore.rules.jdt.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.team.svn.revision.graph.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.uml2.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.xpand.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0" updateSite="http://eclipse.poweredbypulse.com/downloads/aux/eclipse-mirror/releases/indigo"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.xsd.sdk.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.eclipse.xtend.typesystem.xsd.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0" updateSite="http://eclipse.poweredbypulse.com/downloads/aux/eclipse-mirror/releases/indigo"/>
+    <requirement greedy="false" multiple="false" name="org.pluginbuilder.feature.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.polarion.eclipse.team.svn.connector.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.polarion.eclipse.team.svn.connector.javahl15.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement filter="(&amp;(osgi.os=win32)(osgi.arch=x86))" greedy="false" multiple="false" name="org.polarion.eclipse.team.svn.connector.javahl15.win32.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.polarion.eclipse.team.svn.connector.svnkit15.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="org.polarion.eclipse.team.svn.connector.svnkit16.feature.group" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <requirement greedy="false" multiple="false" name="pulse.org.eclipse.platform.sdk.e37" namespace="org.eclipse.equinox.p2.iu" optional="false" range="0.0.0"/>
+    <site alias="http://community.polarion.com/projects/subversive/download/eclipse/2.0/indigo-site" artifacts="true" metadata="true" updateSite="http://community.polarion.com/projects/subversive/download/eclipse/2.0/indigo-site"/>
+    <site alias="http://community.polarion.com/projects/subversive/download/eclipse/2.0/update-site" artifacts="true" metadata="true" updateSite="http://community.polarion.com/projects/subversive/download/eclipse/2.0/update-site"/>
+    <site alias="http://community.polarion.com/projects/subversive/download/integrations/indigo-site" artifacts="true" metadata="true" updateSite="http://community.polarion.com/projects/subversive/download/integrations/indigo-site"/>
+    <site alias="http://dl-ssl.google.com/android/eclipse" artifacts="true" metadata="true" updateSite="http://dl-ssl.google.com/android/eclipse"/>
+    <site alias="http://download.eclipse.org/mtj/updates/nightly" artifacts="true" metadata="true" updateSite="http://download.eclipse.org/mtj/updates/nightly"/>
+    <site alias="http://download.eclipse.org/technology/subversive/0.7/update-site" artifacts="true" metadata="true" updateSite="http://download.eclipse.org/technology/subversive/0.7/update-site"/>
+    <site alias="Mylyn" artifacts="true" metadata="true" updateSite="http://download.eclipse.org/tools/mylyn/update/e3.4"/>
+    <site alias="Pulse Client Services" artifacts="true" metadata="true" updateSite="http://downloads.poweredbypulse.com/downloads/products/pulse/client25"/>
+    <site alias="Eclipse 3.7" artifacts="true" metadata="true" updateSite="http://eclipse.poweredbypulse.com/downloads/aux/eclipse-mirror/eclipse/updates/3.7"/>
+    <site alias="Eclipse 3.7 (Indigo) Discovery" artifacts="true" metadata="true" updateSite="http://eclipse.poweredbypulse.com/downloads/aux/eclipse-mirror/releases/indigo"/>
+    <site alias="Pulse Resolution Patches" artifacts="true" metadata="true" updateSite="http://eclipse.poweredbypulse.com/downloads/products/pulse/mirrors"/>
+    <site alias="http://self.pluginbuilder.org/updateSite" artifacts="true" metadata="true" updateSite="http://self.pluginbuilder.org/updateSite"/>
+    <site alias="http://www.bdaum.de/eclipse/eSpell3" artifacts="true" metadata="true" updateSite="http://www.bdaum.de/eclipse/eSpell3"/>
+    <site alias="Pulse Dynamic Site" artifacts="true" metadata="true" updateSite="http://www.poweredbypulse.com/pulse/download/live"/>
+</oneinstall>
