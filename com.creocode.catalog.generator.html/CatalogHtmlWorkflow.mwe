@@ -1,17 +1,15 @@
 <workflow>
 <component class="org.eclipse.xtend.typesystem.xsd.XMLReader">
     <modelSlot value="model" />
-    <!--<uri value="../resources/catalog_tmp.xml" />-->
-    <uri value="/home/artur/common/creomobile/files2/project/prayerbook.catalog" />
-    
-    <metaModel id="mm"
-      class="org.eclipse.xtend.typesystem.xsd.XSDMetaModel">
+    <!--<uri value="../resources/catalog_tmp.xml" /> TODO ZAMIENIC NA working/sources-->
+    <uri value="sample.catalog" />
+    <metaModel id="mm" class="org.eclipse.xtend.typesystem.xsd.XSDMetaModel">
       <schemaFile value="../resources/catalog.xsd" />
     </metaModel>
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
     <expand value="CatalogHtml::Root FOR model" />
-    <outlet path="../Sample/assets/www" />
+    <outlet path="src-gen" />
   </component>
 </workflow>
