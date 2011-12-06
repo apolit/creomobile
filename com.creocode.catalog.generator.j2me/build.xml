@@ -296,10 +296,10 @@
 			<pathelement path="${build.result.folder}/../sa.catalog.rmi_1.0.0/bin/"/>
 			<pathelement path="${build.result.folder}/../sa.catalog.rmi/@dot"/>
 			<pathelement path="${build.result.folder}/../sa.catalog.rmi_1.0.0/@dot"/>
-			<pathelement path="../sa.catalog.generator/bin/"/>
-			<pathelement path="${build.result.folder}/../sa.catalog.generator_1.0.0/bin/"/>
-			<pathelement path="${build.result.folder}/../sa.catalog.generator/@dot"/>
-			<pathelement path="${build.result.folder}/../sa.catalog.generator_1.0.0/@dot"/>
+			<pathelement path="../com.creocode.catalog.generator/bin/"/>
+			<pathelement path="${build.result.folder}/../com.creocode.catalog.generator_1.0.0/bin/"/>
+			<pathelement path="${build.result.folder}/../com.creocode.catalog.generator/@dot"/>
+			<pathelement path="${build.result.folder}/../com.creocode.catalog.generator_1.0.0/@dot"/>
 			<pathelement path="../com.creocode.catalog.generator.content/bin"/>
 			<pathelement path="${build.result.folder}/../com.creocode.catalog.generator.content_1.0.0/bin"/>
 			<pathelement path="${build.result.folder}/../com.creocode.catalog.generator.content/@dot"/>
@@ -355,8 +355,8 @@
 			<include name="${pluginTemp}/sa.catalog.rmi_1.0.0/compilation.problem"/>
 			<include name="/home/artur/git/creomobile/com.creocode.catalog.generator.content/compilation.problem"/>
 			<include name="${pluginTemp}/com.creocode.catalog.generator.content_1.0.0/compilation.problem"/>
-			<include name="/home/artur/git/creomobile/sa.catalog.generator/compilation.problem"/>
-			<include name="${pluginTemp}/sa.catalog.generator_1.0.0/compilation.problem"/>
+			<include name="/home/artur/git/creomobile/com.creocode.catalog.generator/compilation.problem"/>
+			<include name="${pluginTemp}/com.creocode.catalog.generator_1.0.0/compilation.problem"/>
 		</eclipse.logCompileError>
 	</target>
 

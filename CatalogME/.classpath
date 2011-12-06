@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="res"/>
 	<classpathentry kind="con" path="org.elipse.mtj.JavaMEContainer/Sun Java(TM) Wireless Toolkit 2.5.1 for CLDC/DefaultColorPhone"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/Components"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/CatalogComponents"/>
 	<classpathentry exported="true" kind="src" path="/CatalogContent"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

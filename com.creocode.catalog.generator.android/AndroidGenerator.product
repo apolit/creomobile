@@ -95,7 +95,7 @@
       <plugin id="org.hamcrest.core"/>
       <plugin id="org.junit"/>
       <plugin id="org.pluginbuilder.ant.optional.junit" fragment="true"/>
-      <plugin id="sa.catalog.generator"/>
+      <plugin id="com.creocode.catalog.generator"/>
       <plugin id="sa.catalog.rmi"/>
    </plugins>
 

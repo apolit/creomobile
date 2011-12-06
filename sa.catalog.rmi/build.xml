@@ -197,10 +197,10 @@
 			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.equinox.app_1.3.100.v20110321.jar"/>
 			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.osgi.services_3.3.0.v20110513.jar"/>
 			<pathelement path="../../../../../media/storage1/software/Common/plugins/javax.servlet_2.5.0.v201103041518.jar"/>
-			<pathelement path="../sa.catalog.generator/bin/"/>
-			<pathelement path="${build.result.folder}/../sa.catalog.generator_1.0.0/bin/"/>
-			<pathelement path="${build.result.folder}/../sa.catalog.generator/@dot"/>
-			<pathelement path="${build.result.folder}/../sa.catalog.generator_1.0.0/@dot"/>
+			<pathelement path="../com.creocode.catalog.generator/bin/"/>
+			<pathelement path="${build.result.folder}/../com.creocode.catalog.generator_1.0.0/bin/"/>
+			<pathelement path="${build.result.folder}/../com.creocode.catalog.generator/@dot"/>
+			<pathelement path="${build.result.folder}/../com.creocode.catalog.generator_1.0.0/@dot"/>
 			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.xpand_1.1.0.v201108020519.jar"/>
 			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.apache.commons.logging_1.1.1.v201101211721.jar"/>
 			<pathelement path="../../../../../media/storage1/software/Common/plugins/org.eclipse.xtend_1.1.0.v201108020519.jar"/>
@@ -342,8 +342,8 @@
 	<target name="checkCompilationResults" if="compilation.error.occured">
 		<echo file="${compilation.problem.marker}" message="sa.catalog.rmi_1.0.0${line.separator}compilation.error.occured=${compilation.error.occured}"/>
 		<eclipse.logCompileError bundle="sa.catalog.rmi_1.0.0" log="${compilation.prereq.log}">
-			<include name="/home/artur/git/creomobile/sa.catalog.generator/compilation.problem"/>
-			<include name="${pluginTemp}/sa.catalog.generator_1.0.0/compilation.problem"/>
+			<include name="/home/artur/git/creomobile/com.creocode.catalog.generator/compilation.problem"/>
+			<include name="${pluginTemp}/com.creocode.catalog.generator_1.0.0/compilation.problem"/>
 		</eclipse.logCompileError>
 	</target>
 

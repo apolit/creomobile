@@ -21,10 +21,10 @@
       <mkdir dir="CatalogME/deployed/DefaultColorPhone/"/>
       <mkdir dir="CatalogME/mtj-build/DefaultColorPhone/CatalogContent/classes/"/>
       <mkdir dir="CatalogME/mtj-build/DefaultColorPhone/CatalogContent/resources/"/>
-      <mkdir dir="CatalogME/mtj-build/DefaultColorPhone/Components/"/>
+      <mkdir dir="CatalogME/mtj-build/DefaultColorPhone/CatalogComponents/"/>
       <mkdir dir="CatalogME/deployed/DefaultColorPhone/"/>
-      <mkdir dir="CatalogME/mtj-build/DefaultColorPhone/Components/classes/"/>
-      <mkdir dir="CatalogME/mtj-build/DefaultColorPhone/Components/resources/"/>
+      <mkdir dir="CatalogME/mtj-build/DefaultColorPhone/CatalogComponents/classes/"/>
+      <mkdir dir="CatalogME/mtj-build/DefaultColorPhone/CatalogComponents/resources/"/>
    </target>
    <target depends="init-DefaultColorPhone" name="collect-resources-DefaultColorPhone">
       <copy file="CatalogME/Application Descriptor" tofile="CatalogME/deployed/DefaultColorPhone/ApplicationName.jad"/>
@@ -35,8 +35,8 @@
       <copy todir="CatalogME/mtj-build/DefaultColorPhone/CatalogContent/resources/">
          <fileset dir="CatalogContent/src" excludes="**/**.java"/>
       </copy>
-      <copy todir="CatalogME/mtj-build/DefaultColorPhone/Components/resources/">
-         <fileset dir="Components/src" excludes="**/**.java"/>
+      <copy todir="CatalogME/mtj-build/DefaultColorPhone/CatalogComponents/resources/">
+         <fileset dir="CatalogComponents/src" excludes="**/**.java"/>
       </copy>
    </target>
    <target depends="collect-resources-DefaultColorPhone" name="preprocess-DefaultColorPhone">
@@ -49,18 +49,18 @@
       <wtkpreprocess debuglevel="info" destdir="CatalogME/mtj-build/DefaultColorPhone/CatalogContent/classes/" printsymbols="true" srcdir="CatalogContent/src" verbose="true">
          <symbols_file name="${basedir}/CatalogME/mtj-build/DefaultColorPhone.symbols/"/>
       </wtkpreprocess>
-      <wtkpreprocess debuglevel="info" destdir="CatalogME/mtj-build/DefaultColorPhone/Components/classes/" printsymbols="true" srcdir="Components/src" verbose="true">
+      <wtkpreprocess debuglevel="info" destdir="CatalogME/mtj-build/DefaultColorPhone/CatalogComponents/classes/" printsymbols="true" srcdir="CatalogComponents/src" verbose="true">
          <symbols_file name="${basedir}/CatalogME/mtj-build/DefaultColorPhone.symbols/"/>
       </wtkpreprocess>
       <copy overwrite="true" todir="CatalogME/mtj-build/DefaultColorPhone/CatalogME/classes/">
          <fileset dir="CatalogME/mtj-build/DefaultColorPhone/CatalogContent/classes/"/>
-         <fileset dir="CatalogME/mtj-build/DefaultColorPhone/Components/classes/"/>
+         <fileset dir="CatalogME/mtj-build/DefaultColorPhone/CatalogComponents/classes/"/>
       </copy>
    </target>
    <target depends="preprocess-DefaultColorPhone" name="build-DefaultColorPhone">
       <copy todir="CatalogME/mtj-build/DefaultColorPhone/CatalogME/resources/">
          <fileset dir="CatalogME/mtj-build/DefaultColorPhone/CatalogContent/resources/"/>
-         <fileset dir="CatalogME/mtj-build/DefaultColorPhone/Components/resources/"/>
+         <fileset dir="CatalogME/mtj-build/DefaultColorPhone/CatalogComponents/resources/"/>
       </copy>
       <wtkbuild bootclasspath="${wtk.home}/lib/midpapi20.jar:${wtk.home}/lib/cldcapi11.jar:${wtk.home}/lib/wma20.jar:${wtk.home}/lib/mmapi.jar:${wtk.home}/lib/j2me-ws.jar:${wtk.home}/lib/j2me-xmlrpc.jar:${wtk.home}/lib/jsr75.jar:${wtk.home}/lib/jsr082.jar:${wtk.home}/lib/jsr184.jar:${wtk.home}/lib/jsr179.jar:${wtk.home}/lib/satsa-apdu.jar:${wtk.home}/lib/satsa-jcrmi.jar:${wtk.home}/lib/satsa-pki.jar:${wtk.home}/lib/satsa-crypto.jar:${wtk.home}/lib/jsr211.jar:${wtk.home}/lib/jsr238.jar:${wtk.home}/lib/jsr229.jar:${wtk.home}/lib/jsr180.jar:${wtk.home}/lib/jsr234.jar:${wtk.home}/lib/jsr226.jar:${wtk.home}/lib/jsr239.jar:" destdir="CatalogME/mtj-build/DefaultColorPhone/CatalogME/bin/" encoding="UTF-8" preverify="false" source="1.3" sourcepath="" srcdir="CatalogME/mtj-build/DefaultColorPhone/CatalogME/classes/"/>
    </target>
