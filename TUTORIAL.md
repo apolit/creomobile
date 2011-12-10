@@ -25,6 +25,30 @@
 
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/10_wtk_install.png)
 
+**Download J2ME dependencies:**
+
+* Download Antenna from: http://sourceforge.net/projects/antenna/files/antenna/Antenna%201.2.1-beta/antenna-bin-1.2.1-beta.jar/download
+* Download and unpack Proguard: http://sourceforge.net/projects/proguard/files/proguard/4.4/proguard4.4.zip/download
+
+
+**Set paths:**
+
+CatalogME/mtj-build.properties:
+<pre>
+wtk.home=C\:\\WTK2.5.1
+do-obfuscate=false
+wtk.midp.version=2.1
+wtk.cldc.version=1.0
+do-autoversion=false
+antenna.lib=C\:\\creomobile\\antenna.jar
+wtk.proguard.home=C\:\\creomobile\\proguard4.4
+</pre>
+
+CatalogAndroid/local.properties
+<pre>
+sdk.dir=C\:\\Users\\USERNAME\\android-sdks
+</pre>
+
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/11_manage_select.png)
 
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/12_manage_colorphone.png)
@@ -60,4 +84,4 @@
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/24_example.png)
 
 Click with right mouse button on catalog.catalog and choose "Generate".
-!
+
