@@ -56,7 +56,7 @@ public class MidletGenerator implements Generator {
 //		XMLReader xmlReader = new XMLReader();
 //		xmlReader.setModelSlot("model");
 //		xmlReader.addMetaModel(metamodel);
-//		xmlReader.setUri("received/catalog_tmp.xml");
+//		xmlReader.setUri("catalog_tmp.xml");
 //		xmlReader.invoke(ctx);
 //		
 //		EObject target = (EObject) ctx.get("model");

@@ -84,7 +84,7 @@ public class RmiCatalogGeneratorServer extends UnicastRemoteObject implements
 	@Override
 	public String generateCatalog(String xml) throws RemoteException {
 		
-		File xmlFile = new File("received/catalog_tmp.xml");
+		File xmlFile = new File("catalog_tmp.xml");
 		try {
 			BufferedOutputStream bos = new BufferedOutputStream(
 					new FileOutputStream(xmlFile));
