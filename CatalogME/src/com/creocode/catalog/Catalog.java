@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright 2010  Artur Polit
+p * Copyright 2010  Artur Polit
  * 
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
@@ -41,8 +41,12 @@ import javax.microedition.lcdui.Form;
 import javax.microedition.lcdui.List;
 import javax.microedition.midlet.MIDlet;
 
+import org.json.me.JSONException;
+import org.json.me.JSONObject;
+
 import com.creocode.catalog.generator.content.Category;
 import com.creocode.catalog.generator.content.Content;
+import com.creocode.catalog.generator.content.FileReader;
 import com.creocode.catalog.generator.content.Item;
 import com.creocode.components.ITranslator;
 import com.creocode.components.i18n.Translator;
@@ -62,7 +66,6 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	Command selectCommand;
 	Command backCommand;
 	Command backCommandCanvas;
-
 
 	OptionsForm optionForm;
 	Serializator serializator;
@@ -92,13 +95,12 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 
 		initMainMenuList();
 		content.initCategories();
-		
+
 		backCommand = new Command(tr.t(Translator.BACK), Command.BACK, 0);
 		backCommandCanvas = new Command(tr.t(Translator.BACK), Command.BACK, 0);
 
 		canvas = new CatalogCanvas();
 
-		// canvas.addCommand(exitCommand);
 		canvas.addCommand(backCommandCanvas);
 		canvas.setCommandListener(this);
 
@@ -141,7 +143,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 		}
 		for (int i = 0, k = subCategories.size(); i < items.size(); i++) {
 			index = ((Integer) items.elementAt(i)).intValue();
-			sArray[k + i] = ((Item) itemsIndex.elementAt(index)).title;
+			sArray[k + i] = (String) itemsIndex.elementAt(index);
 		}
 
 		List tmpList = showList(tr.t("CATEGORIES"), sArray);
@@ -164,7 +166,6 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 				list.delete(0);
 			}
 			for (int i = 0; i < sArray.length; i++) {
-				// System.out.println((String) serializator.elementAt(i));
 				list.append(sArray[i], null);
 			}
 		}
@@ -184,7 +185,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	public void commandAction(Command command, Displayable screen) {
 		try {
 			if (screen.equals(mainMenuList)) {
-				
+
 				int position = mainMenuList.getSelectedIndex();
 				String selected = mainMenuList.getString(position);
 
@@ -204,12 +205,14 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 					form.setCommandListener(this);
 					form.addCommand(backCommand);
 					StringBuffer sb = new StringBuffer();
-					sb.append(content.title).append(" by ").append(content.vendor).append('\n');
+					sb.append(content.title).append(" by ")
+							.append(content.vendor).append('\n');
 					sb.append("Version: ").append(content.version);
-					sb.append("\nContent copyrights:").append(content.copyrights);
+					sb.append("\nContent copyrights:").append(
+							content.copyrights);
 					sb.append("\n\nCreated using Creomobile Framework");
 					form.append(sb.toString());
-					
+
 					display.setCurrent(form);
 				} else if (selected.equals(tr.t(Translator.EXIT))) {
 					exitMIDlet();
@@ -226,8 +229,8 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 				} else {
 					int itemPosition = position - subCategories.size();
 					int itemIndex = ((Integer) displayedCategory.items
-							.elementAt(itemPosition)).intValue();
-					showItem((Item) itemsIndex.elementAt(itemIndex));
+							.elementAt(itemPosition)).intValue();					
+					showItem(getItemFromJson(itemIndex));
 				}
 			} else if (command.equals(backCommand) && screen.equals(list)) {
 				if (displayedCategory.parentId != -1) {
@@ -244,6 +247,26 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	private Item getItemFromJson(int itemIndex) {
+		FileReader fileReader = new FileReader();
+		Item item = new Item();
+		String input = fileReader.readUnicodeFile(Integer.toString(itemIndex)
+				+ ".prayer");
+		JSONObject jsonObject = null;
+		try {
+			jsonObject = new JSONObject(input);
+			item.content = jsonObject.getString("content");
+			item.title = jsonObject.getString("title");
+			item.intro = jsonObject.getString("intro");
+			item.details = jsonObject.getString("details");
+
+		} catch (JSONException e) {
+		 
+			e.printStackTrace();
+		}
+		return item;
 	}
 
 	public void exitMIDlet() {
@@ -267,7 +290,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	}
 
 	private void showItem(Item item) throws Exception {
-
+		// System.out.print(item.toString());
 		String details = item.details;
 		Vector detailsVector = new Vector();
 		if (!details.equals("")) {
@@ -283,9 +306,6 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 
 			detailsVector
 					.addElement(details.substring(first, details.length()));
-			// for (int i = 0; i < detailsVector.size(); i++) {
-			// System.out.println(detailsVector.elementAt(i));
-			// }
 		}
 		showCanvas(item.title, item.content, item.intro, detailsVector);
 	}
