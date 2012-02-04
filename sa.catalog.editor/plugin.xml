@@ -18,12 +18,15 @@
    <extension point="org.eclipse.ui.newWizards">
       <category
             id="org.eclipse.emf.ecore.Wizard.category.ID"
-            name="%_UI_Wizard_category"/>
+            name="%_UI_Wizard_category"
+            parentCategory="org.eclipse.ui.Basic"/>
       <wizard
-            id="com.creocode.catalog.presentation.CatalogModelWizardID"
-            name="%_UI_CatalogModelWizard_label"
+            category="org.eclipse.ui.Basic"
             class="com.creocode.catalog.presentation.CatalogModelWizard"
-            icon="icons/full/obj16/CatalogModelFile.gif">
+            finalPerspective="sa.catalog.editor.customization.CatedPerspective"
+            icon="icons/full/obj16/CatalogModelFile.gif"
+            id="com.creocode.catalog.presentation.CatalogModelWizardID"
+            name="%_UI_CatalogModelWizard_label">
          <description>%_UI_CatalogModelWizard_description</description>
          <selection class="org.eclipse.core.resources.IResource"/>
       </wizard>
@@ -31,12 +34,15 @@
 
    <extension point="org.eclipse.ui.editors">
       <editor
-            id="com.creocode.catalog.presentation.CatalogEditorID"
-            name="%_UI_CatalogEditor_label"
-            icon="icons/full/obj16/CatalogModelFile.gif"
-            extensions="catalog"
             class="com.creocode.catalog.presentation.CatalogEditor"
-            contributorClass="com.creocode.catalog.presentation.CatalogActionBarContributor">
+            contributorClass="com.creocode.catalog.presentation.CatalogActionBarContributor"
+            default="true"
+            icon="icons/full/obj16/CatalogModelFile.gif"
+            id="com.creocode.catalog.presentation.CatalogEditorID"
+            name="%_UI_CatalogEditor_label">
+         <contentTypeBinding
+               contentTypeId="sa.catalog.editor.fileAssociationCatalog">
+         </contentTypeBinding>
       </editor>
    </extension>
    <extension
@@ -141,6 +147,32 @@
       <contexts
             file="contexts.xml">
       </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.navigator.navigatorContent">
+      <commonWizard
+            menuGroupId="sa.catalog.editor.menuGroupID"
+            type="new"
+            wizardId="com.creocode.catalog.presentation.CatalogModelWizardID">
+         <enablement>
+            <or>
+               <instanceof
+                     value="org.eclipse.core.resources.IProject">
+               </instanceof>
+               <instanceof
+                     value="org.eclipse.core.resources.IResource">
+               </instanceof>
+            </or></enablement>
+      </commonWizard>
+   </extension>
+   <extension
+         point="org.eclipse.core.contenttype.contentTypes">
+      <content-type
+            file-extensions="catalog"
+            id="sa.catalog.editor.fileAssociationCatalog"
+            name="Catalog Model File"
+            priority="normal">
+      </content-type>
    </extension>
 
 

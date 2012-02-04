@@ -72,7 +72,7 @@ public class ItemTypeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addItemIdentifierPropertyDescriptor(object);
-			addReferenceToItemPropertyDescriptor(object);
+			addTemplateItemPropertyDescriptor(object);
 			addTitlePropertyDescriptor(object);
 			addContentPropertyDescriptor(object);
 			addIntroPropertyDescriptor(object);
@@ -103,19 +103,19 @@ public class ItemTypeItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Reference To Item feature.
+	 * This adds a property descriptor for the Template Item feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addReferenceToItemPropertyDescriptor(Object object) {
+	protected void addTemplateItemPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_ItemType_referenceToItem_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_ItemType_referenceToItem_feature", "_UI_ItemType_type"),
-				 CatalogPackage.Literals.ITEM_TYPE__REFERENCE_TO_ITEM,
+				 getString("_UI_ItemType_templateItem_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_ItemType_templateItem_feature", "_UI_ItemType_type"),
+				 CatalogPackage.Literals.ITEM_TYPE__TEMPLATE_ITEM,
 				 true,
 				 false,
 				 true,
