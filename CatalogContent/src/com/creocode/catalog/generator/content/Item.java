@@ -35,4 +35,11 @@ public class Item {
 	public String intro;
 	public String content;
 	public String details;
+	
+	public String toString() {
+		return "Item [title=" + title + ", intro=" + intro + ", content="
+				+ content + ", details=" + details + "]";
+	}
+	
+	
 }

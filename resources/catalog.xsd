@@ -10,7 +10,7 @@
 	<complexType name="itemType">
 		<sequence>
 			<element name="itemIdentifier" type="ID"/>
-			<element ecore:reference="item" name="referenceToItem" type="IDREF"/>
+			<element ecore:reference="item" name="templateItem" type="IDREF"/>
 			<element maxOccurs="1" minOccurs="1" name="title" type="string"/>
 			<element maxOccurs="1" minOccurs="1" name="content" type="string"/>
 			<element maxOccurs="1" minOccurs="0" name="intro" type="string"/>
@@ -26,11 +26,13 @@
 			</element>
 			<element maxOccurs="unbounded" minOccurs="0" name="subCategory" type="tns:categoryType"/>
 		</sequence>
+		<attribute name="sequence" type="boolean" use="optional"/>					
 	</complexType>
 
-	<complexType name="catalogType">
+	<complexType name="catalogType">		
 		<sequence>
-			<element maxOccurs="unbounded" minOccurs="1" name="category" type="tns:categoryType"/>
+			<element maxOccurs="1" minOccurs="0" name="templateItems" type="tns:categoryType"/>
+			<element maxOccurs="unbounded" minOccurs="1" name="category" type="tns:categoryType"/>			
 		</sequence>
 		<attribute default="ApplicationName" name="id" type="string" use="optional">
 		</attribute>

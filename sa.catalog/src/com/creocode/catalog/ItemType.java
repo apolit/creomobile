@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link com.creocode.catalog.ItemType#getItemIdentifier <em>Item Identifier</em>}</li>
- *   <li>{@link com.creocode.catalog.ItemType#getReferenceToItem <em>Reference To Item</em>}</li>
+ *   <li>{@link com.creocode.catalog.ItemType#getTemplateItem <em>Template Item</em>}</li>
  *   <li>{@link com.creocode.catalog.ItemType#getTitle <em>Title</em>}</li>
  *   <li>{@link com.creocode.catalog.ItemType#getContent <em>Content</em>}</li>
  *   <li>{@link com.creocode.catalog.ItemType#getIntro <em>Intro</em>}</li>
@@ -62,31 +62,31 @@ public interface ItemType extends EObject {
 	void setItemIdentifier(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Reference To Item</b></em>' reference.
+	 * Returns the value of the '<em><b>Template Item</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Reference To Item</em>' reference isn't clear,
+	 * If the meaning of the '<em>Template Item</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Reference To Item</em>' reference.
-	 * @see #setReferenceToItem(EObject)
-	 * @see com.creocode.catalog.CatalogPackage#getItemType_ReferenceToItem()
+	 * @return the value of the '<em>Template Item</em>' reference.
+	 * @see #setTemplateItem(EObject)
+	 * @see com.creocode.catalog.CatalogPackage#getItemType_TemplateItem()
 	 * @model resolveProxies="false" required="true"
-	 *        extendedMetaData="kind='element' name='referenceToItem' namespace='##targetNamespace'"
+	 *        extendedMetaData="kind='element' name='templateItem' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	EObject getReferenceToItem();
+	EObject getTemplateItem();
 
 	/**
-	 * Sets the value of the '{@link com.creocode.catalog.ItemType#getReferenceToItem <em>Reference To Item</em>}' reference.
+	 * Sets the value of the '{@link com.creocode.catalog.ItemType#getTemplateItem <em>Template Item</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Reference To Item</em>' reference.
-	 * @see #getReferenceToItem()
+	 * @param value the new value of the '<em>Template Item</em>' reference.
+	 * @see #getTemplateItem()
 	 * @generated
 	 */
-	void setReferenceToItem(EObject value);
+	void setTemplateItem(EObject value);
 
 	/**
 	 * Returns the value of the '<em><b>Title</b></em>' attribute.

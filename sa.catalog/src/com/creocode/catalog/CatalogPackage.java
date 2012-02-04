@@ -74,13 +74,22 @@ public interface CatalogPackage extends EPackage {
 	int CATALOG_TYPE = 0;
 
 	/**
+	 * The feature id for the '<em><b>Template Items</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATALOG_TYPE__TEMPLATE_ITEMS = 0;
+
+	/**
 	 * The feature id for the '<em><b>Category</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__CATEGORY = 0;
+	int CATALOG_TYPE__CATEGORY = 1;
 
 	/**
 	 * The feature id for the '<em><b>Author</b></em>' attribute.
@@ -89,7 +98,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__AUTHOR = 1;
+	int CATALOG_TYPE__AUTHOR = 2;
 
 	/**
 	 * The feature id for the '<em><b>Copyrights</b></em>' attribute.
@@ -98,7 +107,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__COPYRIGHTS = 2;
+	int CATALOG_TYPE__COPYRIGHTS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Icon</b></em>' attribute.
@@ -107,7 +116,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__ICON = 3;
+	int CATALOG_TYPE__ICON = 4;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -116,7 +125,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__ID = 4;
+	int CATALOG_TYPE__ID = 5;
 
 	/**
 	 * The feature id for the '<em><b>Language</b></em>' attribute.
@@ -125,7 +134,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__LANGUAGE = 5;
+	int CATALOG_TYPE__LANGUAGE = 6;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -134,7 +143,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__TITLE = 6;
+	int CATALOG_TYPE__TITLE = 7;
 
 	/**
 	 * The feature id for the '<em><b>Vendor</b></em>' attribute.
@@ -143,7 +152,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__VENDOR = 7;
+	int CATALOG_TYPE__VENDOR = 8;
 
 	/**
 	 * The feature id for the '<em><b>Version</b></em>' attribute.
@@ -152,7 +161,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__VERSION = 8;
+	int CATALOG_TYPE__VERSION = 9;
 
 	/**
 	 * The feature id for the '<em><b>Version Code</b></em>' attribute.
@@ -161,7 +170,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE__VERSION_CODE = 9;
+	int CATALOG_TYPE__VERSION_CODE = 10;
 
 	/**
 	 * The number of structural features of the '<em>Type</em>' class.
@@ -170,7 +179,7 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CATALOG_TYPE_FEATURE_COUNT = 10;
+	int CATALOG_TYPE_FEATURE_COUNT = 11;
 
 	/**
 	 * The meta object id for the '{@link com.creocode.catalog.impl.CategoryTypeImpl <em>Category Type</em>}' class.
@@ -210,13 +219,22 @@ public interface CatalogPackage extends EPackage {
 	int CATEGORY_TYPE__SUB_CATEGORY = 2;
 
 	/**
+	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY_TYPE__SEQUENCE = 3;
+
+	/**
 	 * The number of structural features of the '<em>Category Type</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY_TYPE_FEATURE_COUNT = 3;
+	int CATEGORY_TYPE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link com.creocode.catalog.impl.DetailsTypeImpl <em>Details Type</em>}' class.
@@ -321,13 +339,13 @@ public interface CatalogPackage extends EPackage {
 	int ITEM_TYPE__ITEM_IDENTIFIER = 0;
 
 	/**
-	 * The feature id for the '<em><b>Reference To Item</b></em>' reference.
+	 * The feature id for the '<em><b>Template Item</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM_TYPE__REFERENCE_TO_ITEM = 1;
+	int ITEM_TYPE__TEMPLATE_ITEM = 1;
 
 	/**
 	 * The feature id for the '<em><b>Title</b></em>' attribute.
@@ -384,6 +402,17 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCatalogType();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link com.creocode.catalog.CatalogType#getTemplateItems <em>Template Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Template Items</em>'.
+	 * @see com.creocode.catalog.CatalogType#getTemplateItems()
+	 * @see #getCatalogType()
+	 * @generated
+	 */
+	EReference getCatalogType_TemplateItems();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link com.creocode.catalog.CatalogType#getCategory <em>Category</em>}'.
@@ -539,6 +568,17 @@ public interface CatalogPackage extends EPackage {
 	EReference getCategoryType_SubCategory();
 
 	/**
+	 * Returns the meta object for the attribute '{@link com.creocode.catalog.CategoryType#isSequence <em>Sequence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sequence</em>'.
+	 * @see com.creocode.catalog.CategoryType#isSequence()
+	 * @see #getCategoryType()
+	 * @generated
+	 */
+	EAttribute getCategoryType_Sequence();
+
+	/**
 	 * Returns the meta object for class '{@link com.creocode.catalog.DetailsType <em>Details Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -635,15 +675,15 @@ public interface CatalogPackage extends EPackage {
 	EAttribute getItemType_ItemIdentifier();
 
 	/**
-	 * Returns the meta object for the reference '{@link com.creocode.catalog.ItemType#getReferenceToItem <em>Reference To Item</em>}'.
+	 * Returns the meta object for the reference '{@link com.creocode.catalog.ItemType#getTemplateItem <em>Template Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Reference To Item</em>'.
-	 * @see com.creocode.catalog.ItemType#getReferenceToItem()
+	 * @return the meta object for the reference '<em>Template Item</em>'.
+	 * @see com.creocode.catalog.ItemType#getTemplateItem()
 	 * @see #getItemType()
 	 * @generated
 	 */
-	EReference getItemType_ReferenceToItem();
+	EReference getItemType_TemplateItem();
 
 	/**
 	 * Returns the meta object for the attribute '{@link com.creocode.catalog.ItemType#getTitle <em>Title</em>}'.
@@ -720,6 +760,14 @@ public interface CatalogPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CATALOG_TYPE = eINSTANCE.getCatalogType();
+
+		/**
+		 * The meta object literal for the '<em><b>Template Items</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CATALOG_TYPE__TEMPLATE_ITEMS = eINSTANCE.getCatalogType_TemplateItems();
 
 		/**
 		 * The meta object literal for the '<em><b>Category</b></em>' containment reference list feature.
@@ -836,6 +884,14 @@ public interface CatalogPackage extends EPackage {
 		EReference CATEGORY_TYPE__SUB_CATEGORY = eINSTANCE.getCategoryType_SubCategory();
 
 		/**
+		 * The meta object literal for the '<em><b>Sequence</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CATEGORY_TYPE__SEQUENCE = eINSTANCE.getCategoryType_Sequence();
+
+		/**
 		 * The meta object literal for the '{@link com.creocode.catalog.impl.DetailsTypeImpl <em>Details Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -914,12 +970,12 @@ public interface CatalogPackage extends EPackage {
 		EAttribute ITEM_TYPE__ITEM_IDENTIFIER = eINSTANCE.getItemType_ItemIdentifier();
 
 		/**
-		 * The meta object literal for the '<em><b>Reference To Item</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Template Item</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference ITEM_TYPE__REFERENCE_TO_ITEM = eINSTANCE.getItemType_ReferenceToItem();
+		EReference ITEM_TYPE__TEMPLATE_ITEM = eINSTANCE.getItemType_TemplateItem();
 
 		/**
 		 * The meta object literal for the '<em><b>Title</b></em>' attribute feature.

@@ -35,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <p>
  * The following features are implemented:
  * <ul>
+ *   <li>{@link com.creocode.catalog.impl.CatalogTypeImpl#getTemplateItems <em>Template Items</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CatalogTypeImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CatalogTypeImpl#getAuthor <em>Author</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CatalogTypeImpl#getCopyrights <em>Copyrights</em>}</li>
@@ -51,6 +52,16 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
+	/**
+	 * The cached value of the '{@link #getTemplateItems() <em>Template Items</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTemplateItems()
+	 * @generated
+	 * @ordered
+	 */
+	protected CategoryType templateItems;
+
 	/**
 	 * The cached value of the '{@link #getCategory() <em>Category</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -285,6 +296,49 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	@Override
 	protected EClass eStaticClass() {
 		return CatalogPackage.Literals.CATALOG_TYPE;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CategoryType getTemplateItems() {
+		return templateItems;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTemplateItems(CategoryType newTemplateItems, NotificationChain msgs) {
+		CategoryType oldTemplateItems = templateItems;
+		templateItems = newTemplateItems;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS, oldTemplateItems, newTemplateItems);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTemplateItems(CategoryType newTemplateItems) {
+		if (newTemplateItems != templateItems) {
+			NotificationChain msgs = null;
+			if (templateItems != null)
+				msgs = ((InternalEObject)templateItems).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS, null, msgs);
+			if (newTemplateItems != null)
+				msgs = ((InternalEObject)newTemplateItems).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS, null, msgs);
+			msgs = basicSetTemplateItems(newTemplateItems, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS, newTemplateItems, newTemplateItems));
 	}
 
 	/**
@@ -571,6 +625,8 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS:
+				return basicSetTemplateItems(null, msgs);
 			case CatalogPackage.CATALOG_TYPE__CATEGORY:
 				return ((InternalEList<?>)getCategory()).basicRemove(otherEnd, msgs);
 		}
@@ -585,6 +641,8 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS:
+				return getTemplateItems();
 			case CatalogPackage.CATALOG_TYPE__CATEGORY:
 				return getCategory();
 			case CatalogPackage.CATALOG_TYPE__AUTHOR:
@@ -618,6 +676,9 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS:
+				setTemplateItems((CategoryType)newValue);
+				return;
 			case CatalogPackage.CATALOG_TYPE__CATEGORY:
 				getCategory().clear();
 				getCategory().addAll((Collection<? extends CategoryType>)newValue);
@@ -661,6 +722,9 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS:
+				setTemplateItems((CategoryType)null);
+				return;
 			case CatalogPackage.CATALOG_TYPE__CATEGORY:
 				getCategory().clear();
 				return;
@@ -703,6 +767,8 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS:
+				return templateItems != null;
 			case CatalogPackage.CATALOG_TYPE__CATEGORY:
 				return category != null && !category.isEmpty();
 			case CatalogPackage.CATALOG_TYPE__AUTHOR:

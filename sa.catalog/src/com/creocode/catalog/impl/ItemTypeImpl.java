@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getItemIdentifier <em>Item Identifier</em>}</li>
- *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getReferenceToItem <em>Reference To Item</em>}</li>
+ *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getTemplateItem <em>Template Item</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getContent <em>Content</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getIntro <em>Intro</em>}</li>
@@ -64,14 +64,14 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	protected String itemIdentifier = ITEM_IDENTIFIER_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getReferenceToItem() <em>Reference To Item</em>}' reference.
+	 * The cached value of the '{@link #getTemplateItem() <em>Template Item</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getReferenceToItem()
+	 * @see #getTemplateItem()
 	 * @generated
 	 * @ordered
 	 */
-	protected EObject referenceToItem;
+	protected EObject templateItem;
 
 	/**
 	 * The default value of the '{@link #getTitle() <em>Title</em>}' attribute.
@@ -188,8 +188,8 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EObject getReferenceToItem() {
-		return referenceToItem;
+	public EObject getTemplateItem() {
+		return templateItem;
 	}
 
 	/**
@@ -197,11 +197,11 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReferenceToItem(EObject newReferenceToItem) {
-		EObject oldReferenceToItem = referenceToItem;
-		referenceToItem = newReferenceToItem;
+	public void setTemplateItem(EObject newTemplateItem) {
+		EObject oldTemplateItem = templateItem;
+		templateItem = newTemplateItem;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, CatalogPackage.ITEM_TYPE__REFERENCE_TO_ITEM, oldReferenceToItem, referenceToItem));
+			eNotify(new ENotificationImpl(this, Notification.SET, CatalogPackage.ITEM_TYPE__TEMPLATE_ITEM, oldTemplateItem, templateItem));
 	}
 
 	/**
@@ -334,8 +334,8 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 		switch (featureID) {
 			case CatalogPackage.ITEM_TYPE__ITEM_IDENTIFIER:
 				return getItemIdentifier();
-			case CatalogPackage.ITEM_TYPE__REFERENCE_TO_ITEM:
-				return getReferenceToItem();
+			case CatalogPackage.ITEM_TYPE__TEMPLATE_ITEM:
+				return getTemplateItem();
 			case CatalogPackage.ITEM_TYPE__TITLE:
 				return getTitle();
 			case CatalogPackage.ITEM_TYPE__CONTENT:
@@ -359,8 +359,8 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 			case CatalogPackage.ITEM_TYPE__ITEM_IDENTIFIER:
 				setItemIdentifier((String)newValue);
 				return;
-			case CatalogPackage.ITEM_TYPE__REFERENCE_TO_ITEM:
-				setReferenceToItem((EObject)newValue);
+			case CatalogPackage.ITEM_TYPE__TEMPLATE_ITEM:
+				setTemplateItem((EObject)newValue);
 				return;
 			case CatalogPackage.ITEM_TYPE__TITLE:
 				setTitle((String)newValue);
@@ -389,8 +389,8 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 			case CatalogPackage.ITEM_TYPE__ITEM_IDENTIFIER:
 				setItemIdentifier(ITEM_IDENTIFIER_EDEFAULT);
 				return;
-			case CatalogPackage.ITEM_TYPE__REFERENCE_TO_ITEM:
-				setReferenceToItem((EObject)null);
+			case CatalogPackage.ITEM_TYPE__TEMPLATE_ITEM:
+				setTemplateItem((EObject)null);
 				return;
 			case CatalogPackage.ITEM_TYPE__TITLE:
 				setTitle(TITLE_EDEFAULT);
@@ -418,8 +418,8 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 		switch (featureID) {
 			case CatalogPackage.ITEM_TYPE__ITEM_IDENTIFIER:
 				return ITEM_IDENTIFIER_EDEFAULT == null ? itemIdentifier != null : !ITEM_IDENTIFIER_EDEFAULT.equals(itemIdentifier);
-			case CatalogPackage.ITEM_TYPE__REFERENCE_TO_ITEM:
-				return referenceToItem != null;
+			case CatalogPackage.ITEM_TYPE__TEMPLATE_ITEM:
+				return templateItem != null;
 			case CatalogPackage.ITEM_TYPE__TITLE:
 				return TITLE_EDEFAULT == null ? title != null : !TITLE_EDEFAULT.equals(title);
 			case CatalogPackage.ITEM_TYPE__CONTENT:

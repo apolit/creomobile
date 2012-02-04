@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.creocode.catalog.impl.CategoryTypeImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CategoryTypeImpl#getItem <em>Item</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CategoryTypeImpl#getSubCategory <em>Sub Category</em>}</li>
+ *   <li>{@link com.creocode.catalog.impl.CategoryTypeImpl#isSequence <em>Sequence</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,6 +84,35 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 	 * @ordered
 	 */
 	protected EList<CategoryType> subCategory;
+
+	/**
+	 * The default value of the '{@link #isSequence() <em>Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean SEQUENCE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isSequence() <em>Sequence</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isSequence()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean sequence = SEQUENCE_EDEFAULT;
+
+	/**
+	 * This is true if the Sequence attribute has been set.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean sequenceESet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -153,6 +183,52 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isSequence() {
+		return sequence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSequence(boolean newSequence) {
+		boolean oldSequence = sequence;
+		sequence = newSequence;
+		boolean oldSequenceESet = sequenceESet;
+		sequenceESet = true;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CatalogPackage.CATEGORY_TYPE__SEQUENCE, oldSequence, sequence, !oldSequenceESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void unsetSequence() {
+		boolean oldSequence = sequence;
+		boolean oldSequenceESet = sequenceESet;
+		sequence = SEQUENCE_EDEFAULT;
+		sequenceESet = false;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.UNSET, CatalogPackage.CATEGORY_TYPE__SEQUENCE, oldSequence, SEQUENCE_EDEFAULT, oldSequenceESet));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isSetSequence() {
+		return sequenceESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -178,6 +254,8 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 				return getItem();
 			case CatalogPackage.CATEGORY_TYPE__SUB_CATEGORY:
 				return getSubCategory();
+			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
+				return isSequence();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,6 +280,9 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 				getSubCategory().clear();
 				getSubCategory().addAll((Collection<? extends CategoryType>)newValue);
 				return;
+			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
+				setSequence((Boolean)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -223,6 +304,9 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 			case CatalogPackage.CATEGORY_TYPE__SUB_CATEGORY:
 				getSubCategory().clear();
 				return;
+			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
+				unsetSequence();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -241,6 +325,8 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 				return item != null && !item.isEmpty();
 			case CatalogPackage.CATEGORY_TYPE__SUB_CATEGORY:
 				return subCategory != null && !subCategory.isEmpty();
+			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
+				return isSetSequence();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -257,6 +343,8 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (title: ");
 		result.append(title);
+		result.append(", sequence: ");
+		if (sequenceESet) result.append(sequence); else result.append("<unset>");
 		result.append(')');
 		return result.toString();
 	}

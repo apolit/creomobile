@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * <p>
  * The following features are supported:
  * <ul>
+ *   <li>{@link com.creocode.catalog.CatalogType#getTemplateItems <em>Template Items</em>}</li>
  *   <li>{@link com.creocode.catalog.CatalogType#getCategory <em>Category</em>}</li>
  *   <li>{@link com.creocode.catalog.CatalogType#getAuthor <em>Author</em>}</li>
  *   <li>{@link com.creocode.catalog.CatalogType#getCopyrights <em>Copyrights</em>}</li>
@@ -39,6 +40,33 @@ import org.eclipse.emf.ecore.EObject;
  * @generated
  */
 public interface CatalogType extends EObject {
+	/**
+	 * Returns the value of the '<em><b>Template Items</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Template Items</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Template Items</em>' containment reference.
+	 * @see #setTemplateItems(CategoryType)
+	 * @see com.creocode.catalog.CatalogPackage#getCatalogType_TemplateItems()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='templateItems' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	CategoryType getTemplateItems();
+
+	/**
+	 * Sets the value of the '{@link com.creocode.catalog.CatalogType#getTemplateItems <em>Template Items</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Template Items</em>' containment reference.
+	 * @see #getTemplateItems()
+	 * @generated
+	 */
+	void setTemplateItems(CategoryType value);
+
 	/**
 	 * Returns the value of the '<em><b>Category</b></em>' containment reference list.
 	 * The list contents are of type {@link com.creocode.catalog.CategoryType}.

@@ -294,6 +294,7 @@ public class CatalogTypeItemProvider
 	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
+			childrenFeatures.add(CatalogPackage.Literals.CATALOG_TYPE__TEMPLATE_ITEMS);
 			childrenFeatures.add(CatalogPackage.Literals.CATALOG_TYPE__CATEGORY);
 		}
 		return childrenFeatures;
@@ -360,6 +361,7 @@ public class CatalogTypeItemProvider
 			case CatalogPackage.CATALOG_TYPE__VERSION_CODE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
+			case CatalogPackage.CATALOG_TYPE__TEMPLATE_ITEMS:
 			case CatalogPackage.CATALOG_TYPE__CATEGORY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
@@ -380,8 +382,36 @@ public class CatalogTypeItemProvider
 
 		newChildDescriptors.add
 			(createChildParameter
+				(CatalogPackage.Literals.CATALOG_TYPE__TEMPLATE_ITEMS,
+				 CatalogFactory.eINSTANCE.createCategoryType()));
+
+		newChildDescriptors.add
+			(createChildParameter
 				(CatalogPackage.Literals.CATALOG_TYPE__CATEGORY,
 				 CatalogFactory.eINSTANCE.createCategoryType()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify =
+			childFeature == CatalogPackage.Literals.CATALOG_TYPE__TEMPLATE_ITEMS ||
+			childFeature == CatalogPackage.Literals.CATALOG_TYPE__CATEGORY;
+
+		if (qualify) {
+			return getString
+				("_UI_CreateChild_text2",
+				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

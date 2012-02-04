@@ -145,7 +145,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getCatalogType_Category() {
+	public EReference getCatalogType_TemplateItems() {
 		return (EReference)catalogTypeEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -154,8 +154,8 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCatalogType_Title() {
-		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(6);
+	public EReference getCatalogType_Category() {
+		return (EReference)catalogTypeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCatalogType_Vendor() {
+	public EAttribute getCatalogType_Title() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -172,25 +172,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCatalogType_Copyrights() {
-		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCatalogType_Author() {
-		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCatalogType_Version() {
+	public EAttribute getCatalogType_Vendor() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -199,16 +181,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCatalogType_VersionCode() {
-		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(9);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getCatalogType_Icon() {
+	public EAttribute getCatalogType_Copyrights() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -217,7 +190,34 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCatalogType_Id() {
+	public EAttribute getCatalogType_Author() {
+		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCatalogType_Version() {
+		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCatalogType_VersionCode() {
+		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCatalogType_Icon() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -226,8 +226,17 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCatalogType_Language() {
+	public EAttribute getCatalogType_Id() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCatalogType_Language() {
+		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -264,6 +273,15 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 */
 	public EReference getCategoryType_SubCategory() {
 		return (EReference)categoryTypeEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCategoryType_Sequence() {
+		return (EAttribute)categoryTypeEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -352,7 +370,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getItemType_ReferenceToItem() {
+	public EReference getItemType_TemplateItem() {
 		return (EReference)itemTypeEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -421,6 +439,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 
 		// Create classes and their features
 		catalogTypeEClass = createEClass(CATALOG_TYPE);
+		createEReference(catalogTypeEClass, CATALOG_TYPE__TEMPLATE_ITEMS);
 		createEReference(catalogTypeEClass, CATALOG_TYPE__CATEGORY);
 		createEAttribute(catalogTypeEClass, CATALOG_TYPE__AUTHOR);
 		createEAttribute(catalogTypeEClass, CATALOG_TYPE__COPYRIGHTS);
@@ -436,6 +455,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		createEAttribute(categoryTypeEClass, CATEGORY_TYPE__TITLE);
 		createEReference(categoryTypeEClass, CATEGORY_TYPE__ITEM);
 		createEReference(categoryTypeEClass, CATEGORY_TYPE__SUB_CATEGORY);
+		createEAttribute(categoryTypeEClass, CATEGORY_TYPE__SEQUENCE);
 
 		detailsTypeEClass = createEClass(DETAILS_TYPE);
 		createEAttribute(detailsTypeEClass, DETAILS_TYPE__DETAIL);
@@ -448,7 +468,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 
 		itemTypeEClass = createEClass(ITEM_TYPE);
 		createEAttribute(itemTypeEClass, ITEM_TYPE__ITEM_IDENTIFIER);
-		createEReference(itemTypeEClass, ITEM_TYPE__REFERENCE_TO_ITEM);
+		createEReference(itemTypeEClass, ITEM_TYPE__TEMPLATE_ITEM);
 		createEAttribute(itemTypeEClass, ITEM_TYPE__TITLE);
 		createEAttribute(itemTypeEClass, ITEM_TYPE__CONTENT);
 		createEAttribute(itemTypeEClass, ITEM_TYPE__INTRO);
@@ -489,6 +509,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(catalogTypeEClass, CatalogType.class, "CatalogType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getCatalogType_TemplateItems(), this.getCategoryType(), null, "templateItems", null, 0, 1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCatalogType_Category(), this.getCategoryType(), null, "category", null, 1, -1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCatalogType_Author(), theXMLTypePackage.getString(), "author", null, 0, 1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCatalogType_Copyrights(), theXMLTypePackage.getString(), "copyrights", null, 0, 1, CatalogType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -504,6 +525,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		initEAttribute(getCategoryType_Title(), theXMLTypePackage.getString(), "title", null, 1, 1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCategoryType_Item(), this.getItemType(), null, "item", null, 1, -1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCategoryType_SubCategory(), this.getCategoryType(), null, "subCategory", null, 0, -1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCategoryType_Sequence(), theXMLTypePackage.getBoolean(), "sequence", null, 0, 1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(detailsTypeEClass, DetailsType.class, "DetailsType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDetailsType_Detail(), theXMLTypePackage.getString(), "detail", null, 1, -1, DetailsType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -516,7 +538,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 
 		initEClass(itemTypeEClass, ItemType.class, "ItemType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getItemType_ItemIdentifier(), theXMLTypePackage.getID(), "itemIdentifier", null, 1, 1, ItemType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getItemType_ReferenceToItem(), ecorePackage.getEObject(), null, "referenceToItem", null, 1, 1, ItemType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getItemType_TemplateItem(), ecorePackage.getEObject(), null, "templateItem", null, 1, 1, ItemType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItemType_Title(), theXMLTypePackage.getString(), "title", null, 1, 1, ItemType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItemType_Content(), theXMLTypePackage.getString(), "content", null, 1, 1, ItemType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getItemType_Intro(), theXMLTypePackage.getString(), "intro", null, 0, 1, ItemType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -544,6 +566,14 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		   new String[] {
 			 "name", "catalogType",
 			 "kind", "elementOnly"
+		   });		
+		addAnnotation
+		  (getCatalogType_TemplateItems(), 
+		   source, 
+		   new String[] {
+			 "kind", "element",
+			 "name", "templateItems",
+			 "namespace", "##targetNamespace"
 		   });		
 		addAnnotation
 		  (getCatalogType_Category(), 
@@ -648,6 +678,13 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 			 "namespace", "##targetNamespace"
 		   });		
 		addAnnotation
+		  (getCategoryType_Sequence(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "sequence"
+		   });		
+		addAnnotation
 		  (detailsTypeEClass, 
 		   source, 
 		   new String[] {
@@ -714,11 +751,11 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 			 "namespace", "##targetNamespace"
 		   });		
 		addAnnotation
-		  (getItemType_ReferenceToItem(), 
+		  (getItemType_TemplateItem(), 
 		   source, 
 		   new String[] {
 			 "kind", "element",
-			 "name", "referenceToItem",
+			 "name", "templateItem",
 			 "namespace", "##targetNamespace"
 		   });		
 		addAnnotation
