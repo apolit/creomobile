@@ -1,0 +1,16 @@
+<workflow>
+<component class="org.eclipse.xtend.typesystem.xsd.XMLReader">
+    <modelSlot value="model" />
+    <uri value="prayerbook.catalog" />
+    
+    <metaModel id="mm"
+      class="org.eclipse.xtend.typesystem.xsd.XSDMetaModel">
+      <schemaFile value="catalog.xsd" />
+    </metaModel>
+  </component>
+  <component class="org.eclipse.xpand2.Generator">
+    <metaModel idRef="mm" />
+    <expand value="CatalogMarkdown::Root FOR model" />
+    <outlet path="./" />
+  </component>
+</workflow>
