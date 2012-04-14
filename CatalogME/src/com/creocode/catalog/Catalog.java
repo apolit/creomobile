@@ -43,6 +43,7 @@ import javax.microedition.midlet.MIDlet;
 
 import com.creocode.catalog.generator.content.Category;
 import com.creocode.catalog.generator.content.Content;
+import com.creocode.catalog.generator.content.ContentBase;
 import com.creocode.catalog.generator.content.Item;
 import com.creocode.components.ITranslator;
 import com.creocode.components.i18n.Translator;
@@ -56,6 +57,8 @@ import com.creocode.components.options.Serializator;
  */
 public class Catalog extends MIDlet implements CommandListener, IParent {
 
+	private static final int LEVEL_ROOT_CATEGORY = 1;
+	private static final int LEVEL_LANGUAGE = 0;
 	List list;
 	Display display;
 	CatalogCanvas canvas;
@@ -84,6 +87,9 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	private ITranslator tr;
 	private int displayedCategoryIndex;
 
+	private int level = -1;
+	private Class contentClass;
+	
 	public Catalog() {
 
 		tr = new Translator();
@@ -106,10 +112,13 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 
 		display = Display.getDisplay(this);
 
+		display.setCurrent(mainMenuList);
+	}
+
+	private void setRootContent() {
 		categoriesIndex = content.categories;
 		itemsIndex = content.items;
-
-		display.setCurrent(mainMenuList);
+		
 	}
 
 	private void initMainMenuList() {
@@ -124,30 +133,63 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	}
 
 	public void showCategory(int selectedCategory) {
-
 		displayedCategoryIndex = selectedCategory;
-		displayedCategory = (Category) categoriesIndex
-				.elementAt(selectedCategory);
-
+		if(level == LEVEL_LANGUAGE){//level 0
+			setRootContent();
+			displayedCategory = (Category) categoriesIndex.elementAt(0);
+		} else if (level == LEVEL_ROOT_CATEGORY) {//level 1
+			createContentObjectAndInitCategory(selectedCategory);
+		} else {
+			displayedCategory = (Category) categoriesIndex.elementAt(selectedCategory);
+		}
 		subCategories = displayedCategory.subcategories;
 		items = displayedCategory.items;
 
 		String[] sArray = new String[subCategories.size() + items.size()];
+		fillCategories(sArray);
+		fillItems(sArray);
+		List tmpList = showList(tr.t("CATEGORIES"), sArray);
+		//tmpList.setSelectedIndex(displayedCategory.lastSelectedPosition, true);
 
+		display.setCurrent(tmpList);
+	}
+
+	private void createContentObjectAndInitCategory(int selectedCategory) {
+		try {
+			if(selectedCategory != 0){
+				contentClass = Class.forName("com.creocode.catalog.generator.content.Content"+selectedCategory);
+			}
+			Object created = contentClass.newInstance();
+			ContentBase content = (ContentBase) created;
+			content.initCategories();
+			displayedCategory = content.category;
+			categoriesIndex = content.categories;
+			itemsIndex = content.items;
+			subCategories = displayedCategory.subcategories;
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void fillItems(String[] sArray) {
+		int index;
+		for (int i = 0, k = subCategories.size(); i < items.size(); i++) {
+			index = ((Integer) items.elementAt(i)).intValue();
+			sArray[k + i] = ((Item) itemsIndex.elementAt(index)).title;
+		}
+	}
+
+	private void fillCategories(String[] sArray) {
 		int index;
 		for (int i = 0; i < subCategories.size(); i++) {
 			index = ((Integer) subCategories.elementAt(i)).intValue();
 			sArray[i] = ((Category) categoriesIndex.elementAt(index)).title;
 		}
-		for (int i = 0, k = subCategories.size(); i < items.size(); i++) {
-			index = ((Integer) items.elementAt(i)).intValue();
-			sArray[k + i] = ((Item) itemsIndex.elementAt(index)).title;
-		}
-
-		List tmpList = showList(tr.t("CATEGORIES"), sArray);
-		tmpList.setSelectedIndex(displayedCategory.lastSelectedPosition, true);
-
-		display.setCurrent(tmpList);
 	}
 
 	public List showList(String title, String[] sArray) {
@@ -189,6 +231,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 				String selected = mainMenuList.getString(position);
 
 				if (selected.equals(tr.t(Translator.CATEGORIES))) {
+					level = LEVEL_LANGUAGE;
 					showCategory(0);
 				} else if (selected.equals(tr.t(Translator.OPTIONS))) {
 					optionForm.fillOptions();
@@ -221,8 +264,9 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 				displayedCategory.lastSelectedPosition = position;
 
 				if (position < subCategories.size()) {
+					level ++;
 					showCategory(((Integer) displayedCategory.subcategories
-							.elementAt(position)).intValue());
+							.elementAt(position)).intValue());//level
 				} else {
 					int itemPosition = position - subCategories.size();
 					int itemIndex = ((Integer) displayedCategory.items
@@ -231,8 +275,9 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 				}
 			} else if (command.equals(backCommand) && screen.equals(list)) {
 				if (displayedCategory.parentId != -1) {
-					showCategory(displayedCategory.parentId);
-				} else {
+					level --;
+					showCategory(displayedCategory.parentId); //level
+ 				} else {
 					displayMain();
 				}
 			} else if (command.equals(backCommand) && screen.equals(form)) {

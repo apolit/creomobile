@@ -76,7 +76,7 @@ public class CatalogCanvas extends PrayerCanvas implements KeyListener {
 					double ratioX = screenWidth / imageWidth;
 					double ratioY = screenHeight / imageHeight;
 
-					double minRatio = Math.min(ratioX, ratioY);
+					double minRatio = ratioX > ratioY ? ratioY : ratioX;
 
 					int newWidth = (int) (imageWidth * minRatio);
 					int newHeight = (int) (imageHeight * minRatio);

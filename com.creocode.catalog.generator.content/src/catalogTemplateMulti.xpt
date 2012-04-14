@@ -1,0 +1,85 @@
+«REM»imports catalog.xsd«ENDREM»
+«IMPORT catalog»
+«EXTENSION org::eclipse::xtend::util::stdlib::counter»
+
+«DEFINE Root FOR catalog::CatalogType»
+   «FILE "Content.java"»
+      package com.creocode.catalog.generator.content;
+      import java.util.Vector;
+	  /**
+	  * Generated
+	  *@author «author»
+	  *
+	  **/
+      public class Content extends ContentBase {
+      
+      public final String title = "«title»";
+      public final String version = "«version»";
+      public final String author = "«author»";
+      public final String copyrights = "«copyrights»";
+      public final String vendor = "«vendor»"; 
+		
+    	public void initCategories(){
+    				//temp category & item
+    				
+    			items.addElement(new Item());
+   	  			Category topCategory = new Category();
+   	  			categories.addElement(topCategory);
+       			«EXPAND categoryTemplateLabel("topCategory",0) FOREACH category»
+    	}
+    	
+      }
+   «ENDFILE»
+   «EXPAND categoryTemplate("topCategory",0) FOREACH category»
+«ENDDEFINE»
+«DEFINE categoryTemplateLabel (String parentCategory, Integer parentId) FOR catalog::CategoryType»
+
+category = new Category();
+category.title = "«title»";
+category.parentId = «parentId»;
+categories.addElement(category);
+«parentCategory».addSubCategory(new Integer(«counterInc("category")»));
+    					
+«ENDDEFINE»
+«DEFINE categoryTemplate (String parentCategory, Integer parentId) FOR catalog::CategoryType»
+
+«FILE "Content"+counterInc("mainCategory")+".java"»
+      package com.creocode.catalog.generator.content;
+      import java.util.Vector;
+
+      public class Content«counterGet("mainCategory")» extends ContentBase {
+      
+
+public void initCategories(){
+category = new Category();
+category.title = "«title»";
+category.parentId = «parentId»;
+categories.addElement(category);
+						
+«LET counterReset("category") AS categoryId»
+					
+«FOREACH subCategory AS subcat»
+subCategory = new Category();
+subCategory.title = "«subcat.title»";
+subCategory.parentId = «categoryId»;
+
+«EXPAND itemTemplate("subCategory") FOREACH subcat.item»
+category.addSubCategory(new Integer(«counterInc("category")»));
+categories.addElement(subCategory);
+«ENDFOREACH»
+«ENDLET»
+«EXPAND itemTemplate("category") FOREACH item»
+}
+}
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE itemTemplate (String collection) FOR catalog::ItemType»
+   					item = new Item();
+					item.title = "«title»";
+					item.intro = "«intro.replaceAll('"', '\\\\"').replaceAll('\r', '').replaceAll('\n', '\\\\n')»";
+					item.content = "«content.replaceAll('"', '\\\\"').replaceAll('\r', '').replaceAll('\n', '\\\\n')»";
+					item.details = "«details.detail»";
+					items.addElement(item);
+					«collection».addItem(new Integer(«counterInc("item")»));
+«ENDDEFINE»
