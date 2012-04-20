@@ -5,7 +5,7 @@
 «DEFINE Root FOR catalog::CatalogType»
    «FILE "Content.java"»
       package com.creocode.catalog.generator.content;
-      import java.util.Vector;
+
 	  /**
 	  * Generated
 	  *@author «author»
@@ -24,6 +24,7 @@
     				
     			items.addElement(new Item());
    	  			Category topCategory = new Category();
+   	  			topCategory.parentId = -2;
    	  			categories.addElement(topCategory);
        			«EXPAND categoryTemplateLabel("topCategory",0) FOREACH category»
     	}
@@ -36,7 +37,6 @@
 
 category = new Category();
 category.title = "«title»";
-category.parentId = «parentId»;
 categories.addElement(category);
 «parentCategory».addSubCategory(new Integer(«counterInc("category")»));
     					
@@ -53,21 +53,25 @@ categories.addElement(category);
 public void initCategories(){
 category = new Category();
 category.title = "«title»";
-category.parentId = «parentId»;
+category.parentId = -1;
 categories.addElement(category);
 						
-«LET counterReset("category") AS categoryId»
-					
+//«counterReset("item")»
+//«counterReset("category")»					
 «FOREACH subCategory AS subcat»
+
+
 subCategory = new Category();
 subCategory.title = "«subcat.title»";
-subCategory.parentId = «categoryId»;
+subCategory.parentId = 0;
 
 «EXPAND itemTemplate("subCategory") FOREACH subcat.item»
 category.addSubCategory(new Integer(«counterInc("category")»));
 categories.addElement(subCategory);
+
 «ENDFOREACH»
-«ENDLET»
+
+
 «EXPAND itemTemplate("category") FOREACH item»
 }
 }
@@ -81,5 +85,6 @@ categories.addElement(subCategory);
 					item.content = "«content.replaceAll('"', '\\\\"').replaceAll('\r', '').replaceAll('\n', '\\\\n')»";
 					item.details = "«details.detail»";
 					items.addElement(item);
-					«collection».addItem(new Integer(«counterInc("item")»));
+					«collection».addItem(new Integer(«counterGet("item")»));
+					//«counterInc("item")»
 «ENDDEFINE»

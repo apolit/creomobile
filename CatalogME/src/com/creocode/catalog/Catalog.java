@@ -57,8 +57,9 @@ import com.creocode.components.options.Serializator;
  */
 public class Catalog extends MIDlet implements CommandListener, IParent {
 
-	private static final int LEVEL_ROOT_CATEGORY = 1;
-	private static final int LEVEL_LANGUAGE = 0;
+	private static final int ROOT_FILE = 0;
+	private static final int NON_ROOT_FILE = 1;
+	private static final int IN_NON_ROOT_FILE = 2;
 	List list;
 	Display display;
 	CatalogCanvas canvas;
@@ -132,14 +133,20 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 
 	}
 
-	public void showCategory(int selectedCategory) {
+	public void showCategory(int selectedCategory) {		
+		if(selectedCategory == -1){
+			level = ROOT_FILE;
+			selectedCategory = 0;
+		}
 		displayedCategoryIndex = selectedCategory;
-		if(level == LEVEL_LANGUAGE){//level 0
+		if(level == ROOT_FILE){
 			setRootContent();
 			displayedCategory = (Category) categoriesIndex.elementAt(0);
-		} else if (level == LEVEL_ROOT_CATEGORY) {//level 1
+			level = NON_ROOT_FILE;
+		} else if (level == NON_ROOT_FILE) {
 			createContentObjectAndInitCategory(selectedCategory);
-		} else {
+			level = IN_NON_ROOT_FILE;
+		} else if (level == IN_NON_ROOT_FILE){
 			displayedCategory = (Category) categoriesIndex.elementAt(selectedCategory);
 		}
 		subCategories = displayedCategory.subcategories;
@@ -231,7 +238,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 				String selected = mainMenuList.getString(position);
 
 				if (selected.equals(tr.t(Translator.CATEGORIES))) {
-					level = LEVEL_LANGUAGE;
+					level = ROOT_FILE;
 					showCategory(0);
 				} else if (selected.equals(tr.t(Translator.OPTIONS))) {
 					optionForm.fillOptions();
@@ -264,7 +271,6 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 				displayedCategory.lastSelectedPosition = position;
 
 				if (position < subCategories.size()) {
-					level ++;
 					showCategory(((Integer) displayedCategory.subcategories
 							.elementAt(position)).intValue());//level
 				} else {
@@ -274,8 +280,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 					showItem((Item) itemsIndex.elementAt(itemIndex));
 				}
 			} else if (command.equals(backCommand) && screen.equals(list)) {
-				if (displayedCategory.parentId != -1) {
-					level --;
+				if (displayedCategory.parentId != -2) {					
 					showCategory(displayedCategory.parentId); //level
  				} else {
 					displayMain();
