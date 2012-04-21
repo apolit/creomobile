@@ -57,16 +57,21 @@ import com.creocode.components.options.Serializator;
  */
 public class Catalog extends MIDlet implements CommandListener, IParent {
 
+	private static final int CATEGORY_INDEX_TOP = 0;
+	private static final int PARENT_CATEGORY_ROOT_FILE = -1;
+	private static final int PARENT_CATEGORY_MAIN_SCREEN = -2;
 	private static final int ROOT_FILE = 0;
 	private static final int NON_ROOT_FILE = 1;
 	private static final int IN_NON_ROOT_FILE = 2;
+
+	final int ID_CANVAS = 1;
+
 	List list;
 	Display display;
 	CatalogCanvas canvas;
 	Command selectCommand;
 	Command backCommand;
 	Command backCommandCanvas;
-
 
 	OptionsForm optionForm;
 	Serializator serializator;
@@ -84,13 +89,12 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 
 	Form form;
 
-	final int ID_CANVAS = 1;
 	private ITranslator tr;
 	private int lastSelectedCategoryIndex;
 
-	private int level = -1;
+	private int level;
 	private Class contentClass;
-	
+
 	public Catalog() {
 
 		tr = new Translator();
@@ -99,7 +103,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 
 		initMainMenuList();
 		content.initCategories();
-		
+
 		backCommand = new Command(tr.t(Translator.BACK), Command.BACK, 0);
 		backCommandCanvas = new Command(tr.t(Translator.BACK), Command.BACK, 0);
 
@@ -119,7 +123,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	private void setRootContent() {
 		categoriesIndex = content.categories;
 		itemsIndex = content.items;
-		
+
 	}
 
 	private void initMainMenuList() {
@@ -133,22 +137,23 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 
 	}
 
-	public void showCategory(int selectedCategory) {		
-		if(selectedCategory == -1){
+	public void showCategory(int selectedCategory) {
+		if (selectedCategory == PARENT_CATEGORY_ROOT_FILE) {
 			level = ROOT_FILE;
-			selectedCategory = 0;
-		}		
-		if(level == ROOT_FILE){
+			selectedCategory = CATEGORY_INDEX_TOP;
+		}
+		if (level == ROOT_FILE) {
 			setRootContent();
 			displayedCategory = (Category) categoriesIndex.elementAt(0);
 			level = NON_ROOT_FILE;
-			lastSelectedCategoryIndex = 0;
+			lastSelectedCategoryIndex = CATEGORY_INDEX_TOP;
 		} else if (level == NON_ROOT_FILE) {
 			createContentObjectAndInitCategory(selectedCategory);
 			level = IN_NON_ROOT_FILE;
-			lastSelectedCategoryIndex = 0;
-		} else if (level == IN_NON_ROOT_FILE){
-			displayedCategory = (Category) categoriesIndex.elementAt(selectedCategory);
+			lastSelectedCategoryIndex = CATEGORY_INDEX_TOP;
+		} else if (level == IN_NON_ROOT_FILE) {
+			displayedCategory = (Category) categoriesIndex
+					.elementAt(selectedCategory);
 			lastSelectedCategoryIndex = selectedCategory;
 		}
 		subCategories = displayedCategory.subcategories;
@@ -158,15 +163,17 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 		fillCategories(sArray);
 		fillItems(sArray);
 		List tmpList = showList(tr.t("CATEGORIES"), sArray);
-		//tmpList.setSelectedIndex(displayedCategory.lastSelectedPosition, true);
+		tmpList.setSelectedIndex(displayedCategory.lastSelectedPosition, true);
 
 		display.setCurrent(tmpList);
 	}
 
 	private void createContentObjectAndInitCategory(int selectedCategory) {
 		try {
-			if(selectedCategory != 0){
-				contentClass = Class.forName("com.creocode.catalog.generator.content.Content"+selectedCategory);
+			if (selectedCategory != 0) {
+				contentClass = Class
+						.forName("com.creocode.catalog.generator.content.Content"
+								+ selectedCategory);
 			}
 			Object created = contentClass.newInstance();
 			ContentBase content = (ContentBase) created;
@@ -175,7 +182,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 			categoriesIndex = content.categories;
 			itemsIndex = content.items;
 			subCategories = displayedCategory.subcategories;
-			
+
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
@@ -202,8 +209,6 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	}
 
 	public List showList(String title, String[] sArray) {
-
-		// empty list for reset
 		if (list == null) {
 			list = new List(title, Choice.IMPLICIT, sArray, null);
 			list.addCommand(backCommand);
@@ -215,7 +220,6 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 				list.delete(0);
 			}
 			for (int i = 0; i < sArray.length; i++) {
-				// System.out.println((String) serializator.elementAt(i));
 				list.append(sArray[i], null);
 			}
 		}
@@ -235,7 +239,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	public void commandAction(Command command, Displayable screen) {
 		try {
 			if (screen.equals(mainMenuList)) {
-				
+
 				int position = mainMenuList.getSelectedIndex();
 				String selected = mainMenuList.getString(position);
 
@@ -246,22 +250,10 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 					optionForm.fillOptions();
 					display.setCurrent(optionForm);
 				} else if (selected.equals(tr.t(Translator.HELP))) {
-					form = new Form(tr.t(Translator.HELP));
-					form.setCommandListener(this);
-					form.addCommand(backCommand);
-					form.append(tr.t(Translator.HELP_CONTENT));
+					createHelpForm();
 					display.setCurrent(form);
 				} else if (selected.equals(tr.t(Translator.ABOUT))) {
-					form = new Form(tr.t(Translator.ABOUT));
-					form.setCommandListener(this);
-					form.addCommand(backCommand);
-					StringBuffer sb = new StringBuffer();
-					sb.append(content.title).append(" by ").append(content.vendor).append('\n');
-					sb.append("Version: ").append(content.version);
-					sb.append("\nContent copyrights:").append(content.copyrights);
-					sb.append("\n\nCreated using Creomobile Framework");
-					form.append(sb.toString());
-					
+					createAboutForm();
 					display.setCurrent(form);
 				} else if (selected.equals(tr.t(Translator.EXIT))) {
 					exitMIDlet();
@@ -274,7 +266,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 
 				if (position < subCategories.size()) {
 					showCategory(((Integer) displayedCategory.subcategories
-							.elementAt(position)).intValue());//level
+							.elementAt(position)).intValue());// level
 				} else {
 					int itemPosition = position - subCategories.size();
 					int itemIndex = ((Integer) displayedCategory.items
@@ -282,9 +274,9 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 					showItem((Item) itemsIndex.elementAt(itemIndex));
 				}
 			} else if (command.equals(backCommand) && screen.equals(list)) {
-				if (displayedCategory.parentId != -2) {					
-					showCategory(displayedCategory.parentId); //level
- 				} else {
+				if (displayedCategory.parentId != PARENT_CATEGORY_MAIN_SCREEN) {
+					showCategory(displayedCategory.parentId);
+				} else {
 					displayMain();
 				}
 			} else if (command.equals(backCommand) && screen.equals(form)) {
@@ -296,6 +288,26 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
+	}
+
+	private void createAboutForm() {
+		form = new Form(tr.t(Translator.ABOUT));
+		form.setCommandListener(this);
+		form.addCommand(backCommand);
+		StringBuffer sb = new StringBuffer();
+		sb.append(content.title).append(" by ").append(content.vendor)
+				.append('\n');
+		sb.append("Version: ").append(content.version);
+		sb.append("\nContent copyrights:").append(content.copyrights);
+		sb.append("\n\nCreated using Creomobile Framework");
+		form.append(sb.toString());
+	}
+
+	private void createHelpForm() {
+		form = new Form(tr.t(Translator.HELP));
+		form.setCommandListener(this);
+		form.addCommand(backCommand);
+		form.append(tr.t(Translator.HELP_CONTENT));
 	}
 
 	public void exitMIDlet() {
@@ -319,8 +331,12 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	}
 
 	private void showItem(Item item) throws Exception {
-
 		String details = item.details;
+		Vector detailsVector = splitDetailsToVector(details);
+		showCanvas(item.title, item.content, item.intro, detailsVector);
+	}
+
+	private Vector splitDetailsToVector(String details) {
 		Vector detailsVector = new Vector();
 		if (!details.equals("")) {
 			details = details.substring(1, details.length() - 1);
@@ -332,14 +348,10 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 					first = i + 2;
 				}
 			}
-
 			detailsVector
 					.addElement(details.substring(first, details.length()));
-			// for (int i = 0; i < detailsVector.size(); i++) {
-			// System.out.println(detailsVector.elementAt(i));
-			// }
 		}
-		showCanvas(item.title, item.content, item.intro, detailsVector);
+		return detailsVector;
 	}
 
 	public void displayMain(IConfigurable configurable) {
