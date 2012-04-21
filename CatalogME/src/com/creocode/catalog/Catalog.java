@@ -86,7 +86,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 
 	final int ID_CANVAS = 1;
 	private ITranslator tr;
-	private int displayedCategoryIndex;
+	private int lastSelectedCategoryIndex;
 
 	private int level = -1;
 	private Class contentClass;
@@ -137,17 +137,19 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 		if(selectedCategory == -1){
 			level = ROOT_FILE;
 			selectedCategory = 0;
-		}
-		displayedCategoryIndex = selectedCategory;
+		}		
 		if(level == ROOT_FILE){
 			setRootContent();
 			displayedCategory = (Category) categoriesIndex.elementAt(0);
 			level = NON_ROOT_FILE;
+			lastSelectedCategoryIndex = 0;
 		} else if (level == NON_ROOT_FILE) {
 			createContentObjectAndInitCategory(selectedCategory);
 			level = IN_NON_ROOT_FILE;
+			lastSelectedCategoryIndex = 0;
 		} else if (level == IN_NON_ROOT_FILE){
 			displayedCategory = (Category) categoriesIndex.elementAt(selectedCategory);
+			lastSelectedCategoryIndex = selectedCategory;
 		}
 		subCategories = displayedCategory.subcategories;
 		items = displayedCategory.items;
@@ -289,7 +291,7 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 				displayMain();
 			} else if (command.equals(backCommandCanvas)
 					&& screen.equals(canvas)) {
-				showCategory(displayedCategoryIndex);
+				showCategory(lastSelectedCategoryIndex);
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
