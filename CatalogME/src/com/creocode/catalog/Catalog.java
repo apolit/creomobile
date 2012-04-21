@@ -57,7 +57,7 @@ import com.creocode.components.options.Serializator;
  */
 public class Catalog extends MIDlet implements CommandListener, IParent {
 
-	private static final int CATEGORY_INDEX_TOP = 0;
+	private static final int PARENT_CATEGORY_TOP = 0;
 	private static final int PARENT_CATEGORY_ROOT_FILE = -1;
 	private static final int PARENT_CATEGORY_MAIN_SCREEN = -2;
 	private static final int ROOT_FILE = 0;
@@ -140,17 +140,17 @@ public class Catalog extends MIDlet implements CommandListener, IParent {
 	public void showCategory(int selectedCategory) {
 		if (selectedCategory == PARENT_CATEGORY_ROOT_FILE) {
 			level = ROOT_FILE;
-			selectedCategory = CATEGORY_INDEX_TOP;
+			selectedCategory = PARENT_CATEGORY_TOP;
 		}
 		if (level == ROOT_FILE) {
 			setRootContent();
 			displayedCategory = (Category) categoriesIndex.elementAt(0);
 			level = NON_ROOT_FILE;
-			lastSelectedCategoryIndex = CATEGORY_INDEX_TOP;
+			lastSelectedCategoryIndex = PARENT_CATEGORY_TOP;
 		} else if (level == NON_ROOT_FILE) {
 			createContentObjectAndInitCategory(selectedCategory);
 			level = IN_NON_ROOT_FILE;
-			lastSelectedCategoryIndex = CATEGORY_INDEX_TOP;
+			lastSelectedCategoryIndex = PARENT_CATEGORY_TOP;
 		} else if (level == IN_NON_ROOT_FILE) {
 			displayedCategory = (Category) categoriesIndex
 					.elementAt(selectedCategory);
