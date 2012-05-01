@@ -30,37 +30,37 @@
   <!--<property file="workflow.properties"/>-->
   <component class="org.eclipse.xtend.typesystem.xsd.XMLReader">
     <modelSlot value="model" />
-    <uri value="catalog_tmp.xml" />
+    <uri value="${model.path}" />
     <metaModel id="mm"
       class="org.eclipse.xtend.typesystem.xsd.XSDMetaModel">
-      <schemaFile value="resources/catalog.xsd" />
+      <schemaFile value="catalog.xsd" />
     </metaModel>
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="CatalogAndroid::tpl::strings_xml::Root FOR model" />
-    <outlet path="CatalogAndroid/res/values" />
+    <expand value="strings_xml::Root FOR model" />
+    <outlet path="../CatalogAndroid/res/values" />
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="CatalogAndroid::tpl::TemplateActivity_java::Root FOR model" />
-    <outlet path="CatalogAndroid/src/com/creocode/catalog/android" />
+    <expand value="TemplateActivity_java::Root FOR model" />
+    <outlet path="../CatalogAndroid/src/com/creocode/catalog/android" />
   </component>
     <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="CatalogAndroid::tpl::AndroidManifest_xml::Root FOR model" />
-    <outlet path="CatalogAndroid" />
+    <expand value="AndroidManifest_xml::Root FOR model" />
+    <outlet path="../CatalogAndroid" />
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="CatalogAndroid::tpl::ant_properties::Root FOR model" />
-    <outlet path="CatalogAndroid" />
+    <expand value="=ant_properties::Root FOR model" />
+    <outlet path="../CatalogAndroid" />
   </component>
 
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="CatalogAndroid::tpl::Catalog_java::Root FOR model" />
-    <outlet path="CatalogAndroid/src/com/creocode/catalog/generator/content" />
+    <expand value="Catalog_java::Root FOR model" />
+    <outlet path="../CatalogAndroid/src/com/creocode/catalog/generator/content" />
   
     <beautifier class="org.eclipse.xpand2.output.JavaBeautifier"/>
     <fileEncoding value="UTF-8"/>

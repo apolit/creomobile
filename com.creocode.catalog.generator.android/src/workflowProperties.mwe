@@ -1,16 +1,16 @@
 <workflow>
   <component class="org.eclipse.xtend.typesystem.xsd.XMLReader">
     <modelSlot value="model" />
-    <uri value="catalog_tmp.xml" />
+    <uri value="${model.path}" />
     <metaModel id="mm"
       class="org.eclipse.xtend.typesystem.xsd.XSDMetaModel">
-      <schemaFile value="resources/catalog.xsd" />
+      <schemaFile value="catalog.xsd" />
     </metaModel>
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="CatalogAndroid::tpl::workflow_properties::Root FOR model" />
-    <outlet path="CatalogAndroid" />
+    <expand value="workflow_properties::Root FOR model" />
+    <outlet path="../CatalogAndroid" />
   </component>
 
 </workflow>
