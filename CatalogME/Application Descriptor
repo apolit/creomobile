@@ -2,7 +2,7 @@ MIDlet-1: Subcategories,/catalog,com.creocode.catalog.Catalog
 Mot-MIDlet-Full-Screen: False
 MIDlet-Jar-URL: subcategories.jar
 MIDlet-Icon: /catalog
-MicroEdition-Configuration: CLDC-1.0
+MicroEdition-Configuration: CLDC-1.1
 MIDlet-Version: 1.0
 MIDlet-Name: subcategories
 MIDlet-Vendor: creocode.com
