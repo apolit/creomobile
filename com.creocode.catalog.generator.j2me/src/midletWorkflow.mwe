@@ -1,25 +1,25 @@
 <workflow>
   <component class="org.eclipse.xtend.typesystem.xsd.XMLReader">
     <modelSlot value="model" />
-    <uri value="catalog_tmp.xml" />
+    <uri value="${model.path}" />
     <metaModel id="mm"
       class="org.eclipse.xtend.typesystem.xsd.XSDMetaModel">
-      <schemaFile value="resources/catalog.xsd" />
+      <schemaFile value="catalog.xsd" />
     </metaModel>
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="CatalogME::descriptorTemplate::Root FOR model" />
-    <outlet path="CatalogME" />
+    <expand value="../CatalogME::descriptorTemplate::Root FOR model" />
+    <outlet path="../CatalogME" />
   </component>
     <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="CatalogME::buildTemplate::Root FOR model" />
-    <outlet path="CatalogME/mtj-build/" />
+    <expand value="../CatalogME::buildTemplate::Root FOR model" />
+    <outlet path="../CatalogME/mtj-build/" />
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="CatalogME::symbolsTemplate::Root FOR model" />
-    <outlet path="CatalogME/mtj-build/" />
+    <expand value="../CatalogME::symbolsTemplate::Root FOR model" />
+    <outlet path="../CatalogME/mtj-build/" />
   </component>
 </workflow>
