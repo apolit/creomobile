@@ -9,17 +9,17 @@
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="../CatalogME::descriptorTemplate::Root FOR model" />
+    <expand value="descriptorTemplate::Root FOR model" />
     <outlet path="../CatalogME" />
   </component>
     <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="../CatalogME::buildTemplate::Root FOR model" />
+    <expand value="buildTemplate::Root FOR model" />
     <outlet path="../CatalogME/mtj-build/" />
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="../CatalogME::symbolsTemplate::Root FOR model" />
+    <expand value="symbolsTemplate::Root FOR model" />
     <outlet path="../CatalogME/mtj-build/" />
   </component>
 </workflow>
