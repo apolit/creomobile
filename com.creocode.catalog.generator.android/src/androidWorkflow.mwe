@@ -53,7 +53,7 @@
   </component>
   <component class="org.eclipse.xpand2.Generator">
     <metaModel idRef="mm" />
-    <expand value="=ant_properties::Root FOR model" />
+    <expand value="ant_properties::Root FOR model" />
     <outlet path="../CatalogAndroid" />
   </component>
 
