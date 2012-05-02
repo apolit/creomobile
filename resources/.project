@@ -5,13 +5,7 @@
 	<projects>
 	</projects>
 	<buildSpec>
-		<buildCommand>
-			<name>org.eclipse.xtend.shared.ui.xtendBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
 	</buildSpec>
 	<natures>
-		<nature>org.eclipse.xtend.shared.ui.xtendXPandNature</nature>
 	</natures>
 </projectDescription>
