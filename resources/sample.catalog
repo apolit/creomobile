@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<catalog:catalog xmlns:catalog="http://www.creocode.com/catalog" author="Your Name 2" copyrights="2011 Creative Commons BY-SA" icon="default.png" id="polish_app" language="polish" title="Application Name" version="1.0">
+<catalog:catalog xmlns:catalog="http://www.creocode.com/catalog" author="John Author" copyrights="2011 Creative Commons BY-SA" icon="default.png" id="sampleApplication" language="english" title="Sample Application" vendor="Creocode.com" version="1.0" versionCode="1">
   <catalog:category>
-    <catalog:title>First category ąś</catalog:title>
+    <catalog:title>First category</catalog:title>
     <catalog:item>
-      <catalog:title>First Item ąśd</catalog:title>
+      <catalog:title>First item</catalog:title>
       <catalog:content>Lorem ipsum</catalog:content>
-      <catalog:intro> Intro jakies 2</catalog:intro>
+      <catalog:intro>Introduction to first</catalog:intro>
     </catalog:item>
     <catalog:item>
-      <catalog:title>Our Father</catalog:title>
+      <catalog:title>Second item</catalog:title>
       <catalog:content>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam pellentesque commodo venenatis. Praesent felis nisl, consequat id pellentesque nec, lobortis vitae tellus. Nam consectetur dictum nunc. Fusce ut tellus eros. In hac habitasse platea dictumst. Nunc vitae lorem lacus. Vivamus ut ligula ut arcu fermentum ultrices. Aliquam et tortor odio, at dapibus orci. Aliquam erat volutpat. Aliquam posuere ligula sit amet enim tempus facilisis. Quisque ultrices magna non odio consequat in tristique urna egestas. Proin eu metus mauris, non malesuada leo. Maecenas fringilla, magna eu dictum euismod, ligula arcu semper tortor, ac rhoncus lacus risus id ligula. Maecenas mauris ligula, feugiat a consectetur sit amet, vehicula quis enim. Sed in commodo enim. Quisque nec magna ante, et luctus dolor.
 
 Mauris orci nibh, blandit non pretium vel, imperdiet nec purus. Suspendisse venenatis tempus imperdiet. Nullam tempor iaculis elit, ut euismod nulla ultricies at. Pellentesque laoreet odio sed quam rhoncus suscipit. Nulla facilisi. Phasellus at dolor id sem dapibus condimentum sit amet in risus. Morbi vitae neque eros. Morbi mauris arcu, sagittis vitae sodales sit amet, porta ut orci. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec ligula lectus, mollis ut lobortis a, tincidunt sit amet. 
 
 Costam </catalog:content>
-      <catalog:intro>Intro for our father</catalog:intro>
+      <catalog:intro>Introduction to second</catalog:intro>
       <catalog:details>
         <catalog:detail>cat_smile.jpg</catalog:detail>
         <catalog:detail>smile.jpg</catalog:detail>
@@ -23,16 +23,12 @@ Costam </catalog:content>
   </catalog:category>
   <catalog:category>
     <catalog:title>Second category</catalog:title>
-    <catalog:item>
-      <catalog:title>Third item</catalog:title>
-      <catalog:content>Lorem ipsum</catalog:content>
-    </catalog:item>
-    <catalog:item>
-      <catalog:title>n/a</catalog:title>
-      <catalog:intro>n/a</catalog:intro>
-    </catalog:item>
-  </catalog:category>
-  <catalog:category>
-    <catalog:title>Third</catalog:title>
+    <catalog:subCategory>
+      <catalog:title>Third</catalog:title>
+      <catalog:item>
+        <catalog:title>Third item</catalog:title>
+        <catalog:content>Lorem ipsum</catalog:content>
+      </catalog:item>
+    </catalog:subCategory>
   </catalog:category>
 </catalog:catalog>
