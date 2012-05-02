@@ -1,9 +1,9 @@
-MIDlet-1: Subcategories,/catalog,com.creocode.catalog.Catalog
+MIDlet-1: Sample Application,/default.png,com.creocode.catalog.Catalog
 Mot-MIDlet-Full-Screen: False
-MIDlet-Jar-URL: subcategories.jar
-MIDlet-Icon: /catalog
-MicroEdition-Configuration: CLDC-1.1
+MIDlet-Jar-URL: sampleApplication.jar
+MIDlet-Icon: /default.png
+MicroEdition-Configuration: CLDC-1.0
 MIDlet-Version: 1.0
-MIDlet-Name: subcategories
-MIDlet-Vendor: creocode.com
+MIDlet-Name: Sample Application
+MIDlet-Vendor: Creocode.com
 MicroEdition-Profile: MIDP-1.0
