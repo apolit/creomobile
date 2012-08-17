@@ -61,40 +61,66 @@
     </target>
 -->
     <!-- Code Generation: compile resources (aapt -> R.java), aidl, renderscript -->
+<!-- Code Generation: compile resources (aapt -> R.java), aidl, renderscript -->
     <target name="-code-gen">
+        <!-- always merge manifest -->
+        <mergemanifest
+                appManifest="${manifest.abs.file}"
+                outManifest="${out.manifest.abs.file}"
+                enabled="${manifestmerger.enabled}">
+            <library refid="project.library.manifest.file.path" />
+        </mergemanifest>
+
         <do-only-if-manifest-hasCode
                 elseText="hasCode = false. Skipping aidl/renderscript/R.java">
-            <echo>----------</echo>
-            <echo>Handling aidl files...</echo>
-            <aidl executable="${aidl}" framework="${android.aidl}"
-                    genFolder="${gen.absolute.dir}">
+            <echo level="info">Handling aidl files...</echo>
+            <aidl executable="${aidl}"
+                    framework="${project.target.framework.aidl}"
+                    libraryBinAidlFolderPathRefid="project.library.bin.aidl.folder.path"
+                    genFolder="${gen.absolute.dir}"
+                    aidlOutFolder="${out.aidl.absolute.dir}">
                 <source path="${source.absolute.dir}"/>
             </aidl>
 
             <!-- renderscript generates resources so it must be called before aapt -->
-            <echo>----------</echo>
-            <echo>Handling RenderScript files...</echo>
+            <echo level="info">----------</echo>
+            <echo level="info">Handling RenderScript files...</echo>
             <renderscript executable="${renderscript}"
-                    framework="${android.rs}"
+                    includePathRefId="android.renderscript.include.path"
                     genFolder="${gen.absolute.dir}"
-                    resFolder="${resource.absolute.dir}/raw"
-                    targetApi="${target.api}">
+                    resFolder="${out.res.absolute.dir}/raw"
+                    targetApi="${project.minSdkVersion}"
+                    optLevel="${renderscript.opt.level}"
+                    buildType="${build.is.packaging.debug}"
+                    previousBuildType="${build.last.is.packaging.debug}">
                 <source path="${source.absolute.dir}"/>
             </renderscript>
 
-            <echo>----------</echo>
-            <echo>Handling Resources...</echo>
+            <echo level="info">----------</echo>
+            <echo level="info">Handling Resources...</echo>
             <aapt executable="${aapt}"
                     command="package"
                     verbose="${verbose}"
                     manifest="tpl/AndroidManifest.xml"
-                    androidjar="${android.jar}"
+                    androidjar="${project.target.android.jar}"
                     rfolder="${gen.absolute.dir}"
                     nonConstantId="${android.library}"
-                    projectLibrariesResName="project.libraries.res"
-                    projectLibrariesPackageName="project.libraries.package">
+                    libraryResFolderPathRefid="project.library.res.folder.path"
+                    libraryPackagesRefid="project.library.packages"
+                    ignoreAssets="${aapt.ignore.assets}"
+                    proguardFile="${out.absolute.dir}/proguard.txt">
+                <res path="${out.res.absolute.dir}" />
                 <res path="${resource.absolute.dir}" />
             </aapt>
+
+            <echo level="info">----------</echo>
+            <echo level="info">Handling BuildConfig class...</echo>
+            <buildconfig
+                    genFolder="${gen.absolute.dir}"
+                    package="${project.app.package}"
+                    buildType="${build.is.packaging.debug}"
+                    previousBuildType="${build.last.is.packaging.debug}"/>
+
         </do-only-if-manifest-hasCode>
     </target>
     <!-- Import the actual build file.
