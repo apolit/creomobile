@@ -1,4 +1,4 @@
-### Setup Eclipse environment
+## Setting up the Eclipse environment
 * Download OneInstall Agent http://www.poweredbypulse.com/oneinstall_client.php
 * Download and install Java WTK 2.5.1: http://www.oracle.com/technetwork/java/javasebusiness/downloads/java-archive-downloads-javame-419430.html#j2me_wireless_toolkit-2_5_1-zh-oth-JPR (sun_java_wireless_toolkit_2_5_1-ml.exe for windows and .bin for Linux)
 * Save as local file and run with OneInstall Agent: https://github.com/downloads/apolit/creomobile/CreocodeEclipse_3.7.oneinstall
@@ -10,6 +10,8 @@
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/03_android_sdk_eclipse.png)
 
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/03_android_sdk_manager.png)
+
+## Preparing workspace
 
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/04_import_menu.png)
 
@@ -23,15 +25,15 @@
 
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/09_git_clone_projects.png)
 
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/10_wtk_install.png)
 
-**Download J2ME dependencies:**
+## Download J2ME dependencies if you want to generate a Midlet
+
+![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/10_wtk_install.png)
 
 * Download Antenna from: http://sourceforge.net/projects/antenna/files/antenna/Antenna%201.2.1-beta/antenna-bin-1.2.1-beta.jar/download
 * Download and unpack Proguard: http://sourceforge.net/projects/proguard/files/proguard/4.4/proguard4.4.zip/download
 
-
-**Set paths:**
+Set paths:
 
 CatalogME/mtj-build.properties:
 <pre>
@@ -55,7 +57,11 @@ sdk.dir=C\:\\Users\\USERNAME\\android-sdks
 
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/13_manage_finish.png)
 
-![](https://github.com/apolit/creomobile/blob/master/resources/screenshots/workflow-run1.png)
+## Finally, run the generators:
 
-![](https://github.com/apolit/creomobile/blob/master/resources/screenshots/workflow-run2.png)
+![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/workflow-run1.png)
+
+![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/workflow-run2.png)
+
+<pre> -pmodel.path=&lt;here goes the path to the xml from Catalog Editor&gt; </pre>
 
