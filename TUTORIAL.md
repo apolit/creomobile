@@ -55,33 +55,7 @@ sdk.dir=C\:\\Users\\USERNAME\\android-sdks
 
 ![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/13_manage_finish.png)
 
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/14_export_project.png)
+![](https://github.com/apolit/creomobile/blob/master/resources/screenshots/workflow-run1.png)
 
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/15_export_filesystem.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/16_export_select.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/17_0_midletgenerator_run.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/17_midletgenerator_runas.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/18_working_sources.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/19_plugins_addrequired.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/20_midletgen_console.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/21_0_new_project.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/21_1_new_project2.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/21_editor_runas.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/22_new_catalog.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/23_new_catalog_model.png)
-
-![](https://github.com/apolit/creomobile/raw/master/resources/screenshots/24_example.png)
-
-Click with right mouse button on catalog.catalog and choose "Generate".
+![](https://github.com/apolit/creomobile/blob/master/resources/screenshots/workflow-run2.png)
 
