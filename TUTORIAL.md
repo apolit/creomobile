@@ -65,3 +65,16 @@ sdk.dir=C\:\\Users\\USERNAME\\android-sdks
 
 <pre> -pmodel.path=&lt;here goes the path to the xml from Catalog Editor&gt; </pre>
 
+### Generators summary
+* The Android (run those three): 
+  * com.creocode.catalog.generator.content / src / catalogWorkflowSingle.mwe
+  * com.creocode.catalog.generator.android / src / androidWorkflow.mwe
+  * com.creocode.catalog.generator.android / src / workflowProperties.mwe 
+* The J2ME:
+  * com.creocode.catalog.generator.content / src / catalogWorkflowSingle.mwe
+  * com.creocode.catalog.generator.j2me / src / midletWorkflow.mwe
+* The HTML5/jqTouch:
+  * com.creocode.catalog.generator.html / src / CatalogHtmlWorkflow.mwe
+* The Markdown:
+  * com.creocode.catalog.generator.text / src / CatalogMarkdownWorkflow.mwe
+
