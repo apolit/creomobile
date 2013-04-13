@@ -42,11 +42,15 @@ import com.creocode.catalog.generator.content.Content;
  */
 public class AppContext {
 
+	private static final int TOP_CATEGORY = 0;
+
 	public static final String PREFS_NAME = "PrayerbookPrefs";
 
 	public static final String BACKGROUND_LIGHT_PREF = "backgroundLight";
 
 	public static final String FONT_SIZE_PREF = "fontSize";
+
+	public static final String CATEGORY = "category";
 
 	public static final int FONT_SIZE_SMALL = 15;
 	public static final int FONT_SIZE_MEDIUM = 18;
@@ -67,6 +71,8 @@ public class AppContext {
 
 	private int fontSize;
 
+	private int category;
+
 	private AppContext() {
 		content = new Content();
 		content.initCategories();
@@ -82,10 +88,6 @@ public class AppContext {
 	public Content getContent() {
 		return content;
 	}
-
-	// public void setBackgroundLight(boolean backgroundLight) {
-	// this.backgroundLight = backgroundLight;
-	// }
 
 	public boolean isBackgroundLight() {
 		return backgroundLight;
@@ -111,18 +113,19 @@ public class AppContext {
 		return fontSize;
 	}
 
-	// public void setFontSize(int size) {
-	// fontSize = size;
-	// }
+	public int getCategory() {
+		return category;
+	}
 
 	public void loadPrefs(Context context) {
 		SharedPreferences settings = context.getSharedPreferences(
 				AppContext.PREFS_NAME, 0);
 		backgroundLight = settings.getBoolean(BACKGROUND_LIGHT_PREF, false);
 		fontSize = settings.getInt(FONT_SIZE_PREF, FONT_SIZE_DEFAULT);
+		category = settings.getInt(CATEGORY, TOP_CATEGORY);
 	}
 
-	public void savePrefs(Context context, boolean backgroundLight) {
+	public void saveBackground(Context context, boolean backgroundLight) {
 		this.backgroundLight = backgroundLight;
 		Editor editor = context.getSharedPreferences(AppContext.PREFS_NAME, 0)
 				.edit();
@@ -132,10 +135,19 @@ public class AppContext {
 
 	public void savePrefs(Context context, int fontSize) {
 		this.fontSize = fontSize;
+		savePreference(context, FONT_SIZE_PREF, fontSize);
+	}
+
+	private void savePreference(Context context, String preferenceName,
+			int newValue) {
 		Editor editor = context.getSharedPreferences(AppContext.PREFS_NAME, 0)
 				.edit();
-		editor.putInt(FONT_SIZE_PREF, fontSize);
+		editor.putInt(preferenceName, newValue);
 		editor.commit();
 	}
 
+	public void saveCategory(Context context, int category) {
+		this.category = category;
+		savePreference(context, CATEGORY, category);
+	}
 }

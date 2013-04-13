@@ -28,6 +28,7 @@ package com.creocode.catalog.android;
 
 import java.util.Vector;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.ListActivity;
 import android.content.Intent;
@@ -35,14 +36,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.Spanned;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.creocode.catalog.R;
 import com.creocode.catalog.generator.content.Category;
@@ -69,12 +68,12 @@ public class CategoriesActivity extends ListActivity {
 
 	private Category displayedCategory;
 
+	private final AppContext context;
+
 	public CategoriesActivity() {
 		super();
-		AppContext context = AppContext.getInstance();
+		context = AppContext.getInstance();
 		content = context.getContent();
-		// context.loadPrefs(this);
-
 	}
 
 	/** Called when the activity is first created. */
@@ -87,26 +86,23 @@ public class CategoriesActivity extends ListActivity {
 
 		Bundle bundle = getIntent().getExtras();
 
-		int selectedCategory = 0;
+		context.loadPrefs(this);
+
+		int selectedCategory = context.getCategory();
 		if (bundle != null) {
 			selectedCategory = bundle.getInt("selectedCategory");
 		}
 
 		showCategory(selectedCategory);
 
-		AppContext.getInstance().loadPrefs(this);
-
 		Eula.show(this);
-		Toast toast = Toast.makeText(getApplicationContext(), R.string.pop_up,
-				Toast.LENGTH_SHORT);
-		toast.setDuration(7000);
-		toast.setGravity(Gravity.TOP | Gravity.CENTER, 0, 0);
-		toast.show();
-
-		// showDialog(DIALOG_FIRST_TIME);
 	}
 
 	private void showCategory(int selectedCategory) {
+		int lastSubcategoryIndex = categoriesIndex.get(0).subcategories.size();
+		if (selectedCategory > 0 && selectedCategory <= lastSubcategoryIndex) {
+			context.saveCategory(this, selectedCategory);
+		}
 
 		displayedCategory = categoriesIndex.elementAt(selectedCategory);
 
@@ -220,6 +216,7 @@ public class CategoriesActivity extends ListActivity {
 		return dialog;
 	}
 
+	@SuppressLint("NewApi")
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		switch (keyCode) {

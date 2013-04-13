@@ -64,7 +64,7 @@ public class OptionsActivity extends Activity {
 				}
 
 				AppContext context = AppContext.getInstance();
-				context.savePrefs(OptionsActivity.this, backgroundLight);
+				context.saveBackground(OptionsActivity.this, backgroundLight);
 			}
 		});
 
