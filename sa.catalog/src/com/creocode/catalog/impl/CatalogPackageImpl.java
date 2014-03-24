@@ -280,8 +280,17 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCategoryType_Sequence() {
+	public EAttribute getCategoryType_Code() {
 		return (EAttribute)categoryTypeEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getCategoryType_Sequence() {
+		return (EAttribute)categoryTypeEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -455,6 +464,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		createEAttribute(categoryTypeEClass, CATEGORY_TYPE__TITLE);
 		createEReference(categoryTypeEClass, CATEGORY_TYPE__ITEM);
 		createEReference(categoryTypeEClass, CATEGORY_TYPE__SUB_CATEGORY);
+		createEAttribute(categoryTypeEClass, CATEGORY_TYPE__CODE);
 		createEAttribute(categoryTypeEClass, CATEGORY_TYPE__SEQUENCE);
 
 		detailsTypeEClass = createEClass(DETAILS_TYPE);
@@ -525,6 +535,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		initEAttribute(getCategoryType_Title(), theXMLTypePackage.getString(), "title", null, 1, 1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCategoryType_Item(), this.getItemType(), null, "item", null, 1, -1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCategoryType_SubCategory(), this.getCategoryType(), null, "subCategory", null, 0, -1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCategoryType_Code(), theXMLTypePackage.getString(), "code", null, 0, 1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCategoryType_Sequence(), theXMLTypePackage.getBoolean(), "sequence", null, 0, 1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(detailsTypeEClass, DetailsType.class, "DetailsType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -676,6 +687,13 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 			 "kind", "element",
 			 "name", "subCategory",
 			 "namespace", "##targetNamespace"
+		   });		
+		addAnnotation
+		  (getCategoryType_Code(), 
+		   source, 
+		   new String[] {
+			 "kind", "attribute",
+			 "name", "code"
 		   });		
 		addAnnotation
 		  (getCategoryType_Sequence(), 

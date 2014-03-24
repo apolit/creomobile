@@ -72,6 +72,7 @@ public class CategoryTypeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTitlePropertyDescriptor(object);
+			addCodePropertyDescriptor(object);
 			addSequencePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
@@ -91,6 +92,28 @@ public class CategoryTypeItemProvider
 				 getString("_UI_CategoryType_title_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_CategoryType_title_feature", "_UI_CategoryType_type"),
 				 CatalogPackage.Literals.CATEGORY_TYPE__TITLE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Code feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCodePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CategoryType_code_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CategoryType_code_feature", "_UI_CategoryType_type"),
+				 CatalogPackage.Literals.CATEGORY_TYPE__CODE,
 				 true,
 				 false,
 				 false,
@@ -190,6 +213,7 @@ public class CategoryTypeItemProvider
 
 		switch (notification.getFeatureID(CategoryType.class)) {
 			case CatalogPackage.CATEGORY_TYPE__TITLE:
+			case CatalogPackage.CATEGORY_TYPE__CODE:
 			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;

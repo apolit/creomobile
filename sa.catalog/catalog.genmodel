@@ -24,6 +24,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CategoryType/title"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//CategoryType/item"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//CategoryType/subCategory"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CategoryType/code"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//CategoryType/sequence"/>
     </genClasses>
     <genClasses ecoreClass="catalog.ecore#//DetailsType">
@@ -39,7 +40,8 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//ItemType/itemIdentifier"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference catalog.ecore#//ItemType/templateItem"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//ItemType/title"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//ItemType/content"/>
+      <genFeatures createChild="false" propertyDescription="" propertyMultiLine="true"
+          ecoreFeature="ecore:EAttribute catalog.ecore#//ItemType/content"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute catalog.ecore#//ItemType/intro"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference catalog.ecore#//ItemType/details"/>
     </genClasses>

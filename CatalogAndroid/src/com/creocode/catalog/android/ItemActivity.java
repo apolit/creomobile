@@ -28,52 +28,40 @@
 package com.creocode.catalog.android;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
-import android.util.FloatMath;
+import android.text.method.ScrollingMovementMethod;
 import android.util.TypedValue;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
-import com.creocode.catalog.R;
 import com.creocode.catalog.generator.content.Category;
 import com.creocode.catalog.generator.content.Content;
 import com.creocode.catalog.generator.content.Item;
 
-public class ItemActivity extends Activity implements OnTouchListener {
-
-	@Override
-	protected void onRestoreInstanceState(Bundle savedInstanceState) {
-		if (savedInstanceState != null) {
-			fontSize = savedInstanceState.getInt(FONT_SIZE, fontSize);
-			textView.setTextSize(fontSize);
-
-		}
-		super.onRestoreInstanceState(savedInstanceState);
-
-	}
+public class ItemActivity extends Activity {
 
 	private static final String FONT_SIZE = "font_size";
-
-	@Override
-	protected void onPause() {
-		AppContext context = AppContext.getInstance();
-		context.savePrefs(ItemActivity.this, fontSize);
-		super.onPause();
-	}
 
 	private final Content content;
 	private TextView textView;
 	private int touchState;
-	private int fontSize;
+	private float fontSize;
 	private int newFontSize;
+
+	private LinearLayout linearLayout;
 
 	private static final int NONE = 0;
 	private static final int DRAG = 1;
 	private static final int ZOOM = 2;
+
+	private static final int MENU_ITEM_OPTIONS = 0;
+	private static final int MENU_ITEM_WEBPAGE = 1;
+	private static final int MENU_ITEM_EMAIL = 2;
+	private static final int MENU_ITEM_SHARE = 3;
 
 	public ItemActivity() {
 		super();
@@ -86,116 +74,115 @@ public class ItemActivity extends Activity implements OnTouchListener {
 		super.onCreate(savedInstanceState);
 
 		Bundle bundle = getIntent().getExtras();
-		int selectedCategory = bundle.getInt("selectedCategory");
-		int selectedItemIndex = bundle.getInt("selectedItemIndex");
-
+		selectedCategory = bundle.getInt("selectedCategory");
 		Category category = (Category) content.categories
 				.elementAt(selectedCategory);
-
-		// Integer index = (Integer) category.elementAt(selectedItemIndex);
-		Item item = (Item) content.items.get(selectedItemIndex);
+		selectedItemIndex = bundle.getInt("selectedItemIndex");
+		contentItem = (Item) content.items.get(selectedItemIndex);
 
 		String text = "";
 
-		if (item.intro.length() > 0) {
-			text += item.intro + "\n\n";
+		if (contentItem.intro.length() > 0) {
+			text += contentItem.intro + "\n\n";
 		}
 
-		text += item.content;
+		text += contentItem.content;
 
-		AppContext context = AppContext.getInstance();
-
-		if (true) {
-			setContentView(R.layout.item_view_scroll);
-			ScrollView view = (ScrollView) findViewById(R.id.ItemScrollView);
-			view.setBackgroundColor(context.getBackgroundColor());
-		} else {
-			setContentView(R.layout.item_view);
-			LinearLayout view = (LinearLayout) findViewById(R.id.linearLayout);
-			view.setBackgroundColor(context.getBackgroundColor());
-		}
+		setContentView(R.layout.item_view_scroll);
 
 		textView = (TextView) findViewById(R.id.ItemTextViewContent);
-		fontSize = context.getFontSize();
-		if (savedInstanceState != null) {
-			float savedfontSize = savedInstanceState.getFloat(FONT_SIZE);
-			if (savedfontSize != 0.0f) {
-				textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, savedfontSize);
-			}
-		} else {
-			textView.setTextSize(fontSize);
-		}
-		textView.setTextColor(context.getTextColor());
+		linearLayout = (LinearLayout) findViewById(R.id.ItemTextViewLayout);
+		restoreTextView(savedInstanceState);
+
 		textView.setText(text);
+		textView.setMovementMethod(new ScrollingMovementMethod());
 
-		textView.setOnTouchListener(this);
+	}
 
+	private void restoreTextView(Bundle savedInstanceState) {
+		AppContext context = AppContext.getInstance();
+		textView.setBackgroundColor(context.getBackgroundColor());
+		linearLayout.setBackgroundColor(context.getBackgroundColor());
+		fontSize = context.getFontSize();
+		textView.setTextSize(TypedValue.COMPLEX_UNIT_PT, fontSize);
+		textView.setTextColor(context.getTextColor());
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		restoreTextView(null);
 	}
 
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		outState.putFloat(FONT_SIZE, textView.getTextSize());
 		super.onSaveInstanceState(outState);
+		AppContext context = AppContext.getInstance();
+		context.savePrefs(ItemActivity.this, fontSize);
 	}
 
-	final static float MIN_DIST = 50;
-	static float eventDistance = 0;
-	static float centerX = 0, centerY = 0;
-
 	@Override
-	public boolean onTouch(View v, MotionEvent event) {
+	protected void onRestoreInstanceState(Bundle savedInstanceState) {
+		super.onRestoreInstanceState(savedInstanceState);
+		restoreTextView(savedInstanceState);
+	}
 
-		TextView view = (TextView) v;
-		switch (event.getAction() & MotionEvent.ACTION_MASK) {
+	private int selectedCategory;
+	private int selectedItemIndex;
+	private Item contentItem;
 
-		case MotionEvent.ACTION_DOWN:
-
-			// primary touch event starts: remember touch down location
-			touchState = DRAG;
-			centerX = event.getX(0);
-			centerY = event.getY(0);
-
-			break;
-		case MotionEvent.ACTION_POINTER_1_DOWN:// MotionEvent.ACTION_POINTER_1_DOWN:
-			// secondary touch event starts: remember distance and center
-
-			eventDistance = calcDistance(event);
-
-			if (eventDistance > MIN_DIST) {
-				touchState = ZOOM;
-			}
-			break;
-
-		case MotionEvent.ACTION_MOVE:
-			if (touchState == DRAG) {
-				// single finger drag, translate accordingly
-
-			} else if (touchState == ZOOM) {
-				// multi-finger zoom, scale accordingly around center
-				float dist = calcDistance(event);
-				if (dist > MIN_DIST) {
-					float scale = dist / eventDistance;
-					newFontSize = (int) (fontSize * scale);
-					textView.setTextSize(newFontSize);
-				}
-			}
-			// Perform the transformation
-			break;
-
-		case MotionEvent.ACTION_UP:
-		case MotionEvent.ACTION_POINTER_1_UP:
-			touchState = NONE;
-			fontSize = newFontSize;
-
-			break;
-		}
+	/**
+	 * Add menu items
+	 * 
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		menu.add(0, MENU_ITEM_OPTIONS, Menu.NONE, R.string.options_label);
+		menu.add(0, MENU_ITEM_WEBPAGE, Menu.NONE, R.string.visit_creocode);
+		menu.add(0, MENU_ITEM_EMAIL, Menu.NONE, R.string.contact);
+		menu.add(0, MENU_ITEM_SHARE, Menu.NONE, R.string.share);
 		return true;
 	}
 
-	private float calcDistance(MotionEvent event) {
-		float x = event.getX(0) - event.getX(1);
-		float y = event.getY(0) - event.getY(1);
-		return FloatMath.sqrt(x * x + y * y);
+	/**
+	 * Define menu action
+	 * 
+	 * @see android.app.Activity#onOptionsItemSelected(android.view.MenuItem)
+	 */
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case MENU_ITEM_OPTIONS:
+			Intent intent = new Intent(this, OptionsActivity.class);
+			startActivityForResult(intent, 0);
+			break;
+
+		case MENU_ITEM_WEBPAGE:
+			Intent webpage = new Intent(Intent.ACTION_VIEW,
+					Uri.parse("http://www.creocode.com"));
+			startActivityForResult(webpage, 0);
+			break;
+
+		case MENU_ITEM_EMAIL:
+			Intent emailIntent = new Intent(Intent.ACTION_SENDTO);
+			String[] recipients = new String[] { "artur@creocode.com" };
+			emailIntent.putExtra(Intent.EXTRA_EMAIL, recipients);
+			emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Feedback");
+			emailIntent.setType("text/plain");
+			startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+			break;
+
+		case MENU_ITEM_SHARE:
+			Intent shared = new Intent(Intent.ACTION_SEND);
+			shared.setType("text/plain");
+			shared.putExtra(Intent.EXTRA_TEXT, contentItem.title + "\r\n"
+					+ contentItem.content + getText(R.string.sharedFrom));
+			startActivity(Intent.createChooser(shared, getText(R.string.share)));
+		default:
+			// put your code here
+		}
+		return false;
 	}
 
 }

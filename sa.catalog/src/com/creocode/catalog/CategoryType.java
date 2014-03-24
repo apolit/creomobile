@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.creocode.catalog.CategoryType#getTitle <em>Title</em>}</li>
  *   <li>{@link com.creocode.catalog.CategoryType#getItem <em>Item</em>}</li>
  *   <li>{@link com.creocode.catalog.CategoryType#getSubCategory <em>Sub Category</em>}</li>
+ *   <li>{@link com.creocode.catalog.CategoryType#getCode <em>Code</em>}</li>
  *   <li>{@link com.creocode.catalog.CategoryType#isSequence <em>Sequence</em>}</li>
  * </ul>
  * </p>
@@ -93,6 +94,33 @@ public interface CategoryType extends EObject {
 	 * @generated
 	 */
 	EList<CategoryType> getSubCategory();
+
+	/**
+	 * Returns the value of the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Code</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Code</em>' attribute.
+	 * @see #setCode(String)
+	 * @see com.creocode.catalog.CatalogPackage#getCategoryType_Code()
+	 * @model dataType="org.eclipse.emf.ecore.xml.type.String"
+	 *        extendedMetaData="kind='attribute' name='code'"
+	 * @generated
+	 */
+	String getCode();
+
+	/**
+	 * Sets the value of the '{@link com.creocode.catalog.CategoryType#getCode <em>Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Code</em>' attribute.
+	 * @see #getCode()
+	 * @generated
+	 */
+	void setCode(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Sequence</b></em>' attribute.

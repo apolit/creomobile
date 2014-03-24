@@ -38,6 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.creocode.catalog.impl.CategoryTypeImpl#getTitle <em>Title</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CategoryTypeImpl#getItem <em>Item</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CategoryTypeImpl#getSubCategory <em>Sub Category</em>}</li>
+ *   <li>{@link com.creocode.catalog.impl.CategoryTypeImpl#getCode <em>Code</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CategoryTypeImpl#isSequence <em>Sequence</em>}</li>
  * </ul>
  * </p>
@@ -84,6 +85,26 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 	 * @ordered
 	 */
 	protected EList<CategoryType> subCategory;
+
+	/**
+	 * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCode()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CODE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCode() <em>Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCode()
+	 * @generated
+	 * @ordered
+	 */
+	protected String code = CODE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isSequence() <em>Sequence</em>}' attribute.
@@ -183,6 +204,27 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getCode() {
+		return code;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCode(String newCode) {
+		String oldCode = code;
+		code = newCode;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, CatalogPackage.CATEGORY_TYPE__CODE, oldCode, code));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public boolean isSequence() {
 		return sequence;
 	}
@@ -254,6 +296,8 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 				return getItem();
 			case CatalogPackage.CATEGORY_TYPE__SUB_CATEGORY:
 				return getSubCategory();
+			case CatalogPackage.CATEGORY_TYPE__CODE:
+				return getCode();
 			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
 				return isSequence();
 		}
@@ -280,6 +324,9 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 				getSubCategory().clear();
 				getSubCategory().addAll((Collection<? extends CategoryType>)newValue);
 				return;
+			case CatalogPackage.CATEGORY_TYPE__CODE:
+				setCode((String)newValue);
+				return;
 			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
 				setSequence((Boolean)newValue);
 				return;
@@ -304,6 +351,9 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 			case CatalogPackage.CATEGORY_TYPE__SUB_CATEGORY:
 				getSubCategory().clear();
 				return;
+			case CatalogPackage.CATEGORY_TYPE__CODE:
+				setCode(CODE_EDEFAULT);
+				return;
 			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
 				unsetSequence();
 				return;
@@ -325,6 +375,8 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 				return item != null && !item.isEmpty();
 			case CatalogPackage.CATEGORY_TYPE__SUB_CATEGORY:
 				return subCategory != null && !subCategory.isEmpty();
+			case CatalogPackage.CATEGORY_TYPE__CODE:
+				return CODE_EDEFAULT == null ? code != null : !CODE_EDEFAULT.equals(code);
 			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
 				return isSetSequence();
 		}
@@ -343,6 +395,8 @@ public class CategoryTypeImpl extends EObjectImpl implements CategoryType {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (title: ");
 		result.append(title);
+		result.append(", code: ");
+		result.append(code);
 		result.append(", sequence: ");
 		if (sequenceESet) result.append(sequence); else result.append("<unset>");
 		result.append(')');
