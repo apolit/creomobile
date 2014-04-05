@@ -44,18 +44,15 @@ public class AppContext {
 
 	private static final int TOP_CATEGORY = 0;
 
+	private static final int KHAKI = Color.parseColor("#F0E68C");
+
 	public static final String PREFS_NAME = "PrayerbookPrefs";
 
 	public static final String BACKGROUND_LIGHT_PREF = "backgroundLight";
 
-	public static final String FONT_SIZE_PREF = "fontSize";
+	public static final String TEXT_SIZE_PREF = "textSize";
 
-	public static final String CATEGORY = "category";
-
-	public static final int FONT_SIZE_SMALL = 15;
-	public static final int FONT_SIZE_MEDIUM = 18;
-	public static final int FONT_SIZE_LARGE = 22;
-	public static final int FONT_SIZE_DEFAULT = FONT_SIZE_MEDIUM;
+	public static final String CATEGORY_PREF = "category";
 
 	/**
 	 * Content of application.
@@ -74,6 +71,7 @@ public class AppContext {
 	private int category;
 
 	private AppContext() {
+
 		content = new Content();
 		content.initCategories();
 	}
@@ -93,16 +91,16 @@ public class AppContext {
 		return backgroundLight;
 	}
 
-	public int getBackgroundColor() {
-		if (backgroundLight) {
-			return Color.WHITE;
+	public static int getBackgroundColor(boolean isLight) {
+		if (isLight) {
+			return KHAKI;
 		} else {
 			return Color.BLACK;
 		}
 	}
 
-	public int getTextColor() {
-		if (backgroundLight) {
+	public static int getTextColor(boolean isLight) {
+		if (isLight) {
 			return Color.BLACK;
 		} else {
 			return Color.WHITE;
@@ -121,21 +119,15 @@ public class AppContext {
 		SharedPreferences settings = context.getSharedPreferences(
 				AppContext.PREFS_NAME, 0);
 		backgroundLight = settings.getBoolean(BACKGROUND_LIGHT_PREF, false);
-		fontSize = settings.getInt(FONT_SIZE_PREF, FONT_SIZE_DEFAULT);
-		category = settings.getInt(CATEGORY, TOP_CATEGORY);
+		category = settings.getInt(CATEGORY_PREF, TOP_CATEGORY);
 	}
 
-	public void saveBackground(Context context, boolean backgroundLight) {
+	public void savePrefs(Context context, boolean backgroundLight) {
 		this.backgroundLight = backgroundLight;
 		Editor editor = context.getSharedPreferences(AppContext.PREFS_NAME, 0)
 				.edit();
 		editor.putBoolean(BACKGROUND_LIGHT_PREF, backgroundLight);
 		editor.commit();
-	}
-
-	public void savePrefs(Context context, int fontSize) {
-		this.fontSize = fontSize;
-		savePreference(context, FONT_SIZE_PREF, fontSize);
 	}
 
 	private void savePreference(Context context, String preferenceName,
@@ -148,6 +140,6 @@ public class AppContext {
 
 	public void saveCategory(Context context, int category) {
 		this.category = category;
-		savePreference(context, CATEGORY, category);
+		savePreference(context, CATEGORY_PREF, category);
 	}
 }

@@ -29,8 +29,10 @@ package com.creocode.catalog.android;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.method.ScrollingMovementMethod;
 import android.util.TypedValue;
 import android.view.Menu;
@@ -38,25 +40,18 @@ import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.creocode.catalog.R;
 import com.creocode.catalog.generator.content.Category;
 import com.creocode.catalog.generator.content.Content;
 import com.creocode.catalog.generator.content.Item;
 
 public class ItemActivity extends Activity {
 
-	private static final String FONT_SIZE = "font_size";
-
 	private final Content content;
 	private TextView textView;
-	private int touchState;
-	private float fontSize;
-	private int newFontSize;
+	private int fontSize;
 
 	private LinearLayout linearLayout;
-
-	private static final int NONE = 0;
-	private static final int DRAG = 1;
-	private static final int ZOOM = 2;
 
 	private static final int MENU_ITEM_OPTIONS = 0;
 	private static final int MENU_ITEM_WEBPAGE = 1;
@@ -72,6 +67,7 @@ public class ItemActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 
 		Bundle bundle = getIntent().getExtras();
 		selectedCategory = bundle.getInt("selectedCategory");
@@ -100,12 +96,16 @@ public class ItemActivity extends Activity {
 	}
 
 	private void restoreTextView(Bundle savedInstanceState) {
-		AppContext context = AppContext.getInstance();
-		textView.setBackgroundColor(context.getBackgroundColor());
-		linearLayout.setBackgroundColor(context.getBackgroundColor());
-		fontSize = context.getFontSize();
+		boolean backgroundLight = sharedPref.getBoolean(
+				AppContext.BACKGROUND_LIGHT_PREF, false);
+		int backgroundColor = AppContext.getBackgroundColor(backgroundLight);
+		textView.setBackgroundColor(backgroundColor);
+		linearLayout.setBackgroundColor(backgroundColor);
+
+		fontSize = Integer.parseInt(sharedPref.getString(
+				AppContext.TEXT_SIZE_PREF, "13"));
 		textView.setTextSize(TypedValue.COMPLEX_UNIT_PT, fontSize);
-		textView.setTextColor(context.getTextColor());
+		textView.setTextColor(AppContext.getTextColor(backgroundLight));
 	}
 
 	@Override
@@ -117,8 +117,6 @@ public class ItemActivity extends Activity {
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
 		super.onSaveInstanceState(outState);
-		AppContext context = AppContext.getInstance();
-		context.savePrefs(ItemActivity.this, fontSize);
 	}
 
 	@Override
@@ -130,6 +128,7 @@ public class ItemActivity extends Activity {
 	private int selectedCategory;
 	private int selectedItemIndex;
 	private Item contentItem;
+	private SharedPreferences sharedPref;
 
 	/**
 	 * Add menu items

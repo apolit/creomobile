@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:id="@+id/ItemScrollView"
-			android:layout_width="fill_parent" 
-			android:layout_height="fill_parent"
-			xmlns:android="http://schemas.android.com/apk/res/android">
-	<TextView android:layout_width="fill_parent"
-			  android:layout_height="fill_parent" 	  
-			  android:id="@+id/ItemTextViewContent" >
-	</TextView>
-</ScrollView>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" 
+    android:id="@+id/ItemTextViewLayout"
+    >
+
+    <TextView
+        android:id="@+id/ItemTextViewContent"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:maxWidth="@dimen/max_text_width"
+        android:padding="@dimen/margin_default"
+        android:scrollbars="vertical"
+        android:text="Test test Test test Test test Test test Test test Test test Test test " />
+
+</LinearLayout>

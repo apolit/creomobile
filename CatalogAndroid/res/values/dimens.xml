@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="max_text_width">360pt</dimen>
+    <dimen name="margin_default">3pt</dimen>
+</resources>

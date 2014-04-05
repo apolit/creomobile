@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <resources>
+
     <string name="app_name">Sample Application</string>
     <string name="options_label">Options</string>
     <string name="options_bg_light">Bright</string>
@@ -9,13 +10,62 @@
     <string name="options_font_medium">Medium</string>
     <string name="options_font_large">Big</string>
     <string name="options_font">Font</string>
-    <string name="options_save">Save</string>
-    <string name="app_copyrights">2011 Creative Commons BY-SA</string>
+    <string name="options_languague">Languauge</string>
+    <string name="app_copyrights">2009-2012</string>
     <string name="eula_title">Notes and license</string>
     <string name="eula_accept">Accept</string>
     <string name="eula_refuse">Refuse</string>
     <string name="visit_creocode">Visit creocode.com</string>
-    <string name="pop_up">Want to provide new feature or translation? Visit creocode.com/volunteers</string>
+    <string name="pop_up">Want to provide new feature or translation? Visit creocode.com</string>
     <string name="next">Next</string>
-    <string name="contact">Contact</string>    
+    <string name="contact">Contact</string>
+    <string name="share">Share</string>
+    <string name="sharedFrom">\r\nShared from Mobile Prayer Book creocode.com</string>
+
+    <string-array name="fontSizes">
+        <item>9</item>
+        <item>13</item>
+        <item>18</item>
+    </string-array>
+    <string-array name="fontSizeLabels">
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Big</item>
+    </string-array>
+    <string-array name="languages">
+        <item>English</item>
+        <item>Latin</item>
+        <item>Español</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Italiano</item>
+        <item>Polski</item>
+        <item>Português</item>
+        <item>简体中文</item>
+        <item>繁體中文</item>
+        <item>Български</item>
+        <item>Беларуская</item>
+        <item>Українська</item>
+        <item>Русский</item>
+    </string-array>
+    <string-array name="languageCodes">
+        <item>en</item>
+        <item>la</item>
+        <item>es</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>it</item>
+        <item>pl</item>
+        <item>pt</item>
+        <item>zh-hans</item>
+        <item>zh-hant</item>
+        <item>bg</item>
+        <item>be</item>
+        <item>uk</item>
+        <item>ru</item>
+    </string-array>
+
+    <string name="title_prayer_list">Prayers</string>
+    <string name="title_prayer_detail">Prayer Detail</string>
+
 </resources>

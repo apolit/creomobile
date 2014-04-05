@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orderingFromXml="true" >
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="backgroundLight"
+        android:persistent="true"
+        android:summaryOff="@string/options_bg_dark"
+        android:summaryOn="@string/options_bg_light"
+        android:title="@string/options_bg" />
+
+    <ListPreference
+        android:defaultValue="9"
+        android:entries="@array/fontSizeLabels"
+        android:entryValues="@array/fontSizes"
+        android:key="textSize"
+        android:persistent="true"
+        android:title="@string/options_font" />
+    
+    <ListPreference
+        android:entries="@array/languages"
+        android:entryValues="@array/languageCodes"
+        android:key="language"
+        android:persistent="true"
+        android:title="@string/options_languague" />
+
+</PreferenceScreen>

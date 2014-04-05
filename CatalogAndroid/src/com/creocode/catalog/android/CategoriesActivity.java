@@ -34,6 +34,7 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.KeyEvent;
@@ -80,6 +81,7 @@ public class CategoriesActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		PreferenceManager.setDefaultValues(this, R.xml.preferences, false);
 
 		categoriesIndex = content.categories;
 		itemsIndex = content.items;
@@ -143,10 +145,6 @@ public class CategoriesActivity extends ListActivity {
 		}
 
 	}
-
-	/*
-	 * Add this in your Activity
-	 */
 
 	/**
 	 * Add menu items

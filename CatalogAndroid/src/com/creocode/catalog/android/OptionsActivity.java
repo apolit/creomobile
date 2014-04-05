@@ -27,95 +27,17 @@
 
 package com.creocode.catalog.android;
 
-import android.app.Activity;
 import android.os.Bundle;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.preference.PreferenceActivity;
 
 import com.creocode.catalog.R;
 
-public class OptionsActivity extends Activity {
+public class OptionsActivity extends PreferenceActivity {
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		setContentView(R.layout.options_view);
-
-		RadioButton radioButton;
-
-		RadioGroup radioGroup;
-
-		radioGroup = (RadioGroup) findViewById(R.id.OptionsRadioGroupBackground);
-
-		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				boolean backgroundLight = false;
-				switch (checkedId) {
-				case R.id.OptionsRadioButtonBGDark:
-					backgroundLight = false;
-					break;
-
-				case R.id.OptionsRadioButtonBGLight:
-					backgroundLight = true;
-					break;
-				}
-
-				AppContext context = AppContext.getInstance();
-				context.saveBackground(OptionsActivity.this, backgroundLight);
-			}
-		});
-
-		radioGroup = (RadioGroup) findViewById(R.id.OptionsRadioGroupFont);
-
-		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-				int fontSize = AppContext.FONT_SIZE_MEDIUM;
-				switch (checkedId) {
-				case R.id.OptionsRadioButtonFontSmall:
-					fontSize = AppContext.FONT_SIZE_SMALL;
-					break;
-				case R.id.OptionsRadioButtonFontMedium:
-					fontSize = AppContext.FONT_SIZE_MEDIUM;
-					break;
-				case R.id.OptionsRadioButtonFontLarge:
-					fontSize = AppContext.FONT_SIZE_LARGE;
-					break;
-				}
-				AppContext context = AppContext.getInstance();
-				context.savePrefs(OptionsActivity.this, fontSize);
-			}
-		});
-
-		int fontSize = AppContext.getInstance().getFontSize();
-		switch (fontSize) {
-		case AppContext.FONT_SIZE_SMALL:
-			radioButton = (RadioButton) findViewById(R.id.OptionsRadioButtonFontSmall);
-
-			break;
-		case AppContext.FONT_SIZE_MEDIUM:
-		default:
-			radioButton = (RadioButton) findViewById(R.id.OptionsRadioButtonFontMedium);
-			break;
-		case AppContext.FONT_SIZE_LARGE:
-			radioButton = (RadioButton) findViewById(R.id.OptionsRadioButtonFontLarge);
-			break;
-		}
-		radioButton.toggle();
-
-		if (AppContext.getInstance().isBackgroundLight()) {
-			radioButton = (RadioButton) findViewById(R.id.OptionsRadioButtonBGLight);
-		} else {
-			radioButton = (RadioButton) findViewById(R.id.OptionsRadioButtonBGDark);
-		}
-		radioButton.toggle();
-
-		// Button saveButton = (Button) findViewById(R.id.OptionsSaveButton);
-		// saveButton.setOnClickListener(this);
+		addPreferencesFromResource(R.xml.preferences);
 	}
 
 }
