@@ -85,12 +85,16 @@
             <!-- renderscript generates resources so it must be called before aapt -->
             <echo level="info">----------</echo>
             <echo level="info">Handling RenderScript files...</echo>
-            <renderscript executable="${renderscript}"
-                    includePathRefId="android.renderscript.include.path"
+            <renderscript
+                    buildToolsRoot="${android.build.tools.dir}"
                     genFolder="${gen.absolute.dir}"
-                    resFolder="${out.res.absolute.dir}/raw"
-                    targetApi="${project.minSdkVersion}"
+                    resFolder="${out.res.absolute.dir}"
+                    rsObjFolder="${out.rs.obj.absolute.dir}"
+                    libsFolder="${out.rs.libs.absolute.dir}"
+                    targetApi="8"
                     optLevel="${renderscript.opt.level}"
+                    supportMode="${renderscript.support.mode}"
+                    binFolder="${out.absolute.dir}"
                     buildType="${build.is.packaging.debug}"
                     previousBuildType="${build.last.is.packaging.debug}">
                 <source path="${source.absolute.dir}"/>
@@ -107,6 +111,7 @@
                     nonConstantId="${android.library}"
                     libraryResFolderPathRefid="project.library.res.folder.path"
                     libraryPackagesRefid="project.library.packages"
+                    libraryRFileRefid="project.library.bin.r.file.path"
                     ignoreAssets="${aapt.ignore.assets}"
                     proguardFile="${out.absolute.dir}/proguard.txt">
                 <res path="${out.res.absolute.dir}" />
