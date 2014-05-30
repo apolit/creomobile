@@ -46,21 +46,6 @@
       </editor>
    </extension>
    <extension
-         point="org.eclipse.ui.popupMenus">
-      <objectContribution
-            adaptable="false"
-            id="com.creocode.catalog.actions"
-            nameFilter="*.catalog"
-            objectClass="org.eclipse.core.resources.IFile">
-         <action
-               class="com.creocode.catalog.actions.GenerateCatalog"
-               enablesFor="1"
-               id="com.creocode.catalog.actions.GenerateCatalog"
-               label="Generate catalog">
-         </action>
-      </objectContribution>
-   </extension>
-   <extension
          id="product"
          point="org.eclipse.core.runtime.products">
       <product

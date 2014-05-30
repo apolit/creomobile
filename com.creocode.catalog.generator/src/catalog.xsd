@@ -26,7 +26,8 @@
 			</element>
 			<element maxOccurs="unbounded" minOccurs="0" name="subCategory" type="tns:categoryType"/>
 		</sequence>
-		<attribute name="sequence" type="boolean" use="optional"/>					
+		<attribute name="sequence" type="boolean" use="optional"/>
+		<attribute name="code" type="string" use="optional"/>					
 	</complexType>
 
 	<complexType name="catalogType">		
