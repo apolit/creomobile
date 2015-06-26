@@ -59,10 +59,6 @@
                name="aboutText"
                value="Catalog Editor - create mobile app content easily">
          </property>
-         <property
-               name="preferenceCustomization"
-               value="plugin_customization.ini">
-         </property>
       </product>
    </extension>
    <extension

@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: com.creocode.catalog.provider.CatalogEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: com.creocode.catalog.provider
 Require-Bundle: org.eclipse.core.runtime,
  sa.catalog;visibility:=reexport,
