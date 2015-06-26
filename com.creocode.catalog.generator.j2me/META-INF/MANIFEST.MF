@@ -26,7 +26,6 @@ Require-Bundle: org.eclipse.jdt.core,
  org.eclipse.xtend.typesystem.xsd,
  org.eclipse.xtend.util.stdlib,
  org.eclipse.core.runtime,
- sa.catalog.rmi,
  org.eclipse.xtend.util.stdlib,
  com.creocode.catalog.generator,
  com.creocode.catalog.generator.content
