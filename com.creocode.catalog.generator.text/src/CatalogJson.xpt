@@ -32,8 +32,7 @@ imports catalog.xsd
 «EXTENSION org::eclipse::xtend::util::stdlib::counter»
 
 «DEFINE Root FOR catalog::CatalogType»
-«FILE "catalog.json"»
-
+«FILE "catalog.json"-»
 { 
 	title:"«title»"
     version:"«version»",
@@ -41,33 +40,31 @@ imports catalog.xsd
     author:"«author»",
     copyrights:"«copyrights»",
     categories:[
-	«FOREACH category AS cat ITERATOR catIterator SEPARATOR ','»
-	«EXPAND categoryTemplate(0,catIterator.counter1) FOR cat»
-	«ENDFOREACH»
+	«FOREACH category AS cat ITERATOR catIterator SEPARATOR ','-»
+	«EXPAND categoryTemplate(0,catIterator.counter1) FOR cat-»
+	«ENDFOREACH-»
 	]
 }
 «ENDFILE»
 «ENDDEFINE»
-
-«DEFINE categoryTemplate (Integer parentCategoryId, Integer thisCategoryWeight) FOR catalog::CategoryType»
-«LET counterInc("category") AS myCategoryId»
+«DEFINE categoryTemplate (Integer parentCategoryId, Integer thisCategoryWeight) FOR catalog::CategoryType-»
+«LET counterInc("category") AS myCategoryId-»
 { title:"«title»",code:"«code»", file:"«"category"+myCategoryId+".json"»"}
-«FILE "category"+myCategoryId+".json"»
+«FILE "category"+myCategoryId+".json"-»
 { categories:
-«FOREACH subCategory AS subcat ITERATOR subCatIterator SEPARATOR ','»
-	«EXPAND categoryTemplate(myCategoryId,subCatIterator.counter1) FOR subcat»
-«ENDFOREACH»
+«FOREACH subCategory AS subcat ITERATOR subCatIterator SEPARATOR ','-»
+«EXPAND categoryTemplate(myCategoryId,subCatIterator.counter1) FOR subcat-»
+«ENDFOREACH-»
 , items: [
-«FOREACH item AS it ITERATOR itIterator»
-«EXPAND itemDiv(myCategoryId,itIterator.counter1) FOR it»,
-«ENDFOREACH»
+«FOREACH item AS it ITERATOR itIterator SEPARATOR ','-»
+«EXPAND itemDiv(myCategoryId,itIterator.counter1) FOR it-»
+«ENDFOREACH-»
 ]
 }
-«ENDFILE»
-«ENDLET»
+«ENDFILE-»
+«ENDLET-»
+«ENDDEFINE-»
 
-«ENDDEFINE»
-
-«DEFINE itemDiv (Integer parentCategoryId, Integer itemWeight) FOR catalog::ItemType»
+«DEFINE itemDiv (Integer parentCategoryId, Integer itemWeight) FOR catalog::ItemType-»
 {title:"«title»",intro:"«intro»",content:"«content»",details:"«details.detail»"}
-«ENDDEFINE»
+«ENDDEFINE-»
