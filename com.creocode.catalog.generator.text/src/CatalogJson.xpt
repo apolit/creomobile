@@ -34,12 +34,12 @@ imports catalog.xsd
 «DEFINE Root FOR catalog::CatalogType»
 «FILE "catalog.json"-»
 { 
-	title:"«title»"
-    version:"«version»",
-    vendor:"«vendor»",
-    author:"«author»",
-    copyrights:"«copyrights»",
-    categories:[
+	"title":"«title»",
+    "version":"«version»",
+    "vendor":"«vendor»",
+    "author":"«author»",
+    "copyrights":"«copyrights»",
+    "categories":[
 	«FOREACH category AS cat ITERATOR catIterator SEPARATOR ','-»
 	«EXPAND categoryTemplate(0,catIterator.counter1) FOR cat-»
 	«ENDFOREACH-»
@@ -49,13 +49,13 @@ imports catalog.xsd
 «ENDDEFINE»
 «DEFINE categoryTemplate (Integer parentCategoryId, Integer thisCategoryWeight) FOR catalog::CategoryType-»
 «LET counterInc("category") AS myCategoryId-»
-{ title:"«title»",code:"«code»", file:"«"category"+myCategoryId+".json"»"}
+{ "title":"«title»","code":"«code»", "file":"«"category"+myCategoryId+".json"»"}
 «FILE "category"+myCategoryId+".json"-»
-{ categories:
+{ "categories":[
 «FOREACH subCategory AS subcat ITERATOR subCatIterator SEPARATOR ','-»
 «EXPAND categoryTemplate(myCategoryId,subCatIterator.counter1) FOR subcat-»
 «ENDFOREACH-»
-, items: [
+], "items": [
 «FOREACH item AS it ITERATOR itIterator SEPARATOR ','-»
 «EXPAND itemDiv(myCategoryId,itIterator.counter1) FOR it-»
 «ENDFOREACH-»
@@ -66,5 +66,5 @@ imports catalog.xsd
 «ENDDEFINE-»
 
 «DEFINE itemDiv (Integer parentCategoryId, Integer itemWeight) FOR catalog::ItemType-»
-{title:"«title»",intro:"«intro»",content:"«content»",details:"«details.detail»"}
+{"title":"«title»","intro":"«intro»","content":"«content.replaceAll("\n","<br/>")»","details":"«details.detail»"}
 «ENDDEFINE-»
