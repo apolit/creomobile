@@ -66,5 +66,5 @@ imports catalog.xsd
 «ENDDEFINE-»
 
 «DEFINE itemDiv (Integer parentCategoryId, Integer itemWeight) FOR catalog::ItemType-»
-{"title":"«title»","intro":"«intro»","content":"«content.replaceAll("\n","<br/>")»","details":"«details.detail»"}
+{"title":"«title»","intro":"«intro»","content":"«content.replaceAll("\r\n","<br/>").replaceAll("\n","<br/>").replaceAll("\"","&quot;")»","details":"«details.detail»"}
 «ENDDEFINE-»
