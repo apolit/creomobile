@@ -22,4 +22,4 @@ Require-Bundle: org.eclipse.jdt.core,
  org.eclipse.xtend.util.stdlib,
  com.creocode.catalog.generator,
  com.creocode.catalog.generator.content
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

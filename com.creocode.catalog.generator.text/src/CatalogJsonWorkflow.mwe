@@ -1,4 +1,5 @@
 <workflow>
+<property file="workflow.properties"/>
 <component class="org.eclipse.xtend.typesystem.xsd.XMLReader">
     <modelSlot value="model" />
     <uri value="${model.path}" />    
@@ -8,8 +9,9 @@
     </metaModel>
   </component>
   <component class="org.eclipse.xpand2.Generator">
+  	<fileEncoding value="UTF-8"/>
     <metaModel idRef="mm" />
     <expand value="CatalogJson::Root FOR model" />
-    <outlet path="./" />
+    <outlet path="${srcGenPath}" />
   </component>
 </workflow>

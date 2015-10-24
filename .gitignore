@@ -1,3 +1,4 @@
 com.creocode.catalog.generator.text/bin
 .metadata/
 com.creocode.catalog.generator.html/bin/
+com.creocode.catalog.generator.text/src/workflow.properties
