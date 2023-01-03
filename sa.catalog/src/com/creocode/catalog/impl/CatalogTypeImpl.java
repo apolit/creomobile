@@ -34,6 +34,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.creocode.catalog.impl.CatalogTypeImpl#getTemplateItems <em>Template Items</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CatalogTypeImpl#getCategory <em>Category</em>}</li>
@@ -47,7 +48,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link com.creocode.catalog.impl.CatalogTypeImpl#getVersion <em>Version</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.CatalogTypeImpl#getVersionCode <em>Version Code</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -303,6 +303,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CategoryType getTemplateItems() {
 		return templateItems;
 	}
@@ -327,6 +328,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTemplateItems(CategoryType newTemplateItems) {
 		if (newTemplateItems != templateItems) {
 			NotificationChain msgs = null;
@@ -346,6 +348,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<CategoryType> getCategory() {
 		if (category == null) {
 			category = new EObjectContainmentEList<CategoryType>(CategoryType.class, this, CatalogPackage.CATALOG_TYPE__CATEGORY);
@@ -358,6 +361,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -367,6 +371,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTitle(String newTitle) {
 		String oldTitle = title;
 		title = newTitle;
@@ -379,6 +384,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVendor() {
 		return vendor;
 	}
@@ -388,6 +394,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVendor(String newVendor) {
 		String oldVendor = vendor;
 		vendor = newVendor;
@@ -400,6 +407,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCopyrights() {
 		return copyrights;
 	}
@@ -409,6 +417,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCopyrights(String newCopyrights) {
 		String oldCopyrights = copyrights;
 		copyrights = newCopyrights;
@@ -421,6 +430,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAuthor() {
 		return author;
 	}
@@ -430,6 +440,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAuthor(String newAuthor) {
 		String oldAuthor = author;
 		author = newAuthor;
@@ -442,6 +453,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVersion() {
 		return version;
 	}
@@ -451,6 +463,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVersion(String newVersion) {
 		String oldVersion = version;
 		version = newVersion;
@@ -463,6 +476,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVersionCode() {
 		return versionCode;
 	}
@@ -472,6 +486,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVersionCode(String newVersionCode) {
 		String oldVersionCode = versionCode;
 		versionCode = newVersionCode;
@@ -484,6 +499,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIcon() {
 		return icon;
 	}
@@ -493,6 +509,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIcon(String newIcon) {
 		String oldIcon = icon;
 		icon = newIcon;
@@ -507,6 +524,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetIcon() {
 		String oldIcon = icon;
 		boolean oldIconESet = iconESet;
@@ -521,6 +539,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetIcon() {
 		return iconESet;
 	}
@@ -530,6 +549,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getId() {
 		return id;
 	}
@@ -539,6 +559,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setId(String newId) {
 		String oldId = id;
 		id = newId;
@@ -553,6 +574,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetId() {
 		String oldId = id;
 		boolean oldIdESet = idESet;
@@ -567,6 +589,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetId() {
 		return idESet;
 	}
@@ -576,6 +599,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLanguage() {
 		return language;
 	}
@@ -585,6 +609,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLanguage(String newLanguage) {
 		String oldLanguage = language;
 		language = newLanguage;
@@ -599,6 +624,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unsetLanguage() {
 		String oldLanguage = language;
 		boolean oldLanguageESet = languageESet;
@@ -613,6 +639,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isSetLanguage() {
 		return languageESet;
 	}
@@ -802,7 +829,7 @@ public class CatalogTypeImpl extends EObjectImpl implements CatalogType {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (author: ");
 		result.append(author);
 		result.append(", copyrights: ");

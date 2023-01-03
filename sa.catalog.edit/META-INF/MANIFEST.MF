@@ -2,6 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: sa.catalog.edit;singleton:=true
+Automatic-Module-Name: sa.catalog.edit
 Bundle-Version: 1.0.0
 Bundle-ClassPath: .
 Bundle-Activator: com.creocode.catalog.provider.CatalogEditPlugin$Implementation

@@ -219,22 +219,22 @@ public interface CatalogPackage extends EPackage {
 	int CATEGORY_TYPE__SUB_CATEGORY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Code</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CATEGORY_TYPE__CODE = 3;
-
-	/**
 	 * The feature id for the '<em><b>Sequence</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CATEGORY_TYPE__SEQUENCE = 4;
+	int CATEGORY_TYPE__SEQUENCE = 3;
+
+	/**
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CATEGORY_TYPE__CODE = 4;
 
 	/**
 	 * The number of structural features of the '<em>Category Type</em>' class.
@@ -577,17 +577,6 @@ public interface CatalogPackage extends EPackage {
 	EReference getCategoryType_SubCategory();
 
 	/**
-	 * Returns the meta object for the attribute '{@link com.creocode.catalog.CategoryType#getCode <em>Code</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Code</em>'.
-	 * @see com.creocode.catalog.CategoryType#getCode()
-	 * @see #getCategoryType()
-	 * @generated
-	 */
-	EAttribute getCategoryType_Code();
-
-	/**
 	 * Returns the meta object for the attribute '{@link com.creocode.catalog.CategoryType#isSequence <em>Sequence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -597,6 +586,17 @@ public interface CatalogPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCategoryType_Sequence();
+
+	/**
+	 * Returns the meta object for the attribute '{@link com.creocode.catalog.CategoryType#getCode <em>Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Code</em>'.
+	 * @see com.creocode.catalog.CategoryType#getCode()
+	 * @see #getCategoryType()
+	 * @generated
+	 */
+	EAttribute getCategoryType_Code();
 
 	/**
 	 * Returns the meta object for class '{@link com.creocode.catalog.DetailsType <em>Details Type</em>}'.
@@ -904,20 +904,20 @@ public interface CatalogPackage extends EPackage {
 		EReference CATEGORY_TYPE__SUB_CATEGORY = eINSTANCE.getCategoryType_SubCategory();
 
 		/**
-		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CATEGORY_TYPE__CODE = eINSTANCE.getCategoryType_Code();
-
-		/**
 		 * The meta object literal for the '<em><b>Sequence</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute CATEGORY_TYPE__SEQUENCE = eINSTANCE.getCategoryType_Sequence();
+
+		/**
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CATEGORY_TYPE__CODE = eINSTANCE.getCategoryType_Code();
 
 		/**
 		 * The meta object literal for the '{@link com.creocode.catalog.impl.DetailsTypeImpl <em>Details Type</em>}' class.

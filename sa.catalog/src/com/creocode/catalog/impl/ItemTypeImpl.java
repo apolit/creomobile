@@ -30,6 +30,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getItemIdentifier <em>Item Identifier</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getTemplateItem <em>Template Item</em>}</li>
@@ -38,7 +39,6 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
  *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getIntro <em>Intro</em>}</li>
  *   <li>{@link com.creocode.catalog.impl.ItemTypeImpl#getDetails <em>Details</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -167,6 +167,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getItemIdentifier() {
 		return itemIdentifier;
 	}
@@ -176,6 +177,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setItemIdentifier(String newItemIdentifier) {
 		String oldItemIdentifier = itemIdentifier;
 		itemIdentifier = newItemIdentifier;
@@ -188,6 +190,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EObject getTemplateItem() {
 		return templateItem;
 	}
@@ -197,6 +200,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTemplateItem(EObject newTemplateItem) {
 		EObject oldTemplateItem = templateItem;
 		templateItem = newTemplateItem;
@@ -209,6 +213,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTitle() {
 		return title;
 	}
@@ -218,6 +223,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTitle(String newTitle) {
 		String oldTitle = title;
 		title = newTitle;
@@ -230,6 +236,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getContent() {
 		return content;
 	}
@@ -239,6 +246,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setContent(String newContent) {
 		String oldContent = content;
 		content = newContent;
@@ -251,6 +259,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIntro() {
 		return intro;
 	}
@@ -260,6 +269,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIntro(String newIntro) {
 		String oldIntro = intro;
 		intro = newIntro;
@@ -272,6 +282,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DetailsType getDetails() {
 		return details;
 	}
@@ -296,6 +307,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDetails(DetailsType newDetails) {
 		if (newDetails != details) {
 			NotificationChain msgs = null;
@@ -441,7 +453,7 @@ public class ItemTypeImpl extends EObjectImpl implements ItemType {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (itemIdentifier: ");
 		result.append(itemIdentifier);
 		result.append(", title: ");

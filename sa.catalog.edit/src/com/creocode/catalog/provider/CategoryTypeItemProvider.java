@@ -72,8 +72,8 @@ public class CategoryTypeItemProvider
 			super.getPropertyDescriptors(object);
 
 			addTitlePropertyDescriptor(object);
-			addCodePropertyDescriptor(object);
 			addSequencePropertyDescriptor(object);
+			addCodePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -101,28 +101,6 @@ public class CategoryTypeItemProvider
 	}
 
 	/**
-	 * This adds a property descriptor for the Code feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCodePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_CategoryType_code_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_CategoryType_code_feature", "_UI_CategoryType_type"),
-				 CatalogPackage.Literals.CATEGORY_TYPE__CODE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Sequence feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -140,6 +118,28 @@ public class CategoryTypeItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Code feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCodePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_CategoryType_code_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_CategoryType_code_feature", "_UI_CategoryType_type"),
+				 CatalogPackage.Literals.CATEGORY_TYPE__CODE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -213,8 +213,8 @@ public class CategoryTypeItemProvider
 
 		switch (notification.getFeatureID(CategoryType.class)) {
 			case CatalogPackage.CATEGORY_TYPE__TITLE:
-			case CatalogPackage.CATEGORY_TYPE__CODE:
 			case CatalogPackage.CATEGORY_TYPE__SEQUENCE:
+			case CatalogPackage.CATEGORY_TYPE__CODE:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case CatalogPackage.CATEGORY_TYPE__ITEM:

@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link com.creocode.catalog.CatalogType#getTemplateItems <em>Template Items</em>}</li>
  *   <li>{@link com.creocode.catalog.CatalogType#getCategory <em>Category</em>}</li>
@@ -33,7 +34,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link com.creocode.catalog.CatalogType#getVersion <em>Version</em>}</li>
  *   <li>{@link com.creocode.catalog.CatalogType#getVersionCode <em>Version Code</em>}</li>
  * </ul>
- * </p>
  *
  * @see com.creocode.catalog.CatalogPackage#getCatalogType()
  * @model extendedMetaData="name='catalogType' kind='elementOnly'"

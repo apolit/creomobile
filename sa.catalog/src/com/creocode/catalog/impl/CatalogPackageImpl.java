@@ -95,7 +95,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 * 
+	 *
 	 * <p>This method is used to initialize {@link CatalogPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -109,7 +109,8 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		if (isInited) return (CatalogPackage)EPackage.Registry.INSTANCE.getEPackage(CatalogPackage.eNS_URI);
 
 		// Obtain or create and register package
-		CatalogPackageImpl theCatalogPackage = (CatalogPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof CatalogPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new CatalogPackageImpl());
+		Object registeredCatalogPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		CatalogPackageImpl theCatalogPackage = registeredCatalogPackage instanceof CatalogPackageImpl ? (CatalogPackageImpl)registeredCatalogPackage : new CatalogPackageImpl();
 
 		isInited = true;
 
@@ -125,7 +126,6 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		// Mark meta-data to indicate it can't be changed
 		theCatalogPackage.freeze();
 
-  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(CatalogPackage.eNS_URI, theCatalogPackage);
 		return theCatalogPackage;
@@ -136,6 +136,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCatalogType() {
 		return catalogTypeEClass;
 	}
@@ -145,6 +146,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCatalogType_TemplateItems() {
 		return (EReference)catalogTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -154,6 +156,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCatalogType_Category() {
 		return (EReference)catalogTypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -163,6 +166,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCatalogType_Title() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(7);
 	}
@@ -172,6 +176,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCatalogType_Vendor() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(8);
 	}
@@ -181,6 +186,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCatalogType_Copyrights() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(3);
 	}
@@ -190,6 +196,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCatalogType_Author() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(2);
 	}
@@ -199,6 +206,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCatalogType_Version() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(9);
 	}
@@ -208,6 +216,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCatalogType_VersionCode() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(10);
 	}
@@ -217,6 +226,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCatalogType_Icon() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(4);
 	}
@@ -226,6 +236,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCatalogType_Id() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(5);
 	}
@@ -235,6 +246,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCatalogType_Language() {
 		return (EAttribute)catalogTypeEClass.getEStructuralFeatures().get(6);
 	}
@@ -244,6 +256,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getCategoryType() {
 		return categoryTypeEClass;
 	}
@@ -253,6 +266,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getCategoryType_Title() {
 		return (EAttribute)categoryTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -262,6 +276,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCategoryType_Item() {
 		return (EReference)categoryTypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -271,6 +286,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getCategoryType_SubCategory() {
 		return (EReference)categoryTypeEClass.getEStructuralFeatures().get(2);
 	}
@@ -280,7 +296,8 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCategoryType_Code() {
+	@Override
+	public EAttribute getCategoryType_Sequence() {
 		return (EAttribute)categoryTypeEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -289,7 +306,8 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCategoryType_Sequence() {
+	@Override
+	public EAttribute getCategoryType_Code() {
 		return (EAttribute)categoryTypeEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -298,6 +316,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDetailsType() {
 		return detailsTypeEClass;
 	}
@@ -307,6 +326,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDetailsType_Detail() {
 		return (EAttribute)detailsTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -316,6 +336,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getDocumentRoot() {
 		return documentRootEClass;
 	}
@@ -325,6 +346,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getDocumentRoot_Mixed() {
 		return (EAttribute)documentRootEClass.getEStructuralFeatures().get(0);
 	}
@@ -334,6 +356,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDocumentRoot_XMLNSPrefixMap() {
 		return (EReference)documentRootEClass.getEStructuralFeatures().get(1);
 	}
@@ -343,6 +366,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDocumentRoot_XSISchemaLocation() {
 		return (EReference)documentRootEClass.getEStructuralFeatures().get(2);
 	}
@@ -352,6 +376,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getDocumentRoot_Catalog() {
 		return (EReference)documentRootEClass.getEStructuralFeatures().get(3);
 	}
@@ -361,6 +386,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EClass getItemType() {
 		return itemTypeEClass;
 	}
@@ -370,6 +396,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getItemType_ItemIdentifier() {
 		return (EAttribute)itemTypeEClass.getEStructuralFeatures().get(0);
 	}
@@ -379,6 +406,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getItemType_TemplateItem() {
 		return (EReference)itemTypeEClass.getEStructuralFeatures().get(1);
 	}
@@ -388,6 +416,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getItemType_Title() {
 		return (EAttribute)itemTypeEClass.getEStructuralFeatures().get(2);
 	}
@@ -397,6 +426,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getItemType_Content() {
 		return (EAttribute)itemTypeEClass.getEStructuralFeatures().get(3);
 	}
@@ -406,6 +436,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EAttribute getItemType_Intro() {
 		return (EAttribute)itemTypeEClass.getEStructuralFeatures().get(4);
 	}
@@ -415,6 +446,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EReference getItemType_Details() {
 		return (EReference)itemTypeEClass.getEStructuralFeatures().get(5);
 	}
@@ -424,6 +456,7 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CatalogFactory getCatalogFactory() {
 		return (CatalogFactory)getEFactoryInstance();
 	}
@@ -464,8 +497,8 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		createEAttribute(categoryTypeEClass, CATEGORY_TYPE__TITLE);
 		createEReference(categoryTypeEClass, CATEGORY_TYPE__ITEM);
 		createEReference(categoryTypeEClass, CATEGORY_TYPE__SUB_CATEGORY);
-		createEAttribute(categoryTypeEClass, CATEGORY_TYPE__CODE);
 		createEAttribute(categoryTypeEClass, CATEGORY_TYPE__SEQUENCE);
+		createEAttribute(categoryTypeEClass, CATEGORY_TYPE__CODE);
 
 		detailsTypeEClass = createEClass(DETAILS_TYPE);
 		createEAttribute(detailsTypeEClass, DETAILS_TYPE__DETAIL);
@@ -535,8 +568,8 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 		initEAttribute(getCategoryType_Title(), theXMLTypePackage.getString(), "title", null, 1, 1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCategoryType_Item(), this.getItemType(), null, "item", null, 1, -1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCategoryType_SubCategory(), this.getCategoryType(), null, "subCategory", null, 0, -1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCategoryType_Code(), theXMLTypePackage.getString(), "code", null, 0, 1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCategoryType_Sequence(), theXMLTypePackage.getBoolean(), "sequence", null, 0, 1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCategoryType_Code(), theXMLTypePackage.getString(), "code", null, 0, 1, CategoryType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(detailsTypeEClass, DetailsType.class, "DetailsType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getDetailsType_Detail(), theXMLTypePackage.getString(), "detail", null, 1, -1, DetailsType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -570,243 +603,236 @@ public class CatalogPackageImpl extends EPackageImpl implements CatalogPackage {
 	 * @generated
 	 */
 	protected void createExtendedMetaDataAnnotations() {
-		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";		
+		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
 		addAnnotation
-		  (catalogTypeEClass, 
-		   source, 
+		  (catalogTypeEClass,
+		   source,
 		   new String[] {
-			 "name", "catalogType",
-			 "kind", "elementOnly"
-		   });		
+			   "name", "catalogType",
+			   "kind", "elementOnly"
+		   });
 		addAnnotation
-		  (getCatalogType_TemplateItems(), 
-		   source, 
+		  (getCatalogType_TemplateItems(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "templateItems",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "templateItems",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getCatalogType_Category(), 
-		   source, 
+		  (getCatalogType_Category(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "category",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "category",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getCatalogType_Author(), 
-		   source, 
+		  (getCatalogType_Author(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "author"
-		   });		
+			   "kind", "attribute",
+			   "name", "author"
+		   });
 		addAnnotation
-		  (getCatalogType_Copyrights(), 
-		   source, 
+		  (getCatalogType_Copyrights(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "copyrights"
-		   });		
+			   "kind", "attribute",
+			   "name", "copyrights"
+		   });
 		addAnnotation
-		  (getCatalogType_Icon(), 
-		   source, 
+		  (getCatalogType_Icon(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "icon"
-		   });		
+			   "kind", "attribute",
+			   "name", "icon"
+		   });
 		addAnnotation
-		  (getCatalogType_Id(), 
-		   source, 
+		  (getCatalogType_Id(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "id"
-		   });		
+			   "kind", "attribute",
+			   "name", "id"
+		   });
 		addAnnotation
-		  (getCatalogType_Language(), 
-		   source, 
+		  (getCatalogType_Language(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "language"
-		   });		
+			   "kind", "attribute",
+			   "name", "language"
+		   });
 		addAnnotation
-		  (getCatalogType_Title(), 
-		   source, 
+		  (getCatalogType_Title(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "title"
-		   });		
+			   "kind", "attribute",
+			   "name", "title"
+		   });
 		addAnnotation
-		  (getCatalogType_Vendor(), 
-		   source, 
+		  (getCatalogType_Vendor(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "vendor"
-		   });		
+			   "kind", "attribute",
+			   "name", "vendor"
+		   });
 		addAnnotation
-		  (getCatalogType_Version(), 
-		   source, 
+		  (getCatalogType_Version(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "version"
-		   });		
+			   "kind", "attribute",
+			   "name", "version"
+		   });
 		addAnnotation
-		  (getCatalogType_VersionCode(), 
-		   source, 
+		  (getCatalogType_VersionCode(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "versionCode"
-		   });		
+			   "kind", "attribute",
+			   "name", "versionCode"
+		   });
 		addAnnotation
-		  (categoryTypeEClass, 
-		   source, 
+		  (categoryTypeEClass,
+		   source,
 		   new String[] {
-			 "name", "categoryType",
-			 "kind", "elementOnly"
-		   });		
+			   "name", "categoryType",
+			   "kind", "elementOnly"
+		   });
 		addAnnotation
-		  (getCategoryType_Title(), 
-		   source, 
+		  (getCategoryType_Title(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "title",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "title",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getCategoryType_Item(), 
-		   source, 
+		  (getCategoryType_Item(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "item",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "item",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getCategoryType_SubCategory(), 
-		   source, 
+		  (getCategoryType_SubCategory(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "subCategory",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "subCategory",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getCategoryType_Code(), 
-		   source, 
+		  (getCategoryType_Sequence(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "code"
-		   });		
+			   "kind", "attribute",
+			   "name", "sequence"
+		   });
 		addAnnotation
-		  (getCategoryType_Sequence(), 
-		   source, 
+		  (detailsTypeEClass,
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "sequence"
-		   });		
+			   "name", "detailsType",
+			   "kind", "elementOnly"
+		   });
 		addAnnotation
-		  (detailsTypeEClass, 
-		   source, 
+		  (getDetailsType_Detail(),
+		   source,
 		   new String[] {
-			 "name", "detailsType",
-			 "kind", "elementOnly"
-		   });		
+			   "kind", "element",
+			   "name", "detail",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getDetailsType_Detail(), 
-		   source, 
+		  (documentRootEClass,
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "detail",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "name", "",
+			   "kind", "mixed"
+		   });
 		addAnnotation
-		  (documentRootEClass, 
-		   source, 
+		  (getDocumentRoot_Mixed(),
+		   source,
 		   new String[] {
-			 "name", "",
-			 "kind", "mixed"
-		   });		
+			   "kind", "elementWildcard",
+			   "name", ":mixed"
+		   });
 		addAnnotation
-		  (getDocumentRoot_Mixed(), 
-		   source, 
+		  (getDocumentRoot_XMLNSPrefixMap(),
+		   source,
 		   new String[] {
-			 "kind", "elementWildcard",
-			 "name", ":mixed"
-		   });		
+			   "kind", "attribute",
+			   "name", "xmlns:prefix"
+		   });
 		addAnnotation
-		  (getDocumentRoot_XMLNSPrefixMap(), 
-		   source, 
+		  (getDocumentRoot_XSISchemaLocation(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "xmlns:prefix"
-		   });		
+			   "kind", "attribute",
+			   "name", "xsi:schemaLocation"
+		   });
 		addAnnotation
-		  (getDocumentRoot_XSISchemaLocation(), 
-		   source, 
+		  (getDocumentRoot_Catalog(),
+		   source,
 		   new String[] {
-			 "kind", "attribute",
-			 "name", "xsi:schemaLocation"
-		   });		
+			   "kind", "element",
+			   "name", "catalog",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getDocumentRoot_Catalog(), 
-		   source, 
+		  (itemTypeEClass,
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "catalog",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "name", "itemType",
+			   "kind", "elementOnly"
+		   });
 		addAnnotation
-		  (itemTypeEClass, 
-		   source, 
+		  (getItemType_ItemIdentifier(),
+		   source,
 		   new String[] {
-			 "name", "itemType",
-			 "kind", "elementOnly"
-		   });		
+			   "kind", "element",
+			   "name", "itemIdentifier",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getItemType_ItemIdentifier(), 
-		   source, 
+		  (getItemType_TemplateItem(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "itemIdentifier",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "templateItem",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getItemType_TemplateItem(), 
-		   source, 
+		  (getItemType_Title(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "templateItem",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "title",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getItemType_Title(), 
-		   source, 
+		  (getItemType_Content(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "title",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "content",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getItemType_Content(), 
-		   source, 
+		  (getItemType_Intro(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "content",
-			 "namespace", "##targetNamespace"
-		   });		
+			   "kind", "element",
+			   "name", "intro",
+			   "namespace", "##targetNamespace"
+		   });
 		addAnnotation
-		  (getItemType_Intro(), 
-		   source, 
+		  (getItemType_Details(),
+		   source,
 		   new String[] {
-			 "kind", "element",
-			 "name", "intro",
-			 "namespace", "##targetNamespace"
-		   });		
-		addAnnotation
-		  (getItemType_Details(), 
-		   source, 
-		   new String[] {
-			 "kind", "element",
-			 "name", "details",
-			 "namespace", "##targetNamespace"
+			   "kind", "element",
+			   "name", "details",
+			   "namespace", "##targetNamespace"
 		   });
 	}
 

@@ -36,7 +36,7 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 	 */
 	public static CatalogFactory init() {
 		try {
-			CatalogFactory theCatalogFactory = (CatalogFactory)EPackage.Registry.INSTANCE.getEFactory("http://www.creocode.com/catalog"); 
+			CatalogFactory theCatalogFactory = (CatalogFactory)EPackage.Registry.INSTANCE.getEFactory(CatalogPackage.eNS_URI);
 			if (theCatalogFactory != null) {
 				return theCatalogFactory;
 			}
@@ -80,6 +80,7 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CatalogType createCatalogType() {
 		CatalogTypeImpl catalogType = new CatalogTypeImpl();
 		return catalogType;
@@ -90,6 +91,7 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CategoryType createCategoryType() {
 		CategoryTypeImpl categoryType = new CategoryTypeImpl();
 		return categoryType;
@@ -100,6 +102,7 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DetailsType createDetailsType() {
 		DetailsTypeImpl detailsType = new DetailsTypeImpl();
 		return detailsType;
@@ -110,6 +113,7 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DocumentRoot createDocumentRoot() {
 		DocumentRootImpl documentRoot = new DocumentRootImpl();
 		return documentRoot;
@@ -131,6 +135,7 @@ public class CatalogFactoryImpl extends EFactoryImpl implements CatalogFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CatalogPackage getCatalogPackage() {
 		return (CatalogPackage)getEPackage();
 	}

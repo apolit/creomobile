@@ -29,10 +29,10 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link com.creocode.catalog.impl.DetailsTypeImpl#getDetail <em>Detail</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -71,6 +71,7 @@ public class DetailsTypeImpl extends EObjectImpl implements DetailsType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getDetail() {
 		if (detail == null) {
 			detail = new EDataTypeEList<String>(String.class, this, CatalogPackage.DETAILS_TYPE__DETAIL);
@@ -147,7 +148,7 @@ public class DetailsTypeImpl extends EObjectImpl implements DetailsType {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (detail: ");
 		result.append(detail);
 		result.append(')');
